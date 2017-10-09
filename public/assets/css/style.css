@@ -1,0 +1,181 @@
+/*-*-*-*-* START CSS *-*-*-*-*/
+
+/* Start NavBar */
+.logonav {
+    position: relative;
+    z-index: 1;
+}
+
+.navbar-default {
+    background-color: transparent;
+    border-color: transparent;
+    margin-top: -143px;
+}
+
+.navbar-default .navbar-brand {
+    color: black;
+    font-size: calc(1.3vw + 20px);
+    padding-left: 150px;
+    margin-top: -12px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: rgb(237, 123, 78);
+    text-transform: uppercase;
+    font-family: "Encode Sans Expanded", Helvetica;
+    font-size: calc(1.3vw + 10px);
+    padding-right: 200px;
+}
+
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+    color: rgb(233, 92, 71);
+}
+
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+    color: rgb(233, 92, 71);
+}
+/* End NavBar */
+
+/* Start Footer */
+
+footer {
+    font-family: 'Encode Sans Expanded', sans-serif;
+    background-color: rgb(244, 164, 119);
+    height: 30vh;
+}
+
+.footer_nav li {
+    display : inline;
+    padding : 0 0.5em;
+    font-size: 1.1vw;
+}
+
+.mentionsL {
+    font-size: 1.1vw;
+    padding : 3.3em;
+}
+
+.footer_place {
+    padding-top: 11vh;
+    padding-right: 5vh;
+}
+
+.fa-footer {
+    padding-right: 5vw;
+}
+
+
+/* .footer_nav li a:link {} */
+a:link {
+    color: black;
+}
+
+/* visited link */
+a:visited {
+    color: black;
+}
+
+/* mouse over link */
+a:hover {
+    color: black;
+}
+
+.footer_form{
+padding: 50px 50px 50px 50px ;
+
+}
+
+.button_form_footer{
+    font-family: 'Encode Sans Expanded', sans-serif;
+    font-size: calc(1.3vw + 10px);
+    background-color: rgb(233, 92, 71);
+}
+
+.button_form_footer:hover {
+    background-color: rgb(233, 92, 71);
+}
+
+.modal_form {
+    font-family: 'Encode Sans Expanded', sans-serif;
+    font-size: 1vw;
+}
+
+/* End Footer */
+
+/*-*-*-*-* END CSS *-*-*-*-*/
+
+
+/*-*-*-*-* START MEDIA QUERIES *-*-*-*-*/
+
+@media screen and (max-width: 767px){ /* COL-XS */ 
+
+/* Start NavBar */
+.navbar-default {
+        margin-top: 0;
+        background-color: rgb(244, 164, 119);
+    }
+
+    .navbar-default .navbar-brand {
+        margin-top: -3px;
+        padding-left: 20px;
+        color: white;
+    }
+
+    .navbar-default .navbar-nav > li > a {
+        color: white;
+    }
+
+    .navbar-default .navbar-toggle {
+        border-color: white;
+    }
+
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: white;
+    }
+
+    .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover  {
+        background-color: rgb(233, 92, 71);
+    }
+/* End NavBar */
+
+}
+
+@media screen and (min-width: 768px) AND (max-width: 991px){ /* COL-SM */ 
+
+/* Start NavBar */
+.navbar-default .navbar-brand {
+        padding-left: 60px;
+        margin-top: -5px;
+    }
+
+    .navbar-default .navbar-nav > li > a {
+        padding-right: 110px;
+    }
+/* End NavBar */
+
+}
+
+@media screen and (min-width: 992px) AND (max-width: 1199px){ /* COL-MD */
+
+/* Start NavBar */
+.navbar-default .navbar-brand {
+        padding-left: 100px;
+        margin-top: -8px;
+    }
+
+    .navbar-default .navbar-nav > li > a {
+        padding-right: 150px;
+    }
+/* End NavBar */
+
+}
+
+@media screen and (min-width: 1200px) { /* MEDIA FOR COL-LG */
+
+/* Start NavBar */
+
+/* End NavBar */
+
+}
+
+/*-*-*-*-* END MEDIA QUERIES *-*-*-*-*/
