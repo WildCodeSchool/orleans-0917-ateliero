@@ -1,4 +1,5 @@
 .idea
 vendor/
 connect_bdd.php
+Logo/
 composer.json
