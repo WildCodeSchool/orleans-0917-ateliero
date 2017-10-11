@@ -49,8 +49,6 @@ date_default_timezone_set('UTC');
             <div class="tab-content">
                 <!-- START accueil pannel -->
                 <div role="tabpanel" class="tab-pane active" id="accueil">
-<<<<<<< HEAD
-
                     <div class="panel panel-info">
                         <div class="panel-heading"><b>Bannière actuelle</b></div>
                         <div class="panel-body">
