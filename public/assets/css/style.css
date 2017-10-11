@@ -106,14 +106,16 @@
 
 footer {
     font-family: 'Encode Sans Expanded', sans-serif;
-    background-color: rgb(244, 164, 119);
-    height: 30vh;
+    background-color: black;
+    height: 28vh;
 }
+
 
 .footer_nav li {
     display : inline;
     padding : 0 0.5em;
     font-size: 1.1vw;
+    color: white;
 }
 
 .mentionsL {
@@ -130,20 +132,22 @@ footer {
     padding-right: 5vw;
 }
 
+.fa-footer2 {
+    outline: none;
+}
 
-/* .footer_nav li a:link {} */
 a:link {
-    color: black;
+    color: rgb(233, 92, 71);
 }
 
 /* visited link */
 a:visited {
-    color: black;
+    color: rgb(233, 92, 71);
 }
 
 /* mouse over link */
 a:hover {
-    color: black;
+    color: white;
 }
 
 .footer_form{
@@ -164,6 +168,16 @@ padding: 50px 50px 50px 50px ;
 .modal_form {
     font-family: 'Encode Sans Expanded', sans-serif;
     font-size: 1vw;
+    text-align: center;
+}
+
+.footer_mentionL {
+    font-family: 'Encode Sans Expanded', sans-serif;
+    padding: 50px 50px 50px 50px ;
+}
+.footer_mentionL h2 {
+    padding-bottom: 10px;
+    text-align: center;
 }
 
 /* End Footer */
@@ -173,7 +187,7 @@ padding: 50px 50px 50px 50px ;
 
 /*-*-*-*-* START MEDIA QUERIES *-*-*-*-*/
 
-@media screen and (max-width: 767px){ /* COL-XS */ 
+@media screen and (max-width: 767px){ /* COL-XS */
 
 /* Start NavBar */
 .navbar-default {
@@ -211,7 +225,7 @@ padding: 50px 50px 50px 50px ;
 
 }
 
-@media screen and (min-width: 768px) AND (max-width: 991px){ /* COL-SM */ 
+@media screen and (min-width: 768px) AND (max-width: 991px){ /* COL-SM */
 
 /* Start NavBar */
 .navbar-default .navbar-brand {

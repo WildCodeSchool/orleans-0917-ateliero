@@ -9,7 +9,7 @@ include '../src/functions.php';
 
 <div class="row">
 	<div class="banner">
-		<img src="http://via.placeholder.com/200x550" alt="#" />
+		<img src="http://via.placeholder.com/1200x200" alt="#" />
 	</div>
 	<p class="col-xs-offset-8 col-xs-4">
 		<cite>
@@ -47,7 +47,7 @@ include '../src/functions.php';
 		<div class="col-xs-4">
 			<img src="http://via.placeholder.com/100x100" alt="">
 			<img src="http://via.placeholder.com/100x100" alt="">
-		</div>			
+		</div>
 </div>
 <!-- End Actu / Img Insta, Blog -->
 

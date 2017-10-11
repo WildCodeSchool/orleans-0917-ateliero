@@ -29,6 +29,8 @@ date_default_timezone_set('UTC');
     <div class="logo">
         <img src="images/logoAtelierOFondBlancWeb.png" alt="logo" class="img-responsive center-block logonav"/>
     </div>
+    <img src="logo.jpg" alt="logo" class="img-responsive img-circle center-block logonav" />
+
     <!-- Start Nav -->
     <nav class="navbar navbar-default">
       <div class="container-fluid">
