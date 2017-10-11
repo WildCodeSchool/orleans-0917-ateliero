@@ -49,6 +49,7 @@ date_default_timezone_set('UTC');
             <div class="tab-content">
                 <!-- START accueil pannel -->
                 <div role="tabpanel" class="tab-pane active" id="accueil">
+<<<<<<< HEAD
 
                     <div class="panel panel-info">
                         <div class="panel-heading"><b>Bannière actuelle</b></div>
@@ -116,6 +117,55 @@ date_default_timezone_set('UTC');
 
                 <!-- START blog pannel -->
                 <div role="tabpanel" class="tab-pane" id="blog">
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading"><b>Modifier ou ajouter un article</b></div>
+                        <div class="panel-body">
+
+                            <form>
+                                <div class="form-group">
+                                    <label for="titleArticleBlog">Titre de l'article : </label>
+                                    <input type="text" class="form-control" id="titleArticleBlog" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="dateArticleBlog">Date : </label>
+                                    <input type="date" class="form-control" id="dateArticleBlog" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="articleDescription">Description de l'article : </label>
+                                    <textarea class="form-control" rows="3"></textarea>
+                                </div>
+
+
+                                <!--code pour envoi apres avec js-->
+                                <div>
+                                    <form method="POST" action="test.php" enctype="multipart/form-data">
+                                        <!-- /* début de l'interface */ -->
+                                        <div class="form-group">
+                                            <div class="input-group">
+
+                                                <input type="text" class="form-control"
+                                                       placeholder='Choisissez un fichier...'/>
+                                                <span class="input-group-btn">
+        		<button class="btn btn-default" type="button">Parcourir</button>
+    		</span>
+                                            </div>
+                                        </div>
+                                        <!-- /* Fin de l'interface */ -->
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary btn-xs pull-right">Ajouter une photo</button><br/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-default pull-right">Modifier</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+
+                            </form>
+                        </div>
+                    </div>
 
                 </div>
                 <!-- END blog pannel -->
