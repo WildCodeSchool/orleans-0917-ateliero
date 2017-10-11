@@ -26,8 +26,9 @@ date_default_timezone_set('UTC');
 <body>
 
 <header>
-    <img src="logo..jpg" alt="logo" class="img-responsive img-circle center-block logonav"/>
-
+    <div class="logo">
+        <img src="images/logoAtelierOFondBlancWeb.png" alt="logo" class="img-responsive center-block logonav"/>
+    </div>
     <!-- Start Nav -->
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -39,16 +40,16 @@ date_default_timezone_set('UTC');
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#index.php"><span class="fa fa-home" aria-hidden="true"></span></a>
+          <a class="navbar-brand" href="index.php"><span class="fa fa-home" aria-hidden="true"></span></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="#blog.php">blog</a></li>
+            <li><a href="blog.php">blog</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#shop.php">shop</a></li>
+            <li><a href="shop.php">shop</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
