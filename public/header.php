@@ -26,7 +26,7 @@ date_default_timezone_set('UTC');
 <body>
 
 <header>
-    <img src="logo..jpg" alt="logo" class="img-responsive img-circle center-block logonav"/>
+    <img src="logo.jpg" alt="logo" class="img-responsive img-circle center-block logonav" />
 
     <!-- Start Nav -->
     <nav class="navbar navbar-default">

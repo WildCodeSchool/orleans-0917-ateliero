@@ -1,3 +1,4 @@
 .idea
 vendor/
 connect_bdd.php
+composer.json

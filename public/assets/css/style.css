@@ -9,7 +9,7 @@
 .navbar-default {
     background-color: transparent;
     border-color: transparent;
-    margin-top: -143px;
+    /*margin-top: -143px;*/
 }
 
 .navbar-default .navbar-brand {
@@ -107,7 +107,7 @@ padding: 50px 50px 50px 50px ;
 
 /*-*-*-*-* START MEDIA QUERIES *-*-*-*-*/
 
-@media screen and (max-width: 767px){ /* COL-XS */ 
+@media screen and (max-width: 767px){ /* COL-XS */
 
 /* Start NavBar */
 .navbar-default {
@@ -140,7 +140,7 @@ padding: 50px 50px 50px 50px ;
 
 }
 
-@media screen and (min-width: 768px) AND (max-width: 991px){ /* COL-SM */ 
+@media screen and (min-width: 768px) AND (max-width: 991px){ /* COL-SM */
 
 /* Start NavBar */
 .navbar-default .navbar-brand {
