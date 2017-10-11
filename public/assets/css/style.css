@@ -9,7 +9,6 @@
 .navbar-default {
     background-color: transparent;
     border-color: transparent;
-    margin-top: -143px;
 }
 
 .navbar-default .navbar-brand {
@@ -35,6 +34,106 @@
     color: rgb(233, 92, 71);
 }
 /* End NavBar */
+
+/* Start Banner */
+
+.banner cite {
+    font-size: 1.5em;
+    margin-left: 20%;
+}
+
+.banner img {
+    max-width: 100%;
+}
+
+/* End Banner */
+
+/* Start Actu */
+
+.actu {
+    margin-top: 5%;
+}
+
+.imgblog img {
+    max-width: 100%;
+}
+
+.imgblog .imgup {
+    margin-top: -51%;
+}
+
+.imginsta img {
+    max-width: 100%;
+    margin-top: 1%;
+}
+
+/* End Actu */
+
+/* Start About Us */
+
+.aboutus {
+    margin-top: 5%;
+}
+
+.aboutus img {
+    max-width: 100%;
+    max-height: 300px;
+}
+
+.aboutus p {
+    font-size: 1.3em;
+    margin-top: 1%;
+    text-align: justify;
+}
+
+/* End About Us */
+
+
+/* Start Partner */
+
+.partner {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.imgpartner img {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.namepartner {
+    font-size: 1.2em;
+}
+
+.txtpartner {
+    margin-top: 2%;
+}
+
+/* End Partner */
+
+/* Shop */
+
+.txtshop {
+    margin-top: 5%;
+    margin-bottom: 1%;
+    font-size: 1.2em;
+}
+
+.btnshoptop{
+    margin-left: 0.1%;
+    margin-bottom: 2%;
+}
+
+.btnshopbot{
+    margin-left: 12%;
+    margin-top: 1%;
+    margin-bottom: 5%;
+}
+
+.price {
+    font-size: 1.5em;
+    margin-left: 45%;
+}
 
 /* Start Footer */
 
