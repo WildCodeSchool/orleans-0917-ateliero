@@ -1,0 +1,14 @@
+{
+    "name": "wcs/ateliero",
+    "description": "Atelier O",
+    "type": "project",
+    "authors": [
+        {
+            "name": "WCS",
+            "email": "wildoproject@gmail.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^2.0"
+    }
+}

@@ -1,0 +1,28 @@
+/*-*-*-*-* START CSS *-*-*-*-*/
+
+/*-*-*-*-* EN CSS *-*-*-*-*/
+
+
+/*-*-*-*-* START MEDIA QUERIES *-*-*-*-*/
+
+@media screen and (max-width: 767px){ /* COL-XS */ 
+
+
+}
+
+@media screen and (min-width: 768px) AND (max-width: 991px){ /* COL-SM */ 
+
+
+}
+
+@media screen and (min-width: 992px) AND (max-width: 1199px){ /* COL-MD */
+
+
+}
+
+@media screen and (min-width: 1200px) { /* MEDIA FOR COL-LG */
+
+
+}
+
+/*-*-*-*-* END MEDIA QUERIES *-*-*-*-*/
