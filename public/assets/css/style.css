@@ -1,16 +1,39 @@
 /*-*-*-*-* START CSS *-*-*-*-*/
 
-/*-*-*-*-* EN CSS *-*-*-*-*/
+/* Start NavBar */
+/* End NavBar */
+
+/* Start Banner */
+/* End Banner */
+
+/* Start News */
+/* End News */
+
+/* Start AboutUs */
+/* End AboutUs */
+
+/* Start Partner */
+/* End Partner */
+
+/* Start Shop */
+/* End Shop */
+
+/* Start Blog */
+/* End Blog */
+
+/* Start Footer */
+/* End Footer */
+
+/*-*-*-*-* END CSS *-*-*-*-*/
 
 
 /*-*-*-*-* START MEDIA QUERIES *-*-*-*-*/
 
-@media screen and (max-width: 767px){ /* COL-XS */ 
-
+@media screen and (max-width: 767px){ /* COL-XS */
 
 }
 
-@media screen and (min-width: 768px) AND (max-width: 991px){ /* COL-SM */ 
+@media screen and (min-width: 768px) AND (max-width: 991px){ /* COL-SM */
 
 
 }
@@ -24,5 +47,4 @@
 
 
 }
-
 /*-*-*-*-* END MEDIA QUERIES *-*-*-*-*/
