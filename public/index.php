@@ -29,5 +29,3 @@ if (!empty($_GET['route'])) {
 }
 
 ?>
-
-<?php //include 'footer.php'; ?>
