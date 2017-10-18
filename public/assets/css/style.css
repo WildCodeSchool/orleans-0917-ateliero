@@ -10,6 +10,20 @@
 /* End News */
 
 /* Start AboutUs */
+.aboutUs {
+    margin-top: 5%;
+}
+
+.aboutUs .presentationText {
+    font-family: "Open Sans", Helvetica, sans-serif;
+    font-size: calc(0.5vw + 10px);
+}
+
+.aboutUs .presentationPicture {
+    margin-bottom: 5%;
+    max-width: 100%;
+    max-height: 300px;
+}
 /* End AboutUs */
 
 /* Start Partner */
