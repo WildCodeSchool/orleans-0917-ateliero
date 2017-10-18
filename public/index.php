@@ -10,16 +10,22 @@ if (!empty($_GET['route'])) {
 
     $route = $_GET['route'];
 
-    if ($route == 'Accueil') {
+    if ($route == 'accueil') {
         // TODO
     }
 
-    if ($route == 'Blog') {
+    if ($route == 'blog') {
         // TODO
     }
 
-    if ($route == 'Shop') {
-        // TODO
+    if ($route == 'shop') {
+        $controller = new \AtelierO\Controller\CreationController();
+        echo $controller->showAction();
+    }
+
+    if ($route =='addCreation') {
+        $controller = new \AtelierO\Controller\CreationController();
+        echo $controller->addCreation();
     }
 
 } else {
