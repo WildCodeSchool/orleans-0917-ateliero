@@ -1,6 +1,48 @@
 /*-*-*-*-* START CSS *-*-*-*-*/
 
 /* Start NavBar */
+.navbar-default {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.navbar-default .navbar-brand {
+    color: black;
+    font-size: calc(1.3vw + 20px);
+    padding-top: 145px;
+    padding-left: 50px;
+}
+
+.navbar-default .nav-justified > li > a {
+    color: grey;
+    text-transform: uppercase;
+    font-family: "Encode Sans Expanded", Helvetica, sans-serif;
+    font-size: calc(1.3vw + 10px);
+}
+
+.navbar-default .textBar {
+    vertical-align: bottom;
+    padding-bottom: 40px;
+}
+
+.navbar .logonav {
+    padding-top: 10px;
+}
+
+.navbar-default .nav-justified > li > a:focus, .navbar-default .nav-justified > li > a:hover {
+    color: #FFBF91;
+    outline: none;
+}
+
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+    color: #FFBF91;
+    outline: none;
+}
+
+.nav > li > a:focus, .nav > li > a:hover {
+    background-color: transparent;
+}
+
 /* End NavBar */
 
 /* Start Banner */
@@ -26,7 +68,82 @@
 
 /*-*-*-*-* END CSS *-*-*-*-*/
 
-
 /*-*-*-*-* START MEDIA QUERIES *-*-*-*-*/
+
+@media screen and (max-width: 767px) {
+    /* COL-XS */
+    .logonav {
+        padding: 10px;
+    }
+
+    .navbar-header {
+        background-color: #FFBF91;
+    }
+
+    .navbar-default .navbar-brand {
+        padding-top: 10px;
+        padding-left: 30px;
+    }
+
+    .navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+        color: grey;
+    }
+
+    .navbar-default .navbar-toggle {
+        border-color: black;
+    }
+
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: black;
+    }
+
+    .navbar-collapse {
+        background-color: grey;
+    }
+
+    .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+        background-color: grey;
+    }
+
+    .navbar-default .nav-justified > li > a {
+        color: #FFBF91;
+    }
+
+    .navbar-default .nav-justified .shop {
+        float: left;
+    }
+}
+
+@media screen and (min-width: 768px) AND (max-width: 991px) {
+    /* COL-SM */
+    .navbar-default .textBar {
+        padding-bottom: 8px;
+    }
+
+    .navbar-default .navbar-brand {
+        padding-top: 58px;
+        padding-left: 50px;
+    }
+}
+
+@media screen and (min-width: 992px) AND (max-width: 1199px) {
+    /* COL-MD */
+    .navbar-default .textBar {
+        padding-bottom: 15px;
+    }
+
+    .navbar-default .navbar-brand {
+        padding-top: 80px;
+        padding-left: 50px;
+    }
+}
+
+@media screen and (min-width: 1200px) AND (max-width: 1600px) {
+    .navbar-default .navbar-brand {
+        padding-top: 95px;
+        padding-left: 50px;
+    }
+
+}
 
 /*-*-*-*-* END MEDIA QUERIES *-*-*-*-*/
