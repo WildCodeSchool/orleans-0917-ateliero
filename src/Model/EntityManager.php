@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: wilder4
- * Date: 18/10/17
- * Time: 17:49
+ * User: emlv
+ * Date: 17/10/17
+ * Time: 21:34
  */
 
 namespace AtelierO\Model;
@@ -16,9 +16,9 @@ class EntityManager
 
     public function __construct()
     {
-        $this->pdo = new \PDO(DSN, USERNAME, PASSWORD, [
+        $this->pdo = new \PDO(DSN, USER, PASSWORD, [
             \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
+//            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
         ]);
-
     }
 }
