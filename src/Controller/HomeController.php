@@ -9,7 +9,6 @@
 
 namespace AtelierO\Controller;
 
-
 class HomeController extends Controller
 {
     public function showAction()

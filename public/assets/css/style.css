@@ -24,6 +24,19 @@
 /* Start Footer */
 /* End Footer */
 
+/* Start Admin */
+.bannerAdmin {
+    max-width: 675px;
+    height: 175px;
+    background: url('../../images/banner/banner.jpg') no-repeat center;
+    background-size: cover;
+}
+
+.uploadInput {
+    width: 100%;
+}
+/* End Admin */
+
 /*-*-*-*-* END CSS *-*-*-*-*/
 
 

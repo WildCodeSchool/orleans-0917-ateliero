@@ -1,5 +1,6 @@
 <?php
 
+use AtelierO\Controller\AdminController;
 use AtelierO\Controller\Controller;
 use AtelierO\Controller\HomeController;
 
