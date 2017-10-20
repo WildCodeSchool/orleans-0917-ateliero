@@ -76,7 +76,9 @@ class CreationController extends Controller
 
     public function showCreationAction()
     {
-        return $this->twig->render('Admin/Shop/adminShopAddCreation.html.twig');
+        return $this->twig->render('Admin/Shop/adminShopAddCreation.html.twig',[
+        'route' => $_GET['route'],
+    ]);
     }
 }
 
