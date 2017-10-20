@@ -1,0 +1,62 @@
+{% extends 'Admin/Shop/adminShop.html.twig' %}
+
+{% block shopAction %}
+
+    {% if errors %}
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>Erreur{% if errors|length > 1 %}s{% endif %} !</strong>
+            <ul>
+                {% for error in errors %}
+                    <li>{{ error|raw }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    {% if success %}
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>Super !</strong>
+            <ul>
+                {% for successMessage in success %}
+                    <li>{{ successMessage|raw }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+
+    <div class="panel panel-info">
+        <div class="panel-heading"><b>Ajouter un object au shop</b></div>
+        <div class="panel-body">
+            <form method="post" action="admin.php?route=adminShop&action=addCreation" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="title">Titre de l'article</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="">
+                </div>
+
+                <div class="form-group">
+                    <label for="price">Prix</label>
+                    <input type="text" class="form-control" id="price" name="price" placeholder="">
+                </div>
+
+                <div class="form-group">
+                    <label for="image">Images</label>
+                    <div class="input-group uploadInput">
+                        <input type="file" id="image" name="url_picture" placeholder="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="url_etsy">Lien vers Etsy</label>
+                    <input type="text" class="form-control" id="url_etsy" name="url_etsy" placeholder="">
+                </div>
+
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+
