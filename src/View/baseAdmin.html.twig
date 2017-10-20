@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="AtelierO">
+    <meta name="author" content="WildCodeSchool">
+    <title>{% block titlePage %}Atelier'O - Administration{% endblock %}</title>
+
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded:300,400,700|Open+Sans:300,400,700"
+          rel="stylesheet">
+
+</head>
+<body>
+
+
+<section class="container">
+
+    {% include 'Admin/header.html.twig' %}
+
+    <div class="panel panel-primary">
+        <div class="panel-body">
+            <!-- Tab panes -->
+            <div class="tab-content">
+                {% block contentAdmin %}<p>Page vide</p>{% endblock %}
+            </div>
+        </div>
+    </div>
+    {% include 'Admin/footer.html.twig' %}
+</section>
+
+<script src="assets/js/jquery-3.2.1.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
