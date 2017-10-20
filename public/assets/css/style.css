@@ -53,9 +53,11 @@
 /* End NavBar */
 
 /* Start Banner */
-.banner img {
-    width: 100%;
-    max-height: 350px;
+.banner {
+    max-width: 1350px;
+    height: 350px;
+    background: url('../../images/banner/banner.jpg') no-repeat center;
+    background-size: cover;
 }
 /* End Banner */
 
