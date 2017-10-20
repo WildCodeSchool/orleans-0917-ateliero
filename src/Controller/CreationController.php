@@ -15,13 +15,18 @@ use AtelierO\Service\UploadManager;
 
 class CreationController extends Controller
 {
+
     public function addCreation()
     {
+        $allErrors = [];
         $errors = [];
+        $success = [];
+        $uploadErrors = [];
+
+
         if (!empty($_POST)) {
 
             $creation = new Creation();
-            var_dump($creation);
 
             if (empty($_POST['title'])) {
                 $errors[] = "Veuillez ajouter un titre";
@@ -39,26 +44,39 @@ class CreationController extends Controller
                 $errors[] = 'Veuillez ajouter un lien Etsy';
             }
 
+            if (empty($_FILES['url_picture'])) {
+                $errors[] = 'Veuillez ajouter une photo';
+            }
+
             $creation->setUrlEtsy($_POST['url_etsy']);
 
             if (empty($errors)) {
                 $uploadManager = new UploadManager($_FILES);
-                $uploadManager->fileUpload();
-                $creation->setUrlPicture($uploadManager->getUrlPicture());
+                $uploadErrors = $uploadManager->fileUpload();
+                if (empty($uploadErrors)) {
+                    $creation->setUrlPicture($uploadManager->getUrlPicture());
 
-                $creationManager = new CreationManager();
-                $creationManager->add($creation);
+                    $creationManager = new CreationManager();
+                    $creationManager->add($creation);
+                    $success [] = 'L\'objet a bien été ajouté';
+                }
             }
-
         }
-        return $this->twig->render('Shop/formShop.html.twig', [
-            'message' => $errors,
+
+        $allErrors = array_merge($errors, $uploadErrors);
+
+        return $this->twig->render('Admin/Shop/adminShopAddCreation.html.twig', [
+            'errors' => $allErrors,
+            'success' => $success,
+            'route' => $_GET['route'],
         ]);
+
+
     }
 
-    public function showAction()
+    public function showCreationAction()
     {
-        return $this->twig->render('Shop/formShop.html.twig');
+        return $this->twig->render('Admin/Shop/adminShopAddCreation.html.twig');
     }
 }
 

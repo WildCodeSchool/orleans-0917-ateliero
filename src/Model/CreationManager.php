@@ -26,29 +26,4 @@ class CreationManager extends EntityManager
         $statement->bindValue('url_etsy', $creation->getUrlEtsy(), \PDO::PARAM_STR);
         $statement->execute();
     }
-
-//    public function findAll()
-//    {
-//        $query = "SELECT * FROM item_shop";
-//        $statement = $this->pdo->query($query);
-//
-//        return $statement->fetchAll(\PDO::FETCH_CLASS, \AtelierO\Model\Creation::class);
-//    }
-//
-//    public function find(int $id)
-//    {
-//        $query = "SELECT * FROM item_shop WHERE id=:id";
-//        $statement = $this->pdo->prepare($query);
-//        $statement->bindValue('id', $id, \PDO::PARAM_INT);
-//        $statement->execute();
-//
-//        $creations = $statement->fetchAll(\PDO::FETCH_CLASS, \AtelierO\Model\Creation::class);
-//        return $creations[0];
-//    }
-
-//    public function delete()
-//    {
-//        // TODO
-//    }
-
 }
