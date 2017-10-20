@@ -1,9 +1,64 @@
 /*-*-*-*-* START CSS *-*-*-*-*/
 
 /* Start NavBar */
+.navbar-default {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.navbar-default .navbar-brand {
+    color: #FFDFC0;
+    font-size: calc(1.3vw + 20px);
+}
+
+.navbar-default .nav-justified > li > a {
+    color: grey;
+    text-transform: uppercase;
+    font-family: "Encode Sans Expanded", Helvetica, sans-serif;
+    font-size: calc(1.3vw + 10px);
+}
+
+.navbar-default .textBar {
+    vertical-align: bottom;
+    padding-bottom: 2.3%;
+}
+
+.navbar .logonav {
+    padding-top: 5%;
+}
+
+.navbar-default .nav-justified > li > a:focus, .navbar-default .nav-justified > li > a:hover {
+    color: #FFBF91;
+    outline: none;
+}
+
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+    color: grey;
+    outline: none;
+}
+
+.nav > li > a:focus, .nav > li > a:hover {
+    background-color: transparent;
+}
+
+
+/*.navbar-collapse {*/
+    /*background-color: grey;*/
+/*}*/
+
+/*.navbar-default .nav-justified > li > a {*/
+    /*color: #FFBF91;*/
+/*}*/
+
 /* End NavBar */
 
 /* Start Banner */
+.banner {
+    max-width: 1350px;
+    height: 350px;
+    background: url('../../images/banner/banner.jpg') no-repeat center;
+    background-size: cover;
+}
 /* End Banner */
 
 /* Start News */
@@ -24,9 +79,42 @@
 /* Start Footer */
 /* End Footer */
 
+/* Start Admin */
+.bannerAdmin {
+    max-width: 675px;
+    height: 175px;
+    background: url('../../images/banner/banner.jpg') no-repeat center;
+    background-size: cover;
+}
+.uploadInput {
+    width: 100%;
+}
+/* End Admin */
+
+
 /*-*-*-*-* END CSS *-*-*-*-*/
 
-
 /*-*-*-*-* START MEDIA QUERIES *-*-*-*-*/
+@media screen and (max-width: 767px) {  /* COL-XS */
+    .navbar-header {
+        background-color: #FFBF91;
+    }
 
+    .navbar-default .navbar-toggle {
+        border-color: black;
+        background-color: #FFBF91;
+    }
+
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: black;
+    }
+
+    .navbar-default .navbar-brand {
+        color: black;
+    }
+
+    .logonav {
+        padding: 5%;
+    }
+}
 /*-*-*-*-* END MEDIA QUERIES *-*-*-*-*/
