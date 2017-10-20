@@ -6,14 +6,20 @@
  * Time: 19:09
  */
 
-namespace AtelierO\Model;
+namespace AtelierO\Service;
 
 
 class UploadManager
 {
 
+    const UPLOAD_DIR = 'uploads/';
     private $url_picture;
     private $file;
+
+    public function __construct($file)
+    {
+        $this->file = $file;
+    }
 
     /**
      * @return mixed
@@ -33,17 +39,8 @@ class UploadManager
         return $this;
     }
 
-
-
-    public function __construct($file)
-    {
-        $this->file = $file;
-    }
-
     public function fileUpload()
     {
-        $uploadDir = 'images/';
-
         if (!empty($this->file)) {
             $fileName = 'url_picture' . uniqid();
             $sizeLimit = '1000000';
@@ -65,9 +62,9 @@ class UploadManager
             }
 
             if ($error === false) {
-                move_uploaded_file($this->file['url_picture']['tmp_name'], $uploadDir . $fileName . '.' . $extension);
+                move_uploaded_file($this->file['url_picture']['tmp_name'], self::UPLOAD_DIR . $fileName . '.' . $extension);
 
-                $this->setUrlPicture($uploadDir . $fileName . '.' . $extension);
+                $this->setUrlPicture($fileName . '.' . $extension);
             }
 
         }

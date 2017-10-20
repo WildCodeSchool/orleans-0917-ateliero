@@ -28,5 +28,8 @@
 
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
+        {% for error in message %}
+            {{ error|raw }}
+        {% endfor %}
     </div>
 </div>

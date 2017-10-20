@@ -1,6 +1,7 @@
 <?php
 
 use AtelierO\Controller\Controller;
+use AtelierO\Controller\CreationController;
 use AtelierO\Controller\HomeController;
 
 require '../connect.php';
@@ -19,12 +20,12 @@ if (!empty($_GET['route'])) {
     }
 
     if ($route == 'shop') {
-        $controller = new \AtelierO\Controller\CreationController();
+        $controller = new CreationController();
         echo $controller->showAction();
     }
 
-    if ($route =='addCreation') {
-        $controller = new \AtelierO\Controller\CreationController();
+    if ($route == 'addCreation') {
+        $controller = new CreationController();
         echo $controller->addCreation();
     }
 
@@ -34,4 +35,4 @@ if (!empty($_GET['route'])) {
     echo $controller->showAction();
 }
 
-?>
+

@@ -11,52 +11,53 @@ namespace AtelierO\Controller;
 
 use AtelierO\Model\Creation;
 use AtelierO\Model\CreationManager;
-use AtelierO\Model\UploadManager;
+use AtelierO\Service\UploadManager;
 
 class CreationController extends Controller
 {
     public function addCreation()
     {
         $errors = [];
-        $creation = new Creation();
-
         if (!empty($_POST)) {
-            $creation->setTitle($_POST['title']);
 
-            $creation->setPrice($_POST['price']);
-
-            $uploadManager = new UploadManager($_FILES);
-            $uploadManager->fileUpload();
-            $creation->setUrlPicture($uploadManager->getUrlPicture());
-
-            $creation->setUrlEtsy($_POST['url_etsy']);
+            $creation = new Creation();
+            var_dump($creation);
 
             if (empty($_POST['title'])) {
-                $errors[] = 'Veuillez ajouter un titre';
+                $errors[] = "Veuillez ajouter un titre";
             }
+
+            $creation->setTitle($_POST['title']);
 
             if (empty($_POST['price'])) {
                 $errors[] = 'Veuillez ajouter un prix';
             }
 
+            $creation->setPrice($_POST['price']);
+
             if (empty($_POST['url_etsy'])) {
                 $errors[] = 'Veuillez ajouter un lien Etsy';
             }
 
+            $creation->setUrlEtsy($_POST['url_etsy']);
 
             if (empty($errors)) {
+                $uploadManager = new UploadManager($_FILES);
+                $uploadManager->fileUpload();
+                $creation->setUrlPicture($uploadManager->getUrlPicture());
 
                 $creationManager = new CreationManager();
                 $creationManager->add($creation);
             }
 
-            return $this->showAction();
         }
+        return $this->twig->render('Shop/formShop.html.twig', [
+            'message' => $errors,
+        ]);
     }
 
     public function showAction()
     {
-
         return $this->twig->render('Shop/formShop.html.twig');
     }
 }

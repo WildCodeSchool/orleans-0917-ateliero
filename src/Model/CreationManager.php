@@ -18,11 +18,12 @@ class CreationManager extends EntityManager
         $req = "INSERT INTO creation_shop
                     (title, price, url_picture, url_etsy)
                      VALUES (:title, :price, :url_picture, :url_etsy)";
+
         $statement = $this->pdo->prepare($req);
-        $statement->bindValue(':title', $creation->getTitle(), $this->pdo::PARAM_STR);
-        $statement->bindValue(':price', $creation->getPrice(), $this->pdo::PARAM_INT);
-        $statement->bindValue(':url_picture', $creation->getUrlPicture(), $this->pdo::PARAM_STR);
-        $statement->bindValue(':url_etsy', $creation->getUrlEtsy(), $this->pdo::PARAM_STR);
+        $statement->bindValue('title', $creation->getTitle(), \PDO::PARAM_STR);
+        $statement->bindValue('price', $creation->getPrice(), \PDO::PARAM_INT);
+        $statement->bindValue('url_picture', $creation->getUrlPicture(), \PDO::PARAM_STR);
+        $statement->bindValue('url_etsy', $creation->getUrlEtsy(), \PDO::PARAM_STR);
         $statement->execute();
     }
 
