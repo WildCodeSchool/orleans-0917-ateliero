@@ -34,19 +34,18 @@ class AboutUs
     /**
      * @return mixed
      */
-    public function getTextePresentation()
+    public function getTextPresentation()
     {
-        return $this->textePresentation;
+        return $this->textPresentation;
     }
 
     /**
-     * @param mixed $textePresentation
+     * @param mixed $textPresentation
      * @return AboutUs
      */
-    public function setTextePresentation($textePresentation)
+    public function setTextPresentation($textPresentation)
     {
-        $this->textePresentation = $textePresentation;
+        $this->textPresentation = $textPresentation;
         return $this;
     }
-
 }
