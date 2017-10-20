@@ -12,12 +12,14 @@ class AdminController extends Controller
 {
 
     /*
-     * Afficher la page principal de l'admin
-     */
+    * Afficher la page principal de l'admin
+    */
+
     public function showAdminAction()
     {
         return $this->twig->render('Admin/home.html.twig');
     }
+
 
     public function showAdminAccueilAction()
     {
