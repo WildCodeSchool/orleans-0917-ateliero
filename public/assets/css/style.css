@@ -80,10 +80,25 @@
 /* End Footer */
 
 /* Start Admin */
+<<<<<<< HEAD
+.bannerAdmin {
+    max-width: 675px;
+    height: 175px;
+    background: url('../../images/banner/banner.jpg') no-repeat center;
+    background-size: cover;
+}
+
+=======
+>>>>>>> origin/dev
 .uploadInput {
     width: 100%;
 }
 /* End Admin */
+<<<<<<< HEAD
+
+/*-*-*-*-* END CSS *-*-*-*-*/
+=======
+>>>>>>> origin/dev
 
 /*-*-*-*-* END CSS *-*-*-*-*/
 
