@@ -11,7 +11,7 @@ namespace AtelierO\Model;
 class AboutUs
 {
     private $id;
-    private $textePresentation;
+    private $textPresentation;
 
     /**
      * @return mixed

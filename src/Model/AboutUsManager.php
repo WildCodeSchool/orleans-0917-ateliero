@@ -9,7 +9,13 @@
 namespace AtelierO\Model;
 
 
-class AboutUsManager
+class AboutUsManager extends EntityManager
 {
-    //TODO requête SQL
+    public function find(int $id)
+    {
+        $query = "SELECT textPresentation FROM about_us WHERE id=1";
+        $statement = $this->pdo->query($query);
+
+        return $statement->fetch(\PDO::FETCH_CLASS, \AtelierO\Model\AboutUs::class);
+    }
 }
