@@ -6,7 +6,6 @@
  * Time: 21:34
  */
 
-
 namespace AtelierO\Model;
 
 
