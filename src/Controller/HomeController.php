@@ -17,7 +17,7 @@ class HomeController extends Controller
     public function showAction()
     {
         $aboutManager = new AboutUsManager();
-        $aboutUs = $aboutManager->find();
+        $aboutUs = $aboutManager->findLast();
         return $this->twig->render('Home/home.html.twig', [
             'aboutUs' => $aboutUs,
         ]);

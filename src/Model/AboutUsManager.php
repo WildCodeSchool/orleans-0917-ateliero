@@ -11,15 +11,20 @@ namespace AtelierO\Model;
 
 class AboutUsManager extends EntityManager
 {
-    public function find()
+    public function findLast()
     {
-        $query = "SELECT textPresentation FROM about_us WHERE id=3";
+        $query = "SELECT * FROM about_us";
         $statement = $this->pdo->query($query);
         $statement->execute();
+        $statement->setFetchMode(\PDO::FETCH_CLASS, \AtelierO\Model\AboutUs::class);
+        return $statement->fetch();
+    }
 
-
-        $textPresentation = $statement->fetchAll(\PDO::FETCH_CLASS, \AtelierO\Model\AboutUs::class);
-        return $textPresentation[0];
-
+    public function update(AboutUs $aboutUs)
+    {
+        $query = "UPDATE about_us SET textPresentation=:textPresentation";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindValue(':textPresentation', $aboutUs->getTextPresentation(), \PDO::PARAM_STR);
+        $statement->execute();
     }
 }
