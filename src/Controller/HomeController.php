@@ -9,7 +9,6 @@
 
 namespace AtelierO\Controller;
 
-
 use AtelierO\Model\AboutUsManager;
 
 class HomeController extends Controller
