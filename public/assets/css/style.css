@@ -141,6 +141,11 @@ footer a:hover {
 
 .contactBtn {
     text-align: center;
+    z-index: 1;
+}
+
+.partRight, .partLeft {
+    z-index: 2;
 }
 
 .button_form_footer {
@@ -158,18 +163,24 @@ footer a:hover {
 
 .modal_form {
     font-family: 'Encode Sans Expanded', sans-serif;
-    font-size: 1vw;
+    font-size: calc(1vw + 10px);
     text-align: center;
 }
 
 .footer_mentionL {
     font-family: 'Encode Sans Expanded', sans-serif;
     padding: 50px 50px 50px 50px ;
+    font-size: calc(0.5vw + 10px);
 }
 
 .footer_mentionL h2 {
     padding-bottom: 10px;
     text-align: center;
+    font-size: calc(1vw + 10px);
+}
+
+.footer_mentionL h3 {
+    font-size: calc(1vw + 10px);
 }
 
 /* End Footer */
