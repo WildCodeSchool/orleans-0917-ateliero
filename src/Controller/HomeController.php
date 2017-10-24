@@ -9,10 +9,16 @@
 
 namespace AtelierO\Controller;
 
+use AtelierO\Model\AboutUsManager;
+
 class HomeController extends Controller
 {
     public function showAction()
     {
-        return $this->twig->render('Home/home.html.twig');
+        $aboutManager = new AboutUsManager();
+        $aboutUs = $aboutManager->findLast();
+        return $this->twig->render('Home/home.html.twig', [
+            'aboutUs' => $aboutUs,
+        ]);
     }
 }
