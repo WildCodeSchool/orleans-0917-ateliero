@@ -1,4 +1,4 @@
 .idea
 connect.php
 /vendor/
-/uploads/
+public/uploads/*
