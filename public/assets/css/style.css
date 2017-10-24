@@ -61,6 +61,25 @@
 }
 /* End Banner */
 
+/* Start Quote */
+.quote {
+    margin-top: 2%;
+    font-family: 'Dancing Script', cursive;
+    font-size: calc(1.72vw + 15px);
+    color: #5b5b5b;
+}
+
+.quoteIconLeft {
+    color: #FFBF91;
+    font-size: calc(0.7vw + 15px);
+}
+
+.quoteIconRight {
+    color: #FFBF91;
+    font-size: calc(0.7vw + 15px);
+}
+/* End quote */
+
 /* Start News */
 /* End News */
 
