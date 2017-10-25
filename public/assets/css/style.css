@@ -62,6 +62,43 @@
 /* End Banner */
 
 /* Start News */
+.actu {
+    margin-top: 5%;
+}
+
+.actuspacetop {
+    margin-top: 1%;
+}
+
+.imgblog {
+    object-fit: none; /* Do not scale the image */
+    object-position: center; /* Center the image within the element */
+    height: 500px;
+    max-width: 100%;
+}
+
+.imgpc {
+    object-fit: none; /* Do not scale the image */
+    object-position: center; /* Center the image within the element */
+    height: 245px;
+    max-width: 100%;
+}
+
+.imgup {
+    margin-top: -15.6%;
+}
+
+.imginsta {
+    max-width: 100%;
+    margin-top: 1%;
+}
+
+.imgtab {
+    object-fit: none; /* Do not scale the image */
+    object-position: center; /* Center the image within the element */
+    height: 400px;
+    max-width: 100%;
+}
 /* End News */
 
 /* Start AboutUs */
@@ -80,7 +117,7 @@
 /* End Footer */
 
 /* Start Admin */
-<<<<<<< HEAD
+
 .bannerAdmin {
     max-width: 675px;
     height: 175px;
@@ -88,22 +125,23 @@
     background-size: cover;
 }
 
-=======
->>>>>>> origin/dev
+
+
 .uploadInput {
     width: 100%;
 }
 /* End Admin */
-<<<<<<< HEAD
+
 
 /*-*-*-*-* END CSS *-*-*-*-*/
-=======
->>>>>>> origin/dev
+
+
 
 /*-*-*-*-* END CSS *-*-*-*-*/
 
 /*-*-*-*-* START MEDIA QUERIES *-*-*-*-*/
 @media screen and (max-width: 767px) {  /* COL-XS */
+    /* Start Navbar */
     .navbar-header {
         background-color: #FFBF91;
     }
@@ -124,5 +162,6 @@
     .logonav {
         padding: 5%;
     }
+    /* End Navbar */
 }
 /*-*-*-*-* END MEDIA QUERIES *-*-*-*-*/
