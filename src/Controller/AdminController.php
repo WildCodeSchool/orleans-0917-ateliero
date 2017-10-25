@@ -10,7 +10,6 @@ namespace AtelierO\Controller;
 
 class AdminController extends Controller
 {
-
     /*
     * Afficher la page principal de l'admin
     */
