@@ -18,29 +18,41 @@ if (!empty($_GET['route'])) {
     }
 
     if ($route == 'adminAccueil') {
-        if (!empty($_GET['action']) and $_GET['action'] == 'changeBanner'){
+        if (!empty($_GET['action']) and $_GET['action'] == 'changeBanner') {
             $controller = new AdminController();
             echo $controller->changeBannerAction();
         } else {
-        $controller = new AdminController();
-        echo $controller->showAdminAccueilAction();
+            $controller = new AdminController();
+            echo $controller->showAdminAccueilAction();
         }
     }
 
     if ($route == 'adminShop') {
-        if (!empty($_GET['action']) and $_GET['action'] == 'addCreation') {
-            $controller = new CreationController();
-            echo $controller->addCreation();
-        } else {
+        if (!empty($_GET['action']) and $_GET['action'] == 'showCreationAction') {
             $controller = new CreationController();
             echo $controller->showCreationAction();
         }
+        if (!empty($_GET['action']) and $_GET['action'] == 'addCreation') {
+            $controller = new CreationController();
+            echo $controller->addCreation();
+
+        }
+
+        if (!empty($_GET['action']) and $_GET['action'] == 'deleteAction') {
+            $controller = new CreationController();
+            echo $controller->deleteAction();
+
+        } else {
+            $controller = new CreationController();
+            echo $controller->listAction();
+        }
+
     }
 
-} else {
+    } else {
 
-    $controller = new AdminController();
-    echo $controller->showAdminAction();
-}
+        $controller = new AdminController();
+        echo $controller->showAdminAction();
+    }
 
-?>
+    ?>
