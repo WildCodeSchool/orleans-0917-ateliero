@@ -43,7 +43,7 @@ class CreationManager extends EntityManager
         $statement->execute();
     }
 
-    public function delete($creation)
+    public function delete(Creation $creation)
     {
         $req = "DELETE FROM creation_shop WHERE id=:id";
         $statement = $this->pdo->prepare($req);

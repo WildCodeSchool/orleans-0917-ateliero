@@ -28,31 +28,24 @@ if (!empty($_GET['route'])) {
     }
 
     if ($route == 'adminShop') {
-        if (!empty($_GET['action']) and $_GET['action'] == 'showCreationAction') {
-            $controller = new CreationController();
-            echo $controller->showCreationAction();
-        }
-        if (!empty($_GET['action']) and $_GET['action'] == 'addCreation') {
-            $controller = new CreationController();
-            echo $controller->addCreation();
-
-        }
-
-        if (!empty($_GET['action']) and $_GET['action'] == 'deleteAction') {
-            $controller = new CreationController();
-            echo $controller->deleteAction();
-
-        } else {
-            $controller = new CreationController();
-            echo $controller->listAction();
-        }
-
+        $controller = new CreationController();
+        echo $controller->listAction();
     }
 
-    } else {
 
-        $controller = new AdminController();
-        echo $controller->showAdminAction();
+    if ($route == 'addShopCreation') {
+        $controller = new CreationController();
+        echo $controller->addCreation();
     }
 
-    ?>
+    if ($route == 'deleteShopAction') {
+        $controller = new CreationController();
+        echo $controller->deleteAction();
+    }
+
+} else {
+    $controller = new AdminController();
+    echo $controller->showAdminAction();
+}
+
+?>
