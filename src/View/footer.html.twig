@@ -211,7 +211,7 @@
                  aria-labelledby="myLargeModalLabel">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
-                        <form class="form-horizontal" action="" method="post">
+                        <form class="form-horizontal" action="../src/Controller/FormMailController.php" method="post">
                             <fieldset class="footer_form">
                                 <div class="form-group">
                                     <label for="name">Votre nom</label>
@@ -221,11 +221,11 @@
 
                                 <div class="form-group">
                                     <label for="email">Votre e-mail</label>
-                                    <input type="email" class="form-control" id="form_email" placeholder="E-mail">
+                                    <input type="email" name="mailExpe" class="form-control" id="form_email" placeholder="E-mail">
                                 </div>
 
                                 <div class="form-group">
-                                <textarea class="form-control" name="form_textarea" rows="8"
+                                <textarea class="form-control" name="message" rows="8"
                                           placeholder="Ecrivez votre message"></textarea>
                                 </div>
 

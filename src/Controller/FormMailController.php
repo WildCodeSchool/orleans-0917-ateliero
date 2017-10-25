@@ -28,7 +28,7 @@ class FormMailController extends Controller
             $formMail->setName($_POST['name']);
 
 
-            $mailExpe = filter_input(INPUT_POST, 'mailExpe', FILTER_VALIDATE_EMAIL);
+            $mailExpe = filter_input(INPUT_POST, $_POST['mailExpe'], FILTER_VALIDATE_EMAIL);
 
             if ($mailExpe === false) {
                 $errors[] = "Le mail fourni n'est pas valide";
@@ -44,7 +44,7 @@ class FormMailController extends Controller
 
             $message = $formMail->setMessage($_POST['message']);
 
-            $to = 'wildoproject@gmail.com';
+            $to = 'charlotte.prieur@yahoo.fr';
             $formMail->setTo($to);
 
             $subject = 'Message envoyé depuis votre site internet.';
@@ -71,3 +71,5 @@ class FormMailController extends Controller
 
     }
 }
+
+header('location:../src/View/Home/home.html.twig');
