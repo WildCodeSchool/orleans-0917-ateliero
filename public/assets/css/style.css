@@ -61,10 +61,37 @@
 }
 /* End Banner */
 
+/* Start Quote */
+.quote {
+    margin-top: 2%;
+    font-family: 'Dancing Script', cursive;
+    font-size: calc(1.72vw + 15px);
+    color: #5b5b5b;
+}
+
+.quoteIconLeft {
+    color: #FFBF91;
+    font-size: calc(0.7vw + 15px);
+}
+
+.quoteIconRight {
+    color: #FFBF91;
+    font-size: calc(0.7vw + 15px);
+}
+/* End quote */
+
 /* Start News */
 /* End News */
 
 /* Start AboutUs */
+.aboutUs {
+    margin-top: 5%;
+}
+
+.aboutUs .presentationText {
+    font-family: "Open Sans", Helvetica, sans-serif;
+    font-size: calc(0.5vw + 10px);
+}
 /* End AboutUs */
 
 /* Start Partner */
@@ -77,6 +104,112 @@
 /* End Blog */
 
 /* Start Footer */
+footer {
+    font-family: 'Encode Sans Expanded', Helvetica, sans-serif;
+    background-color: #FFBF91;
+    margin-top: 5%;
+    padding-top: 5%;
+    padding-bottom: 4%;
+}
+
+footer a {
+    color: black;
+}
+
+.footer_container {
+    position: relative;
+    top: 35%;
+}
+
+.footer_nav {
+    padding-left: 0;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.fa-footer {
+    margin-top: 5%;
+    font-size: calc(3vw + 15px);
+}
+
+.footer_nav a {
+    font-size: calc(1vw + 15px);
+}
+
+.ml {
+    text-align: center;
+    padding-top: 5%;
+}
+
+.mentionsL {
+    font-size: calc(0.8vw + 10px);
+    text-align: center;
+}
+
+.footer_icon {
+    text-align: center;
+    font-size: calc(0.7vw + 15px);
+}
+
+footer a:visited {
+    color: grey;
+    text-decoration: none;
+}
+
+/* mouse over link */
+footer a:hover {
+    color: darkgrey;
+    text-decoration: none;
+}
+
+.footer_form {
+    padding: 50px 50px 50px 50px ;
+}
+
+.contactBtn {
+    text-align: center;
+    z-index: 1;
+}
+
+.partRight, .partLeft {
+    z-index: 2;
+}
+
+.button_form_footer {
+    font-family: 'Encode Sans Expanded', sans-serif;
+    font-size: calc(1.3vw + 10px);
+    background-color: #FFDFC0;
+    border: none;
+    padding: 5%;
+}
+
+.button_form_footer:hover {
+    background-color: grey;
+    color: #FFBF91;
+}
+
+.modal_form {
+    font-family: 'Encode Sans Expanded', sans-serif;
+    font-size: calc(1vw + 10px);
+    text-align: center;
+}
+
+.footer_mentionL {
+    font-family: 'Encode Sans Expanded', sans-serif;
+    padding: 50px 50px 50px 50px ;
+    font-size: calc(0.5vw + 10px);
+}
+
+.footer_mentionL h2 {
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: calc(1vw + 10px);
+}
+
+.footer_mentionL h3 {
+    font-size: calc(1vw + 10px);
+}
+
 /* End Footer */
 
 /* Start Admin */
@@ -115,6 +248,10 @@
 
     .logonav {
         padding: 5%;
+    }
+
+    .button_form_footer {
+        margin-top: 3%;
     }
 }
 /*-*-*-*-* END MEDIA QUERIES *-*-*-*-*/
