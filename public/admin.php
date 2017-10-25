@@ -18,27 +18,32 @@ if (!empty($_GET['route'])) {
     }
 
     if ($route == 'adminAccueil') {
-        if (!empty($_GET['action']) and $_GET['action'] == 'changeBanner'){
+        if (!empty($_GET['action']) and $_GET['action'] == 'changeBanner') {
             $controller = new AdminController();
             echo $controller->changeBannerAction();
         } else {
-        $controller = new AdminController();
-        echo $controller->showAdminAccueilAction();
+            $controller = new AdminController();
+            echo $controller->showAdminAccueilAction();
         }
     }
 
     if ($route == 'adminShop') {
-        if (!empty($_GET['action']) and $_GET['action'] == 'addCreation') {
-            $controller = new CreationController();
-            echo $controller->addCreation();
-        } else {
-            $controller = new CreationController();
-            echo $controller->showCreationAction();
-        }
+        $controller = new CreationController();
+        echo $controller->listAction();
+    }
+
+
+    if ($route == 'addShopCreation') {
+        $controller = new CreationController();
+        echo $controller->addCreation();
+    }
+
+    if ($route == 'deleteShopAction') {
+        $controller = new CreationController();
+        echo $controller->deleteAction();
     }
 
 } else {
-
     $controller = new AdminController();
     echo $controller->showAdminAction();
 }

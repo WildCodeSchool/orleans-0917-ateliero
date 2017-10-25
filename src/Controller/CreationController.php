@@ -70,15 +70,45 @@ class CreationController extends Controller
             'success' => $success,
             'route' => $_GET['route'],
         ]);
-
-
     }
+
 
     public function showCreationAction()
     {
-        return $this->twig->render('Admin/Shop/adminShopAddCreation.html.twig',[
-        'route' => $_GET['route'],
-    ]);
+        return $this->twig->render('Admin/Shop/adminShopAddCreation.html.twig', [
+            'route' => $_GET['route'],
+        ]);
     }
-}
 
+    public function deleteAction()
+    {
+        if (!empty($_POST['id'])) {
+            $creationManager = new CreationManager();
+            $creation = $creationManager->find($_POST['id']);
+            $creationManager->delete($creation);
+            header('Location: admin.php?route=adminShop');
+        }
+    }
+
+    public function listAction()
+    {
+        $creationManager = new CreationManager();
+        $listCreations = $creationManager->findAll();
+
+        return $this->twig->render('Admin/Shop/adminShopList.html.twig', [
+            'creations' => $listCreations
+        ]);
+    }
+
+    private function updateAction(Creation $creation)
+    {
+        // traitement des erreurs éventuelles
+        $creation->setTitle($_POST['title']);
+        $creation->setPrice($_POST['price']);
+        $creation->setUrlEtsy($_POST['url_etsy']);
+        $creation->setUrlPicture($_POST['url_picture']);
+
+        return $creation;
+    }
+
+}
