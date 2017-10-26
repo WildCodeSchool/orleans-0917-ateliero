@@ -28,7 +28,16 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
     <script>
         $(document).ready(function() {
-            $('#aboutUsSummernote').summernote();
+            $('#aboutUsSummernote').summernote({
+                lang: 'fr-FR',
+                toolbar: [
+                    ['style', ['bold', 'italic']],
+                    ['font', ['strikethrough']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['height', ['height']]
+                ]
+            });
         });
     </script>
 {% endblock %}
