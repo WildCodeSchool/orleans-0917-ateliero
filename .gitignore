@@ -1,6 +1,6 @@
 .idea
 connect.php
 /vendor/
+/public/images/banner/*
+/public/images/AboutUs/*
 /public/uploads/*
-/images/banner/*
-/images/AboutUs/*
