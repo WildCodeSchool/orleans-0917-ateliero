@@ -30,16 +30,8 @@ if (!empty($_GET['route'])) {
         echo $controller->addCreation();
     }
 
-    if ($route == 'formContact') {
-        $controller = new \AtelierO\Controller\FormMailController();
-        echo $controller->sentForm();
-    }
-
-
 } else {
 
     $controller = new HomeController();
     echo $controller->showAction();
 }
-
-
