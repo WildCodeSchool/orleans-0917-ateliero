@@ -82,7 +82,7 @@ class Image
      * @param mixed $isPrincipal
      * @return Image
      */
-    public function setIsPrincipal($isPrincipal)
+    public function setisPrincipal($isPrincipal)
     {
         $this->isPrincipal = $isPrincipal;
         return $this;
