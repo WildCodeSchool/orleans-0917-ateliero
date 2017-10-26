@@ -1,57 +1,25 @@
-{% if errors %}
-    {% for error in errors %}
-        <div class="alert alert-danger">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <strong>Erreur{% if errors|length > 1 %}s{% endif %} !</strong>
-            <ul>
-                <?php foreach ($errors as $error) : ?>
-                <li>{{ error|raw }}</li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-    {% endfor %}
-{% endif %}
-
-{% if success %}
-    {% for successMessage in success %}
-        <div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <strong>Super !</strong>
-            <ul>
-                <?php foreach ($msgValidations as $msgValidation) : ?>
-                <li>{{ successMessage|raw }}</li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-    {% endfor %}
-{% endif %}
-
-<div class="panel panel-info hidden-xs">
-    <div class="panel-heading hidden-xs"><b>Bannière actuelle</b></div>
-    <div class="panel-body hidden-xs">
-        <div class="row hidden-xs">
-            <div class="col-xs-12 hidden-xs">
-                <div class="bannerAdmin center-block hidden-xs"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<hr class="hidden-xs"/>
-
 <div class="panel panel-info">
     <div class="panel-heading"><b>Envoyer une nouvelle bannière</b></div>
     <div class="panel-body">
         <div class="row">
             <div class="col-xs-12">
-                <form action="admin.php?route=adminAccueil&action=changeBanner" method="post" enctype="multipart/form-data">
+                <div class="thumbnail bannerAdmin center-block hidden-xs"></div>
+            </div>
+        </div>
+        <hr class="hidden-xs"/>
+        <div class="row">
+            <div class="col-xs-12">
+                <form action="admin.php?route=adminAccueil" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="banner">Choisir une image:</label>
-                        <input type="file" name="banner" id="banner"/>
+                        <label for="banner">Choisir une nouvelle image:</label>
+                        <input type="file" name="banner" id="banner" class="uploadInput"/>
+                        <button type="submit" class="btn btn-default pull-right">Modifier</button>
+                        <small>Format: .JGP | Taille maximum: 2Mo | Dimensions recommandées: 1350px * 350px</small>
                     </div>
-                    <button type="submit" class="btn btn-default pull-right">Envoyer</button>
+
                 </form>
             </div>
         </div>
     </div>
 </div>
-<hr/>
+<hr class="hidden-xs"/>
