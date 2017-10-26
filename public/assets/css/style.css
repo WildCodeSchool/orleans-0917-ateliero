@@ -7,7 +7,7 @@
 }
 
 .navbar-default .navbar-brand {
-    color: #FFDFC0;
+    color: #F8DCD1;
     font-size: calc(1.3vw + 20px);
 }
 
@@ -24,11 +24,11 @@
 }
 
 .navbar .logonav {
-    padding-top: 5%;
+    padding-top: 3%;
 }
 
 .navbar-default .nav-justified > li > a:focus, .navbar-default .nav-justified > li > a:hover {
-    color: #FFBF91;
+    color: #F8DCD1;
     outline: none;
 }
 
@@ -40,15 +40,6 @@
 .nav > li > a:focus, .nav > li > a:hover {
     background-color: transparent;
 }
-
-
-/*.navbar-collapse {*/
-    /*background-color: grey;*/
-/*}*/
-
-/*.navbar-default .nav-justified > li > a {*/
-    /*color: #FFBF91;*/
-/*}*/
 
 /* End NavBar */
 
@@ -70,12 +61,12 @@
 }
 
 .quoteIconLeft {
-    color: #FFBF91;
+    color: #F8DCD1;
     font-size: calc(0.7vw + 15px);
 }
 
 .quoteIconRight {
-    color: #FFBF91;
+    color: #F8DCD1;
     font-size: calc(0.7vw + 15px);
 }
 /* End quote */
@@ -86,6 +77,10 @@
 /* Start AboutUs */
 .aboutUs {
     margin-top: 5%;
+}
+
+.aboutUs .img-thumbnail {
+    border: none;
 }
 
 .aboutUs .presentationText {
@@ -104,15 +99,15 @@
 /* End Blog */
 
 /* Start Footer */
-footer {
+.pdpView {
     font-family: 'Encode Sans Expanded', Helvetica, sans-serif;
-    background-color: #FFBF91;
+    background-color: #F8DCD1;
     margin-top: 5%;
-    padding-top: 5%;
-    padding-bottom: 4%;
+    padding-top: 2%;
+    padding-bottom: 2%;
 }
 
-footer a {
+.pdpView a {
     color: black;
 }
 
@@ -139,53 +134,54 @@ footer a {
 .ml {
     text-align: center;
     padding-top: 5%;
-}
-
-.mentionsL {
-    font-size: calc(0.8vw + 10px);
-    text-align: center;
+    font-size: calc(0.3vw + 10px);
 }
 
 .footer_icon {
     text-align: center;
-    font-size: calc(0.7vw + 15px);
-}
-
-footer a:visited {
-    color: grey;
-    text-decoration: none;
 }
 
 /* mouse over link */
-footer a:hover {
+.pdpView a:hover, .pdpView a:focus {
     color: darkgrey;
     text-decoration: none;
+    outline: none;
+}
+
+.pdpView .fa-footer {
+    font-size: calc(2vw + 15px);
 }
 
 .footer_form {
     padding: 50px 50px 50px 50px ;
 }
 
-.contactBtn {
+.pdpView .contactBtn {
     text-align: center;
     z-index: 1;
 }
 
-.partRight, .partLeft {
+.pdpView .partRight, .partLeft {
     z-index: 2;
 }
 
 .button_form_footer {
     font-family: 'Encode Sans Expanded', sans-serif;
     font-size: calc(1.3vw + 10px);
-    background-color: #FFDFC0;
+    background-color: #F8DCD1;
     border: none;
     padding: 5%;
 }
 
 .button_form_footer:hover {
     background-color: grey;
-    color: #FFBF91;
+    color: #F8DCD1;
+}
+
+.pdpView .btn-default.focus, .btn-default:focus {
+    color: black;
+    background-color: transparent;
+    border-color: transparent;
 }
 
 .modal_form {
@@ -230,12 +226,12 @@ footer a:hover {
 /*-*-*-*-* START MEDIA QUERIES *-*-*-*-*/
 @media screen and (max-width: 767px) {  /* COL-XS */
     .navbar-header {
-        background-color: #FFBF91;
+        background-color: #F8DCD1;
     }
 
     .navbar-default .navbar-toggle {
         border-color: black;
-        background-color: #FFBF91;
+        background-color: #F8DCD1;
     }
 
     .navbar-default .navbar-toggle .icon-bar {

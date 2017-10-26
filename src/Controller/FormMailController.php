@@ -8,7 +8,6 @@
 
 namespace AtelierO\Controller;
 
-use AtelierO\Model\FormMail;
 
 class FormMailController extends Controller
 {
@@ -19,13 +18,11 @@ class FormMailController extends Controller
 
         if (!empty($_POST)) {
 
-            $formMail = new FormMail();
-
             if (empty($_POST['name'])) {
                 $errors[] = "Veuillez renseigner votre nom";
             }
 
-            $formMail->setName($_POST['name']);
+            $name = ($_POST['name']);
 
 
             $mailExpe = filter_input(INPUT_POST, $_POST['mailExpe'], FILTER_VALIDATE_EMAIL);
@@ -36,26 +33,37 @@ class FormMailController extends Controller
                 $errors[] = "Veuillez renseigner votre adresse mail";
                 }
 
-            $formMail->setMailExpe($_POST['mailExpe']);
-
             if (empty($_POST['message'])) {
                 $errors[] = "Veuillez écrire votre message";
             }
 
-            $message = $formMail->setMessage($_POST['message']);
-
-            $to = 'charlotte.prieur@yahoo.fr';
-            $formMail->setTo($to);
-
-            $subject = 'Message envoyé depuis votre site internet.';
-            $formMail->setSubject($subject);
+            $message = $_POST['message'];
+            $subject = 'Message envoyé depuis le site l\'aelierO.com.';
 
             $headers = "From: ". $_POST['name'] . " " . $_POST['mailExpe'];
-            $formMail->setHeaders($headers);
+
 
             if (empty($errors)) {
 
-                mail($to, $subject, $message, $headers);
+                // Create the Transport
+                $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465))
+                    ->setUsername('wildoproject@gmail.com')
+                    ->setPassword('AtelierO6');
+
+
+// Create the Mailer using your created Transport
+                $mailer = new Swift_Mailer($transport);
+
+// Create a message
+                $message = (new Swift_Message('Wonderful Subject'))
+                    ->setFrom([$mailExpe => $name])
+                    ->setTo('wildoproject@gmail')
+                    ->setBody($headers, $subject, $message, $headers)
+                ;
+
+// Send the message
+                $result = $mailer->send($message);
+
 
                 $success[] = 'L\'email a bien été envoyé';
             }

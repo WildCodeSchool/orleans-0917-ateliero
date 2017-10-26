@@ -16,7 +16,7 @@ class EntityManager
 
     public function __construct()
     {
-        $this->pdo = new \PDO(DSN, USERNAME, PASSWORD, [
+        $this->pdo = new \PDO(DSN, USER, PASSWORD, [
             \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
 //            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
         ]);
