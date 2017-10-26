@@ -14,7 +14,7 @@ class AboutUs
     private $textPresentation;
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getId()
     {
@@ -22,7 +22,7 @@ class AboutUs
     }
 
     /**
-     * @param mixed $id
+     * @param int $id
      * @return AboutUs
      */
     public function setId($id)
