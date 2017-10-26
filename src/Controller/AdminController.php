@@ -64,10 +64,4 @@ class AdminController extends Controller
         return $messages;
     }
 
-
-    public function manageAboutUs()
-    {
-        $errors = [];
-        $success = [];
-    }
 }
