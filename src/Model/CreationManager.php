@@ -9,6 +9,8 @@
 namespace AtelierO\Model;
 
 
+use AtelierO\Controller\CreationController;
+
 class CreationManager extends EntityManager
 {
 
@@ -26,4 +28,47 @@ class CreationManager extends EntityManager
         $statement->bindValue('url_etsy', $creation->getUrlEtsy(), \PDO::PARAM_STR);
         $statement->execute();
     }
+
+
+    public function update(Creation $creation)
+    {
+        $req = "UPDATE creation_shop SET title=:title, price=:price, url_picture=:url_picture, url_etsy=:url_etsy 
+                  WHERE id=:id";
+        $statement = $this->pdo->prepare($req);
+        $statement->bindValue('firstname', $creation->getTitle(), \PDO::PARAM_STR);
+        $statement->bindValue('lastname', $creation->getPrice(), \PDO::PARAM_INT);
+        $statement->bindValue('birthdate', $creation->getUrlPicture(), \PDO::PARAM_STR);
+        $statement->bindValue('category', $creation->getUrlEtsy(), \PDO::PARAM_STR);
+        $statement->bindValue('id', $creation->getId(), \PDO::PARAM_INT);
+        $statement->execute();
+    }
+
+    public function delete(Creation $creation)
+    {
+        $req = "DELETE FROM creation_shop WHERE id=:id";
+        $statement = $this->pdo->prepare($req);
+        $statement->bindValue('id', $creation->getId(), \PDO::PARAM_INT);
+        $statement->execute();
+    }
+
+    public function findAll()
+    {
+        $req = "SELECT * FROM creation_shop";
+        $statement = $this->pdo->prepare($req);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+
+    public function find($id)
+    {
+        $req = "SELECT * FROM creation_shop WHERE id=$id";
+        $statement = $this->pdo->prepare($req);
+        $statement->execute();
+        $statement->setFetchMode(\PDO::FETCH_CLASS, \AtelierO\Model\Creation::class);
+        return $statement->fetch();
+    }
+
+
 }
+
+

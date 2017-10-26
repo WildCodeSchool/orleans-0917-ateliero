@@ -1,4 +1,7 @@
 .idea
 connect.php
 /vendor/
-public/uploads/*
+/public/uploads/*
+/images/banner/*
+/images/AboutUs/*
+
