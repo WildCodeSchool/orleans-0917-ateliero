@@ -72,14 +72,6 @@ class CreationController extends Controller
         ]);
     }
 
-
-    public function showCreationAction()
-    {
-        return $this->twig->render('Admin/Shop/adminShopAddCreation.html.twig', [
-            'route' => $_GET['route'],
-        ]);
-    }
-
     public function deleteAction()
     {
         if (!empty($_POST['id'])) {
@@ -100,15 +92,21 @@ class CreationController extends Controller
         ]);
     }
 
-    private function updateAction(Creation $creation)
+    public function updateAction()
     {
-        // traitement des erreurs éventuelles
-        $creation->setTitle($_POST['title']);
-        $creation->setPrice($_POST['price']);
-        $creation->setUrlEtsy($_POST['url_etsy']);
-        $creation->setUrlPicture($_POST['url_picture']);
+        $creationManager = new CreationManager();
+        if (!empty($_POST)) {
+            $creation = $creationManager->find($_POST['id']);
+            $creationManager->update($creation);
+            header('Location: admin.php?route=adminShop');
 
-        return $creation;
+        } else {
+            $creation = $creationManager->find($_GET['id']);
+            return $this->twig->render('Admin/Shop/adminShopAddCreation.html.twig', [
+                'creation' => $creation]);
+
+        }
     }
 
 }
+

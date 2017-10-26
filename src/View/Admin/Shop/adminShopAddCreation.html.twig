@@ -28,31 +28,36 @@
 
 
     <div class="panel panel-info">
-        <div class="panel-heading"><b>Ajouter un object au shop</b></div>
+        <div class="panel-heading"><b>Ajouter un objet au shop</b></div>
         <div class="panel-body">
-            <form method="post" action="admin.php?route=addShopCreation" enctype="multipart/form-data">
+            <form method="post" action="admin.php?route={{ creation.id ? 'updateShopAction' : 'addShopCreation' }}"
+                  enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="title">Titre de l'article</label>
-                    <input type="text" class="form-control" id="title" name="title" placeholder="">
+                    <input type="text" class="form-control" id="title" name="title" value="{{ creation.title }}"
+                           placeholder="">
                 </div>
 
                 <div class="form-group">
                     <label for="price">Prix</label>
-                    <input type="text" class="form-control" id="price" name="price" placeholder="">
+                    <input type="text" class="form-control" id="price" name="price" value="{{ creation.price }}"
+                           placeholder="">
                 </div>
 
                 <div class="form-group">
-                    <label for="image">Images</label>
+                    <label for="url_picture">Images</label>
                     <div class="input-group uploadInput">
-                        <input type="file" id="image" name="url_picture" placeholder="">
+                        <input type="file" id="url_picture" name="url_picture"
+                               placeholder="">
                     </div>
                 </div>
-
+<img src="uploads/{{ creation.urlPicture }}">
                 <div class="form-group">
                     <label for="url_etsy">Lien vers Etsy</label>
-                    <input type="text" class="form-control" id="url_etsy" name="url_etsy" placeholder="">
+                    <input type="text" class="form-control" id="url_etsy" name="url_etsy"
+                           value="{{ creation.urlEtsy }}" placeholder="">
                 </div>
-
+                <input type="hidden" name="id" value="{{ creation.id }}">
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
         </div>
