@@ -92,21 +92,92 @@ class CreationController extends Controller
         ]);
     }
 
+
+    public function addOrUpdateAction(Creation $creation)
+    {
+        // traitement des erreurs éventuelles
+        $creation->setTitle($_POST['title']);
+        $creation->setPrice($_POST['price']);
+        $creation->setUrlPicture($_POST['url_picture']);
+        $creation->setUrlEtsy($_POST['url_etsy']);
+
+        return $creation;
+
+    }
+
+    public function checkError()
+    {
+        if (empty($_POST['title'])) {
+            $errors[] = 'Le champs titre ne doit pas être vide';
+        }
+
+        if (empty($_POST['price'])) {
+            $errors[] = 'Le champs prix ne doit pas être vide';
+        }
+
+        if (empty($_POST['url_picture'])) {
+            $errors[] = 'vous devez ajouter une photo';
+        }
+
+        if (empty($_POST['url_etsy'])) {
+    $errors[] = 'Vous devez ajouter un lien Etsy';
+        }
+
+        return $errors;
+    }
+
+
     public function updateAction()
     {
+        $errors = [];
         $creationManager = new CreationManager();
+
         if (!empty($_POST)) {
             $creation = $creationManager->find($_POST['id']);
-            $creationManager->update($creation);
-            header('Location: admin.php?route=adminShop');
+            $creationManager->addOrUpdateAction($creation);
+
+            $errors = $this->checkError();
+
+            if (empty($errors)) {
+
+                $creationManager = new CreationManager();
+                $creationManager->update($creation);
+
+                header('Location: admin.php?route=adminShop');
+
+            }
+
 
         } else {
             $creation = $creationManager->find($_GET['id']);
             return $this->twig->render('Admin/Shop/adminShopAddCreation.html.twig', [
-                'creation' => $creation]);
+                'creation' => $creation,
+                'errors' => $errors,]);
 
         }
     }
 
 }
 
+//function updateAction()
+//{
+//    $errors = [];
+//    $personManager = new PersonManager();
+//
+//    if (!empty($_POST)) {
+//        $person = $personManager->find($_POST['id']);
+//        $person = $this->addOrUpdateAction($person);
+//
+//        $errors = $this->checkError();
+//
+//        // si pas d'erreur, insert en bdd
+//        if (empty($errors)) {
+//
+//            $personManager = new PersonManager();
+//            $personManager->update($person);
+//
+//            header('Location: index.php?route=showAll');
+//        }
+//    } else {
+//        $person = $personManager->find($_GET['id']);
+//    }
