@@ -8,10 +8,11 @@
     <meta name="description" content="AtelierO">
     <meta name="author" content="WildCodeSchool">
     <title>{% block titlePage %}Atelier'O - Administration{% endblock %}</title>
-
+    {% block css %}
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    {% endblock %}
     <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded:300,400,700|Open+Sans:300,400,700"
           rel="stylesheet">
 
@@ -33,10 +34,10 @@
     </div>
     {% include 'Admin/footer.html.twig' %}
 </section>
-
+{% block scripts %}
 <script src="assets/js/jquery-3.2.1.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
-
+{% endblock %}
 </body>
 
 </html>
