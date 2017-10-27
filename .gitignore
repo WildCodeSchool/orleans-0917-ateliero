@@ -2,6 +2,6 @@
 connect.php
 /vendor/
 /public/uploads/*
-/images/banner/*
-/images/AboutUs/*
+/public/images/banner/*
+/public/images/AboutUs/*
 
