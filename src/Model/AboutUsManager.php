@@ -22,9 +22,10 @@ class AboutUsManager extends EntityManager
 
     public function update(AboutUs $aboutUs)
     {
-        $query = "UPDATE about_us SET textPresentation=:textPresentation";
+        $query = "UPDATE about_us SET textPresentation=:textPresentation WHERE id=:id";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue(':textPresentation', $aboutUs->getTextPresentation(), \PDO::PARAM_STR);
+        $statement->bindValue(':id', $aboutUs->getId(), \PDO::PARAM_STR);
         $statement->execute();
     }
 }
