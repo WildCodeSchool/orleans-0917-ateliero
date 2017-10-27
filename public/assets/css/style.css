@@ -1,5 +1,12 @@
 /*-*-*-*-* START CSS *-*-*-*-*/
 
+.linetitle {
+    max-width: 100px;
+    background: #FFBF91;
+    height: 5px;
+    margin-left: 0%;
+}
+
 /* Start NavBar */
 .navbar-default {
     background-color: transparent;
@@ -81,6 +88,63 @@
 /* End quote */
 
 /* Start News */
+.actu {
+    margin-top: 5%;
+}
+
+.actuspacetop {
+    margin-top: 1%;
+}
+
+.imgblog {
+    object-fit: cover; /* Do not scale the image */
+    object-position: center; /* Center the image within the element */
+    height: 500px;
+    max-width: 100%;
+}
+
+.imgblog:hover {
+    border-bottom: inset white;
+}
+
+.imgpc {
+    object-fit: cover; /* Do not scale the image */
+    object-position: center; /* Center the image within the element */
+    height: 245px;
+    max-width: 100%;
+}
+
+.imgpc:hover {
+    border-bottom: inset white;
+}
+
+
+.imgpc:hover {
+
+}
+
+.imgup {
+    margin-top: -15.6%;
+}
+
+.imginsta {
+    max-width: 100%;
+    margin-top: 1%;
+}
+
+.imgtab {
+    object-fit: cover; /* Do not scale the image */
+    object-position: center; /* Center the image within the element */
+    height: 400px;
+    max-width: 100%;
+}
+
+.imgtel img {
+    object-fit: cover; /* Do not scale the image */
+    object-position: center; /* Center the image within the element */
+    height: 300px;
+    max-width: 100%;
+}
 /* End News */
 
 /* Start AboutUs */
@@ -219,16 +283,17 @@ footer a:hover {
     background: url('../../images/banner/banner.jpg') no-repeat center;
     background-size: cover;
 }
+
 .uploadInput {
     width: 100%;
 }
 /* End Admin */
 
-
 /*-*-*-*-* END CSS *-*-*-*-*/
 
 /*-*-*-*-* START MEDIA QUERIES *-*-*-*-*/
 @media screen and (max-width: 767px) {  /* COL-XS */
+    /* Start Navbar */
     .navbar-header {
         background-color: #FFBF91;
     }
@@ -249,6 +314,7 @@ footer a:hover {
     .logonav {
         padding: 5%;
     }
+    /* End Navbar */
 
     .button_form_footer {
         margin-top: 3%;
