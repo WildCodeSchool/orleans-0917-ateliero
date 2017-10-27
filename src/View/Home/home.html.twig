@@ -4,3 +4,11 @@
 {% include 'Home/citation.html.twig' %}
 {% include 'Home/presentation.html.twig' %}
 {% endblock %}
+{% block js %}
+    {{ parent() }}
+    {% if errors %}
+        <script>
+            $('#form_footer').modal('show');
+        </script>
+    {% endif %}
+{% endblock %}

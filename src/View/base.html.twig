@@ -35,14 +35,9 @@
     {% endblock %}
 </footer>
 
-{% block jsModal %}
-<script src="assets/js/jquery-3.2.1.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-    {% if errors %}
-        <script>
-            $('#form_footer').modal('show');
-        </script>
-    {% endif %}
+{% block js %}
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
 {% endblock %}
 
 </body>
