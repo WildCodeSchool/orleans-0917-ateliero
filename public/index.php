@@ -35,5 +35,3 @@ if (!empty($_GET['route'])) {
     $controller = new HomeController();
     echo $controller->showAction();
 }
-
-
