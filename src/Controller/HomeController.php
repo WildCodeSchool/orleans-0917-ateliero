@@ -10,6 +10,8 @@
 namespace AtelierO\Controller;
 
 use AtelierO\Model\AboutUsManager;
+use AtelierO\Model\Image;
+use AtelierO\Model\ImageManager;
 
 class HomeController extends Controller
 {
@@ -62,12 +64,15 @@ class HomeController extends Controller
 
         }
 
+        $imgManager = new ImageManager();
+        $imgBlog = $imgManager->extractPicture();
         $aboutManager = new AboutUsManager();
         $aboutUs = $aboutManager->findLast();
         return $this->twig->render('Home/home.html.twig', [
             'aboutUs' => $aboutUs,
             'errors' => $errors,
             'mail' => $mail,
+            'imgBlog' => $imgBlog,
         ]);
     }
 }
