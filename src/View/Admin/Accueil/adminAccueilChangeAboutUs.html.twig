@@ -1,0 +1,28 @@
+<div class="panel panel-info">
+    <div class="panel-heading"><b>Votre présentation</b></div>
+    <div class="panel-body">
+        <div class="row">
+            <img class="thumbnail col-md-3  col-md-offset-1" src="images/aboutUs/aboutUs.jpg" alt=""/>
+
+            <div class="col-xs-7">
+                <div class="thumbnail center-block hidden-xs">{{ aboutUs.textPresentation|raw }}</div>
+            </div>
+        </div>
+        <hr class="hidden-xs"/>
+        <div class="row">
+            <div class="col-xs-12">
+                <form action="admin.php?route=adminAccueil" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="aboutUsFile">Choisir une nouvelle image:</label>
+                        <input type="file" name="aboutUsFile" id="aboutUsFile" class="uploadInput"/><br/>
+                        <input type="hidden" name="id" value="{{ aboutUs.id }}"/>
+                        <textarea id="aboutUsSummernote" class="uploadInput" name="aboutUs">{{ aboutUsPost.textPresentation ?? aboutUs.textPresentation}}</textarea>
+                        <button type="submit" class="btn btn-default pull-right">Modifier</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="hidden-xs"/>

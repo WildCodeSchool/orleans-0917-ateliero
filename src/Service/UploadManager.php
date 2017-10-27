@@ -133,9 +133,6 @@ class UploadManager
                 $uploadFile = $uploadDir . $movedNameFile . $fileExtension;
                 // On déplace le fichier du dossier tmp avec le nouveau nom.
                 if (move_uploaded_file($fileTmpName, $uploadFile)) {
-                    $_SESSION['success'] = "banner";
-                    header ("Location: admin.php?route=adminAccueil");
-                    exit();
                 } else {
                     $messages['danger'][] = "Erreur lors du transfert de " . $fileName;
                 }
