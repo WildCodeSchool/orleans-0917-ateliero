@@ -18,9 +18,11 @@ class ArticleBlogController extends Controller
     {
         $errors = [];
         $success = [];
+        $article = "";
 
         if (!empty($_POST)) {
 
+            $article = $_POST;
             $articleBlog = new ArticleBlog();
 
             if (empty($_POST['title'])) {
@@ -35,11 +37,11 @@ class ArticleBlogController extends Controller
 
             $articleBlog->setDate($_POST['date']);
 
-            if (empty($_FILES['content'])) {
-                $errors[] = 'Veuillez ajouter le contenu texte de votre article';
+            if (empty($_POST['articleBlogSummernote'])) {
+                $errors[] = 'Veuillez ajouter le contenu de votre article';
             }
 
-            $articleBlog->setContent($_POST['content']);
+            $articleBlog->setContent($_POST['articleBlogSummernote']);
 
             if (empty($errors)) {
                 $articleBlogManager = new ArticleBlogManager();
@@ -51,6 +53,7 @@ class ArticleBlogController extends Controller
         return $this->twig->render('Admin/Blog/adminBlogAddArticle.html.twig', [
             'errors' => $errors,
             'success' => $success,
+            'article' => $article,
             'route' => $_GET['route'],
         ]);
     }

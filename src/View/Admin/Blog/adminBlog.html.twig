@@ -1,5 +1,12 @@
 {% extends 'baseAdmin.html.twig' %}
+
+{% block css %}
+    {{ parent() }}
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+{% endblock %}
+
 {% block titlePage %}Atelier O - Administration - Blog{% endblock %}
+
 {% block contentAdmin %}
 
     {% block blogAction %}{% endblock %}
