@@ -1,0 +1,53 @@
+{% extends 'Admin/Blog/adminBlog.html.twig' %}
+
+{% block blogAction %}
+
+    {% if errors %}
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>Erreur{% if errors|length > 1 %}s{% endif %} !</strong>
+            <ul>
+                {% for error in errors %}
+                    <li>{{ error|raw }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    {% if success %}
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>Super !</strong>
+            <ul>
+                {% for successMessage in success %}
+                    <li>{{ successMessage|raw }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <div class="panel panel-info">
+        <div class="panel-heading"><b>Ajouter un article au blog</b></div>
+        <div class="panel-body">
+            <form method="post" action="admin.php?route=addArticleBlog" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="title">Titre de l'article</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="">
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="text" class="form-control" id="date" name="date" placeholder="">
+                </div>
+
+                <div class="form-group">
+                    <label for="content">Contenu de l'article</label>
+                    <textarea id="articleBlogSummernote" class="uploadInput" name="articleBlog"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

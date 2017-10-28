@@ -1,0 +1,26 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block titlePage %}Atelier O - Administration - Blog{% endblock %}
+{% block contentAdmin %}
+
+    {% block blogAction %}{% endblock %}
+
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#articleBlogSummernote').summernote({
+                lang: 'fr-FR',
+                toolbar: [
+                    ['style', ['bold', 'italic']],
+                    ['font', ['strikethrough']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['height', ['height']]
+                ]
+            });
+        });
+    </script>
+{% endblock %}
