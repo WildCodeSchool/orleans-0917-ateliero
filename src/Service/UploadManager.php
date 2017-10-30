@@ -76,9 +76,7 @@ class UploadManager
                 move_uploaded_file($this->file['url_picture']['tmp_name'], self::UPLOAD_DIR . $fileName . '.' . $extension);
 
                 $this->setUrlPicture($fileName . '.' . $extension);
-
             }
-
         }
 
         if ($this->file['url_picture']['error']){
@@ -94,4 +92,52 @@ class UploadManager
 
     }
 
+    /*
+     * Upload de fichier avec remplacement
+     */
+    public function fileUploadReplace($inputFileName, $nameFile, $uploadDir)
+    {
+        $messages = [];
+        $uploadDir = $uploadDir;   // Ex: images/banner/
+        $fileName = $_FILES[$inputFileName]['name'];
+        $fileTmpName = $_FILES[$inputFileName]['tmp_name'];
+        $fileError = $_FILES[$inputFileName]['error'];
+        $movedNameFile = $nameFile;
+        $AccepteExtension = 'jpg';
+        $fileUploadErrors = [
+            0 => "Aucune erreur, le téléchargement est correct.",
+            1 => "La taille du fichier téléchargé excède la valeur maximum",
+            2 => "La taille du fichier téléchargé excède la valeur maximum",
+            3 => "Le fichier n'a été que partiellement téléchargé.",
+            4 => "Aucun fichier n'a été téléchargé.",
+            6 => "Un dossier temporaire est manquant, contactez l'administrateur du site.",
+            7 => "Échec de l'écriture du fichier sur le disque, contactez l'administrateur du site.",
+            8 => "Erreur inconnu, contactez l'administrateur du site.",
+        ];
+
+        if (!empty($fileName)) {
+            // On récupère l'extention du fichier
+            $fileExtension = strtolower(strrchr($fileName, '.'));
+
+            // Vérification de l'extension
+            if ($AccepteExtension !== substr($fileExtension, 1)) {
+                $messages['danger'][] = "L'extension <b>$fileExtension</b> du fichier " . $fileName . " n'est pas autorisée !";
+            }
+
+            // Si erreur PHP on ajoute dans le tableau errors
+            if ($fileError > 0) {
+                $messages['danger'][] = "Erreur lors du transfert de " . $fileName . ".<br/>" . $fileUploadErrors[$fileError] . ".";
+            }
+            // Si pas d'erreur, j'envoie mon fichier
+            if (empty($messages['danger'])) {
+                $uploadFile = $uploadDir . $movedNameFile . $fileExtension;
+                // On déplace le fichier du dossier tmp avec le nouveau nom.
+                if (move_uploaded_file($fileTmpName, $uploadFile)) {
+                } else {
+                    $messages['danger'][] = "Erreur lors du transfert de " . $fileName;
+                }
+            }
+        }
+        return $messages;
+    }
 }

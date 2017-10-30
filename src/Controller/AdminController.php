@@ -8,80 +8,107 @@
 
 namespace AtelierO\Controller;
 
+use AtelierO\Model\AboutUs;
+use AtelierO\Model\AboutUsManager;
+use AtelierO\Service\UploadManager;
+
 class AdminController extends Controller
 {
-
     /*
-    * Afficher la page principal de l'admin
+    * Afficher la page de connexion de l'administration
     */
-
     public function showAdminAction()
     {
         return $this->twig->render('Admin/home.html.twig');
     }
 
-
+    /*
+    * Gérer la page Accueil
+    */
     public function showAdminAccueilAction()
     {
-        return $this->twig->render('Admin/Accueil/adminAccueil.html.twig', [
-            'route' => $_GET['route'],
-        ]);
+        $aboutUsPost = null;
+        $messages = [];
 
+        if (isset($_FILES['banner']) AND $_FILES['banner']['name'] == '') {
+            $messages['danger'][] = "Vous devez sélectionner une image.";
+        }
+
+        if (!empty($_FILES['banner']['name'])) {
+            $messages = $this->manageBanner();
+            if (empty($messages['danger'])) {
+                $_SESSION['success'] = "banner";
+                header("Location: admin.php?route=adminAccueil");
+                exit();
+            }
+        }
+
+
+        if (!empty($_POST['aboutUs'])) {
+            $aboutUsPost = new AboutUs();
+            $aboutUsPost->setTextPresentation($_POST['aboutUs']);
+            $aboutUsPost->setId($_POST['id']);
+
+            if (!empty($_FILES['aboutUsFile']['name'])) {
+                $messages = $this->manageAboutUsFile();
+            }
+
+            if (empty($messages['danger'])) {
+                $aboutManager = new AboutUsManager();
+                $aboutManager->update($aboutUsPost);
+                $_SESSION['success'] = "aboutUs";
+                header("Location: admin.php?route=adminAccueil");
+                exit();
+            }
+        }
+
+
+        if (!empty($_SESSION['success'])) {
+            if ('banner' == $_SESSION['success']) {
+                $messages['success'][] = "L'image a bien été envoyée.";
+                session_destroy();
+            }
+            if ('aboutUs' == $_SESSION['success']) {
+                $messages['success'][] = "Votre présentation a bien été mise à jour.";
+                session_destroy();
+            }
+        }
+
+        $aboutManager = new AboutUsManager();
+        $aboutUs = $aboutManager->findLast();
+        return $this->twig->render('Admin/Accueil/adminAccueil.html.twig', [
+            'messages' => $messages,
+            'aboutUs' => $aboutUs,
+            'route' => $_GET['route'],
+            'aboutUsPost' => $aboutUsPost,
+        ]);
     }
 
     /*
-     * Changer la bannière du site internet
-     * Envoyer un fichier banner.jpg dans le dossier images/banner
-     */
-    public function changeBannerAction()
+    * Manager le changement de la bannière
+    */
+    private function manageBanner()
     {
-        // Initialisation d'un tableau si erreurs
-        $errors = [];
-        $success = [];
+        $inputFileName = "banner";
+        $nameFile = "banner";
         $uploadDir = 'images/banner/';
-        $AccepteExtension = 'jpg';
-        $fileUploadErrors = [
-            0 => "Aucune erreur, le téléchargement est correct.",
-            1 => "La taille du fichier téléchargé excède la valeur maximum",
-            2 => "La taille du fichier téléchargé excède la valeur maximum",
-            3 => "Le fichier n'a été que partiellement téléchargé.",
-            4 => "Aucun fichier n'a été téléchargé.",
-            6 => "Un dossier temporaire est manquant, contactez l'administrateur du site.",
-            7 => "Échec de l'écriture du fichier sur le disque, contactez l'administrateur du site.",
-            8 => "Erreur inconnu, contactez l'administrateur du site.",
-        ];
 
-        if (!empty($_FILES['banner']['name'])) {
-            // On récupère l'extention du fichier
-            $fileExtension = strtolower(strrchr($_FILES['banner']['name'], '.'));
+        $uploadFile = new UploadManager($_FILES);
+        $messages = $uploadFile->fileUploadReplace($inputFileName, $nameFile, $uploadDir);
 
-            // Vérification de l'extension
-            if ($AccepteExtension !== substr($fileExtension, 1)) {
-                $errors[] = "L'extension <b>($fileExtension)</b> du fichier <b>" . $_FILES['banner']['name'] . "</b> n'est pas autorisée !";
-            }
-
-            // Si erreur PHP on ajoute dans le tableau errors
-            if ($_FILES['banner']['error'] > 0) {
-                $errors[] = "Erreur lors du transfert de " . $_FILES['banner']['name'] . ".<br/>" . $fileUploadErrors[$_FILES['banner']['error']] . ".";
-            }
-            // Si pas d'erreur, j'envoie mon fichier
-            if (empty($errors)) {
-                $uploadFile = $uploadDir . "banner" . $fileExtension;
-                // On déplace le fichier du dossier tmp avec le nouveau nom.
-                if (move_uploaded_file($_FILES['banner']['tmp_name'], $uploadFile)) {
-                    $success[] = "L'image a bien été envoyée.<br/>";
-                } else {
-                    $errors[] = "Erreur lors du transfert de " . $_FILES['banner']['name'];
-                }
-            }
-        } else {
-            $errors[] = "Vous devez sélectionner une image.";
-        }
-
-        return $this->twig->render('Admin/Accueil/adminAccueil.html.twig', [
-            'errors' => $errors,
-            'success' => $success,
-            'route' => $_GET['route'],
-        ]);
+        return $messages;
     }
+
+    private function manageAboutUsFile()
+    {
+        $inputFileName = "aboutUsFile";
+        $nameFile = "aboutUs";
+        $uploadDir = 'images/aboutUs/';
+
+        $uploadFile = new UploadManager($_FILES);
+        $messages = $uploadFile->fileUploadReplace($inputFileName, $nameFile, $uploadDir);
+
+        return $messages;
+    }
+
 }
