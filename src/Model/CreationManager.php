@@ -56,6 +56,7 @@ class CreationManager extends EntityManager
         $req = "SELECT * FROM creation_shop";
         $statement = $this->pdo->prepare($req);
         $statement->execute();
+        $statement->setFetchMode(\PDO::FETCH_CLASS, \AtelierO\Model\Creation::class);
         return $statement->fetchAll();
     }
 

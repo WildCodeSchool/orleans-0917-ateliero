@@ -48,11 +48,12 @@
                     <label for="url_picture">Images</label>
                     <div class="input-group uploadInput">
                         <input type="file" id="url_picture" name="url_picture"
-                              placeholder="">
+                               placeholder="">
                     </div>
                 </div>
-                
-                <img src="uploads/{{ creation.urlPicture }}">
+                {% if  creation.id %}
+                    <img src="uploads/{{ creation.urlPicture }}">
+                {% endif %}
                 <div class="form-group">
                     <label for="url_etsy">Lien vers Etsy</label>
                     <input type="text" class="form-control" id="url_etsy" name="url_etsy"
@@ -63,6 +64,5 @@
             </form>
         </div>
     </div>
-
 {% endblock %}
 

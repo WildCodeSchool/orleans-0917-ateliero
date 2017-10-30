@@ -38,6 +38,11 @@ class CreationController extends Controller
                 $errors[] = 'Veuillez ajouter un prix';
             }
 
+            if (preg_match('/\D+/', $_POST['price'])!=0)
+            {
+                $errors[] = "Il ne peut y avoir que des chiffres dans le prix";
+            }
+
             $creation->setPrice($_POST['price']);
 
             if (empty($_POST['url_etsy'])) {
@@ -80,9 +85,9 @@ class CreationController extends Controller
             $picture = $creation->getUrlPicture();
             $creationManager->delete($creation);
 
-            if (file_exists('uploads/'. $picture)) {
+            if (file_exists('uploads/' . $picture)) {
 
-                unlink('uploads/'. $picture);
+                unlink('uploads/' . $picture);
             }
             header('Location: admin.php?route=adminShop');
         }
@@ -119,12 +124,13 @@ class CreationController extends Controller
                 $errors[] = 'Veuillez ajouter un prix';
             }
 
-            if (empty($_POST['url_etsy'])) {
-                $errors[] = 'Veuillez ajouter un lien Etsy';
+            if (preg_match('/\D+/', $_POST['price'])!=0)
+            {
+                $errors[] = "Il ne peut y avoir que des chiffres dans le prix";
             }
 
-            if (empty($_FILES['url_picture'])) {
-                $errors[] = 'Veuillez ajouter une photo';
+            if (empty($_POST['url_etsy'])) {
+                $errors[] = 'Veuillez ajouter un lien Etsy';
             }
 
             $creation->setTitle($_POST['title']);
@@ -133,21 +139,27 @@ class CreationController extends Controller
 
 
             if (empty($errors)) {
-                $uploadManager = new UploadManager($_FILES);
-                $uploadErrors = $uploadManager->fileUpload();
-                if (empty($uploadErrors)) {
-                    $creation->setUrlPicture($uploadManager->getUrlPicture());
-
-                    $creationManager = new CreationManager();
-                    $creationManager->update($creation);
-                    $success [] = 'L\'objet a bien été modifié';
+                if ($_FILES['url_picture']['name'] != '') {
+                    $uploadManager = new UploadManager($_FILES);
+                    $uploadErrors = $uploadManager->fileUpload();
+                    if (empty($uploadErrors)) {
+                        $creation->setUrlPicture($uploadManager->getUrlPicture());
+                    }
                 }
+                $creationManager = new CreationManager();
+                $creationManager->update($creation);
+                $success [] = 'L\'objet a bien été modifié';
             }
             $allErrors = array_merge($errors, $uploadErrors);
+            if (!empty($allErrors)) {
+                return $this->twig->render('Admin/Shop/adminShopAddCreation.html.twig', [
+                    'creation' => $creation,
+                    'errors' => $allErrors,
+                ]);
+            }
             $listCreations = $creationManager->findAll();
 
             return $this->twig->render('Admin/Shop/adminShopList.html.twig', [
-                'errors' => $allErrors,
                 'success' => $success,
                 'creations' => $listCreations]);
         } else {
@@ -156,5 +168,15 @@ class CreationController extends Controller
                 'creation' => $creation
             ]);
         }
+    }
+
+    public function showAction()
+    {
+        $creationManager = new CreationManager();
+        $listCreations = $creationManager->findAll();
+
+        return $this->twig->render('/Shop/shop.html.twig', [
+            'creations' => $listCreations
+        ]);
     }
 }
