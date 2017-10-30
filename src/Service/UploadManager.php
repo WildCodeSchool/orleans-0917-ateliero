@@ -8,7 +8,6 @@
 
 namespace AtelierO\Service;
 
-
 class UploadManager
 {
 
@@ -90,6 +89,62 @@ class UploadManager
 
         return $uploadErrors;
 
+    }
+
+    // Upload multiple
+
+    public function filesUploads()
+    {
+        $uploadErrors = [];
+
+        $fileUploadErrors = [
+            0 => "Aucune erreur, le téléchargement est correct.",
+            1 => "La taille du fichier téléchargé excède la valeur maximum",
+            2 => "La taille du fichier téléchargé excède la valeur maximum",
+            3 => "Le fichier n'a été que partiellement téléchargé.",
+            4 => "Aucun fichier n'a été téléchargé.",
+            6 => "Un dossier temporaire est manquant, contactez l'administrateur du site.",
+            7 => "Échec de l'écriture du fichier sur le disque, contactez l'administrateur du site.",
+            8 => "Erreur inconnu, contactez l'administrateur du site.",
+        ];
+
+        if (!empty($this->file)) {
+
+            for ($i = 0; $i < count($_FILES['articleBlogFile']['name']); $i++) {
+
+                $fileName = 'url_picture' . uniqid();
+
+
+                $extension = strtolower(pathinfo($this->file['articleBlogFile']['name'][$i], PATHINFO_EXTENSION));
+
+                // verif de la taille
+                if ($this->file['articleBlogFile']['size'][$i] > self::SIZELIMIT) {
+                    $uploadErrors[] = 'Le fichier est trop grand';
+                }
+
+                // verif type mime (basé sur un tableau de type autorisés)
+                $allowedMimes = ['image/jpeg', 'image/png'];
+                if (!in_array(mime_content_type($this->file['articleBlogFile']['tmp_name'][$i]), $allowedMimes)) {
+                    $uploadErrors[] = 'Seuls les fichiers jpg ou png sont autorisés';
+                }
+
+                if (empty($uploadErrors)) {
+                    move_uploaded_file($this->file['articleBlogFile']['tmp_name'][$i], self::UPLOAD_DIR . $fileName . '.' . $extension);
+
+                    $this->setUrlPicture($fileName . '.' . $extension);
+                }
+
+                if ($this->file['articleBlogFile']['error'][$i]) {
+                    $uploadErrors[] = $fileUploadErrors[$this->file['articleBlogFile']['error'][$i]];
+                }
+
+                if (empty($this->file['articleBlogFile']['name'][$i])) {
+                    $uploadErrors[] = 'Vous devez envoyer une photo';
+                }
+
+                return $uploadErrors;
+            }
+        }
     }
 
     /*

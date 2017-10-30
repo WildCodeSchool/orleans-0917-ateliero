@@ -10,15 +10,17 @@ namespace AtelierO\Controller;
 
 use AtelierO\Model\ArticleBlog;
 use AtelierO\Model\ArticleBlogManager;
-//use AtelierO\Service\UploadMultipleManager;
+use AtelierO\Service\UploadManager;
 
 class ArticleBlogController extends Controller
 {
     public function addArticle()
     {
+        $article = "";
         $errors = [];
         $success = [];
-        $article = "";
+        $uploadErrors = [];
+        $allErrors = [];
 
         if (!empty($_POST)) {
 
@@ -43,17 +45,36 @@ class ArticleBlogController extends Controller
 
             $articleBlog->setContent($_POST['articleBlogSummernote']);
 
+            if (empty($_FILES['articleBlogFile']) AND $_FILES['articleBlogFile']['name'] == '') {
+                $errors[] = "Vous devez sélectionner une image.";
+            }
+
             if (empty($errors)) {
-                $articleBlogManager = new ArticleBlogManager();
-                $articleBlogManager->add($articleBlog);
-                $success [] = 'L\'article a bien été ajouté';
+                $uploadManager = new UploadManager($_FILES);
+                $uploadErrors = $uploadManager->filesUploads();
+                if (empty($uploadErrors)) {
+                    $articleBlog = $uploadManager->getUrlPicture();
+
+                    $articleBlogManager = new ArticleBlogManager();
+                    $articleBlogManager->add($articleBlog);
+                    $success [] = 'L\'article a bien été ajouté';
+                }
             }
         }
 
+        $allErrors = array_merge($errors, $uploadErrors);
+
+        $myFiles = [];
+        $it = new \FilesystemIterator(__DIR__ . '/../../public/images/blog');
+        foreach ($it as $fileInfo) {
+            $myFiles[] =  $fileInfo->getFilename();
+        }
+
         return $this->twig->render('Admin/Blog/adminBlogAddArticle.html.twig', [
-            'errors' => $errors,
+            'errors' => $allErrors,
             'success' => $success,
             'article' => $article,
+            'myFiles' => $myFiles,
             'route' => $_GET['route'],
         ]);
     }
@@ -67,4 +88,5 @@ class ArticleBlogController extends Controller
             'articlesBlog' => $listArticles
         ]);
     }
+
 }

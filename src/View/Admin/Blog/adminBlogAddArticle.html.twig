@@ -41,12 +41,32 @@
                 </div>
 
                 <div class="form-group">
+                    <input type="hidden" name="id" value="{{ articleBlog.id }}"/>
                     <label for="articleBlogSummernote">Contenu de l'article</label>
                     <textarea id="articleBlogSummernote" class="form-control" name="articleBlogSummernote">{{ article['articleBlogSummernote'] ?? '' }}</textarea>
+                    <label for="articleBlogFile">Selectionner vos images :</label>
+                    <input type="file" name="articleBlogFile[]" id="articleBlogFile" multiple="multiple" class="uploadInput"/>
+                    <small>Format: .JPG | Taille maximum: 1Mo</small>
+                    {#<button type="submit" class="btn btn-default">Télécharger vos images</button>#}
                 </div>
 
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-success">Valider l'article</button>
             </form>
+
+            <div class="row">
+                {% for myFile in myFiles %}
+                <div class="col-xs-3">
+                    <div class="thumbnail">
+                        <img src="images/blog/{{ myFile }}" alt="uploaded file">
+                        <div class="caption">
+                            <p>
+                                <a href="?delete={{ myFile }}" class="btn btn-red">Delete</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
             <a class="btn btn-info pull-right" href="admin.php?route=adminBlog" role="button">Liste des articles</a>
         </div>
     </div>

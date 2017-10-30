@@ -22,6 +22,7 @@ class ArticleBlogManager extends EntityManager
         $statement->bindValue('date', $articleBlog->getDate(), \PDO::PARAM_STR);
         $statement->bindValue('content', $articleBlog->getContent(), \PDO::PARAM_STR);
         $statement->execute();
+
     }
 
     public function findAll()
@@ -30,5 +31,14 @@ class ArticleBlogManager extends EntityManager
         $statement = $this->pdo->prepare($req);
         $statement->execute();
         return $statement->fetchAll();
+    }
+
+    public function find($id)
+    {
+        $req = "SELECT * FROM article_blog WHERE id=$id";
+        $statement = $this->pdo->prepare($req);
+        $statement->execute();
+        $statement->setFetchMode(\PDO::FETCH_CLASS, \AtelierO\Model\ArticleBlog::class);
+        return $statement->fetch();
     }
 }
