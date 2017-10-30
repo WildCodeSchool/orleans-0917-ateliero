@@ -21,9 +21,8 @@
         <div class="modal fade " tabindex="-1" role="dialog" id="mentionL" aria-labelledby="legales">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content footer_mentionL">
-
+                    <span class="glyphicon glyphicon-remove pull-right" data-dismiss="modal"></span>
                     {% include 'Home/mentionsLegales.html.twig' %}
-
                 </div>
             </div>
         </div>
@@ -52,6 +51,7 @@
              aria-labelledby="myLargeModalLabel">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
+                    <span class="glyphicon glyphicon-remove pull-right" data-dismiss="modal"></span>
                     {% if errors %}
                         <ul class="alert alert-danger">
                             {% for error in errors %}
