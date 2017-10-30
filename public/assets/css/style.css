@@ -255,6 +255,23 @@
     font-size: calc(0.5vw + 10px);
 }
 
+.modal_form .glyphicon-remove {
+    color: grey;
+    padding: 1%;
+}
+
+.modal_form .glyphicon-remove:hover {
+    color: black;
+}
+
+.footer_mentionL .glyphicon-remove {
+    color: grey;
+}
+
+.footer_mentionL .glyphicon-remove:hover {
+    color: black;
+}
+
 .footer_mentionL {
     font-family: 'Encode Sans Expanded', sans-serif;
     padding: 50px 50px 50px 50px ;
