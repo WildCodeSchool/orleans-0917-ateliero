@@ -10,7 +10,9 @@ namespace AtelierO\Controller;
 
 use AtelierO\Model\ArticleBlog;
 use AtelierO\Model\ArticleBlogManager;
+use AtelierO\Model\ImageManager;
 use AtelierO\Service\UploadManager;
+use AtelierO\Model\Image;
 
 class ArticleBlogController extends Controller
 {
@@ -40,24 +42,32 @@ class ArticleBlogController extends Controller
             $articleBlog->setDate($_POST['date']);
 
             if (empty($_POST['articleBlogSummernote'])) {
-                $errors[] = 'Veuillez ajouter le contenu de votre article';
+                $errors[] = 'Veuillez ajouter le texte de votre article';
             }
 
             $articleBlog->setContent($_POST['articleBlogSummernote']);
 
-            if (empty($_FILES['articleBlogFile']) AND $_FILES['articleBlogFile']['name'] == '') {
-                $errors[] = "Vous devez sélectionner une image.";
-            }
-
+//            for ($i = 0; $i < count($_FILES['articleBlogFile']['name']); $i++) {
             if (empty($errors)) {
+
                 $uploadManager = new UploadManager($_FILES);
                 $uploadErrors = $uploadManager->filesUploads();
+
                 if (empty($uploadErrors)) {
-                    $articleBlog = $uploadManager->getUrlPicture();
+                    $path = $uploadManager->getUrlPicture();
 
                     $articleBlogManager = new ArticleBlogManager();
-                    $articleBlogManager->add($articleBlog);
-                    $success [] = 'L\'article a bien été ajouté';
+                    $articleBlogId = $articleBlogManager->add($articleBlog);
+
+
+                        $articleImage = new Image();
+                        $articleImage->setPath($path);
+                        $articleImage->setArticleBlogId($articleBlogId);
+                        $articleImage->setisPrincipal(false);
+                        $addArticleImage = new ImageManager();
+                        $addArticleImage->addImage($articleImage);
+                        $success [] = 'L\'article a bien été ajouté';
+//                    }
                 }
             }
         }
@@ -65,7 +75,7 @@ class ArticleBlogController extends Controller
         $allErrors = array_merge($errors, $uploadErrors);
 
         $myFiles = [];
-        $it = new \FilesystemIterator(__DIR__ . '/../../public/images/blog');
+        $it = new \FilesystemIterator(__DIR__ . '/../../public/uploads');
         foreach ($it as $fileInfo) {
             $myFiles[] =  $fileInfo->getFilename();
         }

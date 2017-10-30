@@ -39,6 +39,11 @@ class UploadManager
         return $this;
     }
 
+    // upload simple
+
+    /**
+     * @return array
+     */
     public function fileUpload()
     {
         $uploadErrors = [];
@@ -93,6 +98,9 @@ class UploadManager
 
     // Upload multiple
 
+    /**
+     * @return array
+     */
     public function filesUploads()
     {
         $uploadErrors = [];
@@ -108,6 +116,12 @@ class UploadManager
             8 => "Erreur inconnu, contactez l'administrateur du site.",
         ];
 
+//        if (!empty($_GET['delete'])) {
+//            if (file_exists(self::UPLOAD_DIR.$_GET['delete'])) {
+//                unlink (self::UPLOAD_DIR.$_GET['delete']);
+//            }
+//        }
+
         if (!empty($this->file)) {
 
             for ($i = 0; $i < count($_FILES['articleBlogFile']['name']); $i++) {
@@ -122,10 +136,10 @@ class UploadManager
                     $uploadErrors[] = 'Le fichier est trop grand';
                 }
 
-                // verif type mime (basé sur un tableau de type autorisés)
+                // verif type mime (basé sur un tableau de type autorisé)
                 $allowedMimes = ['image/jpeg', 'image/png'];
                 if (!in_array(mime_content_type($this->file['articleBlogFile']['tmp_name'][$i]), $allowedMimes)) {
-                    $uploadErrors[] = 'Seuls les fichiers jpg ou png sont autorisés';
+                    $uploadErrors[] = 'Seuls les fichiers .jpg ou .png sont autorisés';
                 }
 
                 if (empty($uploadErrors)) {
@@ -139,7 +153,7 @@ class UploadManager
                 }
 
                 if (empty($this->file['articleBlogFile']['name'][$i])) {
-                    $uploadErrors[] = 'Vous devez envoyer une photo';
+                    $uploadErrors[] = 'Veuillez sélectionner une image';
                 }
 
                 return $uploadErrors;

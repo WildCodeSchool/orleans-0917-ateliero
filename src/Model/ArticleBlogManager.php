@@ -22,7 +22,7 @@ class ArticleBlogManager extends EntityManager
         $statement->bindValue('date', $articleBlog->getDate(), \PDO::PARAM_STR);
         $statement->bindValue('content', $articleBlog->getContent(), \PDO::PARAM_STR);
         $statement->execute();
-
+        return $this->pdo->lastInsertId();
     }
 
     public function findAll()
