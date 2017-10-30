@@ -2,3 +2,4 @@
 connect.php
 /vendor/
 /public/uploads/*
+public/images/banner/*
