@@ -175,7 +175,7 @@ class CreationController extends Controller
         $creationManager = new CreationManager();
         $listCreations = $creationManager->findAll();
 
-        return $this->twig->render('/Shop/shop.html.twig', [
+        return $this->twig->render('/Shop/creationView.html.twig', [
             'creations' => $listCreations
         ]);
     }
