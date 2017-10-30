@@ -38,7 +38,7 @@ class CreationController extends Controller
                 $errors[] = 'Veuillez ajouter un prix';
             }
 
-            if (preg_match('/\D+/', $_POST['price'])!=0)
+            if (!is_int($_POST['price']))
             {
                 $errors[] = "Il ne peut y avoir que des chiffres dans le prix";
             }
@@ -124,7 +124,7 @@ class CreationController extends Controller
                 $errors[] = 'Veuillez ajouter un prix';
             }
 
-            if (preg_match('/\D+/', $_POST['price'])!=0)
+            if (!is_int( $_POST['price']))
             {
                 $errors[] = "Il ne peut y avoir que des chiffres dans le prix";
             }
