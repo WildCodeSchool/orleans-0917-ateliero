@@ -87,6 +87,4 @@ class ArticleBlog
         $this->content = $content;
         return $this;
     }
-
-
 }

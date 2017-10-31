@@ -35,10 +35,6 @@ class ArticleBlogController extends Controller
                 $messages['danger'][] = 'Veuillez ajouter la date';
             }
 
-//            if (!preg_match("!^(0?\d|[12]\d|3[01])[-/](0?\d|1[012])[-/]((?:19|20)\d{2})$!", $_POST['date'])) {
-//                $messages['danger'][] = 'Le format de date n\'est pas valide';
-//            }
-
             $articleBlog->setDate($_POST['date']);
 
             if (empty($_POST['articleBlogSummernote'])) {
@@ -78,6 +74,7 @@ class ArticleBlogController extends Controller
                             $addArticleImage = new ImageManager();
                             $addArticleImage->addImage($articleImage);
                         }
+
                         $_SESSION['success'] = 'newBlogArticle';
                         header('Location: admin.php?route=adminBlogList');
                     }
@@ -85,18 +82,10 @@ class ArticleBlogController extends Controller
             }
         }
 
-//        $allErrors = array_merge($errors, $uploadErrors);
-
-//        $myFiles = [];
-//        $it = new \FilesystemIterator(__DIR__ . '/../../public/uploads');
-//        foreach ($it as $fileInfo) {
-//            $myFiles[] = $fileInfo->getFilename();
-//        }
 
         return $this->twig->render('Admin/Blog/adminBlogAddArticle.html.twig', [
             'messages' => $messages,
             'article' => $article,
-//            'myFiles' => $myFiles,
             'route' => $_GET['route'],
         ]);
     }
@@ -119,22 +108,4 @@ class ArticleBlogController extends Controller
             'messages' => $messages,
         ]);
     }
-
-    //$_SESSION['success'] = 'newBlogArticle';
-
-//    public function deleteArticle()
-//    {
-//        if (!empty($_POST['id'])) {
-//            $articleBlogManager = new ArticleBlogManager();
-//            $articleBlog = $articleBlogManager->find($_POST['id']);
-//            $articleBlogManager->delete($articleBlog);
-//            $articleImage = new Image();
-//            $idToDelete = $articleImage->getArticleBlogId();
-//            $deleteArticleImage = new ImageManager();
-//            $deleteArticleImage->deleteImage($idToDelete);
-//
-//            header('Location: admin.php?route=adminBlogList');
-//        }
-//    }
-
 }

@@ -1,29 +1,6 @@
 {% extends 'Admin/Blog/adminBlog.html.twig' %}
 
 {% block blogAction %}
-    {#{% if errors %}
-        <div class="alert alert-danger">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <strong>Erreur{% if errors|length > 1 %}s{% endif %} !</strong>
-            <ul>
-                {% for error in errors %}
-                    <li>{{ error|raw }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-    {% endif %}
-
-    {% if success %}
-        <div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <strong>Super !</strong>
-            <ul>
-                {% for successMessage in success %}
-                    <li>{{ successMessage|raw }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-    {% endif %}#}
 
     <div class="panel panel-info">
         <div class="panel-heading"><b>Ajouter un article au blog</b></div>

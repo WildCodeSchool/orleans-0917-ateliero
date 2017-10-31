@@ -40,13 +40,4 @@ class ImageManager extends EntityManager
         $statement->bindValue('is_principal', $articleImage->getisPrincipal(), \PDO::PARAM_BOOL);
         $statement->execute();
     }
-
-//    public function deleteImage(Image $idToDelete)
-//    {
-//        $req = "DELETE FROM image WHERE id=:id";
-//        $statement = $this->pdo->prepare($req);
-//        $statement->bindValue('id', $idToDelete->getArticleBlogId(), \PDO::PARAM_INT);
-//        $statement->execute();
-//    }
-
 }
