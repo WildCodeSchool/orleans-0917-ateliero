@@ -17,28 +17,24 @@
     <div class="panel panel-info">
         <div class="panel-heading">
             <div class="row">
-                <div class="col-md-11">
-                    <div class="col-xs-11 col-xs-offset-1 col-md-12">
-                        <h3 class="panel-title">Liste des créations du shop</h3><br/>
+                <div class="col-md-12">
+                        <h3 class="panel-title"><b>Liste des créations du shop</b></h3>
                         <a href="admin.php?route=addShopCreation">
                             <button class="btn btn-success pull-right" type="submit">Ajouter une création</button>
                         </a>
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="panel">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="col-xs-8 col-sm-5 col-sm-offset-1 col-md-6">
-                    <h3>Nom de l'article</h3></div>
-                <div class="col-xs-4 col-sm-2 col-md-2">
-                    <h3 class="pull-right">Prix</h3></div>
-            </div>
-        </div>
         <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="col-xs-8 col-sm-5 col-sm-offset-1 col-md-6">
+                        <h3>Nom de l'article</h3></div>
+                    <div class="col-xs-4 col-sm-2 col-md-2">
+                        <h3 class="pull-right">Prix</h3></div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-xs-12">
                     {% for creation in creations %}
@@ -51,14 +47,16 @@
 
                                 <div class="col-xs-5 col-xs-offset-1 col-sm-1">
                                     <a href="admin.php?route=updateShopAction&id={{ creation.id }}">
-                                        <button class="btn btn-warning btn-sm" type="submit" name="">Modifier</button>
+                                        <button class="btn btn-warning btn-sm" type="submit" name="">Modifier
+                                        </button>
                                     </a>
                                 </div>
 
                                 <div class="col-xs-5 col-sm-1">
                                     <form action="admin.php?route=deleteShopAction" method="post">
                                         <input type="hidden" name="id" value="{{ creation.id }}"/>
-                                        <button class="btn btn-danger btn-sm" type="submit" name="">Supprimer</button>
+                                        <button class="btn btn-danger btn-sm" type="submit" name="">Supprimer
+                                        </button>
                                     </form>
                                 </div>
                                 <br/>
@@ -70,4 +68,5 @@
             </div>
         </div>
     </div>
+
 {% endblock %}
