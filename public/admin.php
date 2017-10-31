@@ -45,6 +45,10 @@ if (!empty($_GET['route'])) {
         echo $controller->deletePartnerAction();
     }
 
+    if ($route == 'updateShopAction') {
+        $controller = new CreationController();
+        echo $controller->updateAction();
+    }
 } else {
     $controller = new AdminController();
     echo $controller->showAdminAction();
