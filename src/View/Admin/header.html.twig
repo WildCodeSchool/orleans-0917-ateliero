@@ -9,7 +9,7 @@
             <li role="presentation" {% if route == 'adminBlog' %}class="active"{% endif %}>
                 <a href="admin.php?route=adminBlog" aria-controls="blog" role="tab">Blog</a>
             </li>
-            <li role="presentation" {% if route == 'adminShop' %}class="active"{% endif %}>
+            <li role="presentation" {% if route == 'adminShop' or route == 'updateShopAction'%}class="active"{% endif %}>
                 <a href="admin.php?route=adminShop" aria-controls="shop" role="tab">Shop</a>
             </li>
         </ul>

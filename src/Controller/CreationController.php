@@ -38,7 +38,7 @@ class CreationController extends Controller
                 $errors[] = 'Veuillez ajouter un prix';
             }
 
-            if (!is_int($_POST['price']))
+            if (!is_numeric($_POST['price']))
             {
                 $errors[] = "Il ne peut y avoir que des chiffres dans le prix";
             }
@@ -100,7 +100,9 @@ class CreationController extends Controller
         $listCreations = $creationManager->findAll();
 
         return $this->twig->render('Admin/Shop/adminShopList.html.twig', [
-            'creations' => $listCreations
+            'creations' => $listCreations,
+            'route' => $_GET['route'],
+
         ]);
     }
 
@@ -155,6 +157,7 @@ class CreationController extends Controller
                 return $this->twig->render('Admin/Shop/adminShopAddCreation.html.twig', [
                     'creation' => $creation,
                     'errors' => $allErrors,
+                    'route' => $_GET['route'],
                 ]);
             }
             $listCreations = $creationManager->findAll();
@@ -165,7 +168,8 @@ class CreationController extends Controller
         } else {
             $creation = $creationManager->find($_GET['id']);
             return $this->twig->render('Admin/Shop/adminShopAddCreation.html.twig', [
-                'creation' => $creation
+                'creation' => $creation,
+                'route' => $_GET['route'],
             ]);
         }
     }
@@ -176,7 +180,8 @@ class CreationController extends Controller
         $listCreations = $creationManager->findAll();
 
         return $this->twig->render('/Shop/creationView.html.twig', [
-            'creations' => $listCreations
+            'creations' => $listCreations,
+            'route' => $_GET['route'],
         ]);
     }
 }

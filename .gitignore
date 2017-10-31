@@ -1,6 +1,7 @@
 .idea
 connect.php
 /vendor/
-/public/images/banner/
+/public/images/banner/*
 /public/images/aboutUs/*
-/public/uploads/
+/public/uploads/*
+!.gitkeep
