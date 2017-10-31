@@ -25,6 +25,14 @@ class ArticleBlogManager extends EntityManager
         return $this->pdo->lastInsertId();
     }
 
+//    public function delete(ArticleBlog $articleBlog)
+//    {
+//        $req = "DELETE FROM article_blog WHERE id=:id";
+//        $statement = $this->pdo->prepare($req);
+//        $statement->bindValue('id', $articleBlog->getId(), \PDO::PARAM_INT);
+//        $statement->execute();
+//    }
+
     public function findAll()
     {
         $req = "SELECT * FROM article_blog";

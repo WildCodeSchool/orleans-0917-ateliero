@@ -2,7 +2,20 @@
 
 {% block blogAction %}
 
-    {% if errors %}
+    {% if messages %}
+        {% for type, message in messages %}
+            <div class="alert alert-{{ type }}">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <strong>{{ (type == 'danger') ? 'Erreur' : 'Super' }}{% if danger|length > 1 %}s{% endif %} !</strong>
+                <ul>
+                    {% for msg in message %}
+                        <li>{{ msg|raw }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+    {% endif %}
+    {#{% if errors %}
         <div class="alert alert-danger">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <strong>Erreur{% if errors|length > 1 %}s{% endif %} !</strong>
@@ -24,7 +37,7 @@
                 {% endfor %}
             </ul>
         </div>
-    {% endif %}
+    {% endif %}#}
 
     <div class="panel panel-info">
         <div class="panel-heading"><b>Ajouter un article au blog</b></div>
@@ -37,7 +50,7 @@
 
                 <div class="form-group">
                     <label for="date">Date</label>
-                    <input type="text" class="form-control" id="date" name="date" placeholder="YYYY/MM/DD" value="{{ article['date'] ?? '' }}">
+                    <input type="date" class="form-control" id="date" name="date"  value="{{ article['date'] ?? '' }}">
                 </div>
 
                 <div class="form-group">
@@ -52,20 +65,6 @@
                 <button type="submit" class="btn btn-success">Valider l'article</button>
             </form>
 
-            <div class="row">
-                {% for myFile in myFiles %}
-                <div class="col-xs-3">
-                    <div class="thumbnail">
-                        <img src="images/blog/{{ myFile }}" alt="uploaded file">
-                        <div class="caption">
-                            <p>
-                                <a href="?delete={{ myFile }}" class="btn btn-red">Delete</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
             <a class="btn btn-info pull-right" href="admin.php?route=adminBlog" role="button">Liste des articles</a>
         </div>
     </div>

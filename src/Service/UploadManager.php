@@ -103,7 +103,7 @@ class UploadManager
      */
     public function filesUploads()
     {
-        $uploadErrors = [];
+        $messages = [];
 
         $fileUploadErrors = [
             0 => "Aucune erreur, le téléchargement est correct.",
@@ -116,48 +116,41 @@ class UploadManager
             8 => "Erreur inconnu, contactez l'administrateur du site.",
         ];
 
-//        if (!empty($_GET['delete'])) {
-//            if (file_exists(self::UPLOAD_DIR.$_GET['delete'])) {
-//                unlink (self::UPLOAD_DIR.$_GET['delete']);
-//            }
-//        }
-
-        if (!empty($this->file)) {
+        if (!empty($_FILES['articleBlogFile']['name'][0])) {
 
             for ($i = 0; $i < count($_FILES['articleBlogFile']['name']); $i++) {
 
-                $fileName = 'url_picture' . uniqid();
+                $fileName = 'blog_' . uniqid();
 
-
-                $extension = strtolower(pathinfo($this->file['articleBlogFile']['name'][$i], PATHINFO_EXTENSION));
+                $extension = strtolower(pathinfo($_FILES['articleBlogFile']['name'][$i], PATHINFO_EXTENSION));
 
                 // verif de la taille
-                if ($this->file['articleBlogFile']['size'][$i] > self::SIZELIMIT) {
-                    $uploadErrors[] = 'Le fichier est trop grand';
+                if ($_FILES['articleBlogFile']['size'][$i] > self::SIZELIMIT) {
+                    $messages['danger'][] = 'Le fichier est trop grand, il ne doit pas excéder 1MO.';
                 }
 
                 // verif type mime (basé sur un tableau de type autorisé)
                 $allowedMimes = ['image/jpeg', 'image/png'];
-                if (!in_array(mime_content_type($this->file['articleBlogFile']['tmp_name'][$i]), $allowedMimes)) {
-                    $uploadErrors[] = 'Seuls les fichiers .jpg ou .png sont autorisés';
+
+                if (!in_array(mime_content_type($_FILES['articleBlogFile']['tmp_name'][$i]), $allowedMimes)) {
+                    $messages['danger'][] = 'Seuls les fichiers .jpg ou .png sont autorisés';
                 }
 
-                if (empty($uploadErrors)) {
-                    move_uploaded_file($this->file['articleBlogFile']['tmp_name'][$i], self::UPLOAD_DIR . $fileName . '.' . $extension);
-
-                    $this->setUrlPicture($fileName . '.' . $extension);
+                if ($_FILES['articleBlogFile']['error'][$i]) {
+                    $messages['danger'][] = $fileUploadErrors[$this->file['articleBlogFile']['error'][$i]];
                 }
 
-                if ($this->file['articleBlogFile']['error'][$i]) {
-                    $uploadErrors[] = $fileUploadErrors[$this->file['articleBlogFile']['error'][$i]];
+                if (empty($_FILES['articleBlogFile']['name'][$i])) {
+                    $messages['danger'][] = 'Veuillez sélectionner une image';
                 }
 
-                if (empty($this->file['articleBlogFile']['name'][$i])) {
-                    $uploadErrors[] = 'Veuillez sélectionner une image';
+                if (empty($messages['danger'])) {
+                    move_uploaded_file($_FILES['articleBlogFile']['tmp_name'][$i], self::UPLOAD_DIR . $fileName . '.' . $extension);
+                    $messages['filesUploaded'][] = $fileName . '.' . $extension;
                 }
-
-                return $uploadErrors;
             }
+            return $messages;
+
         }
     }
 

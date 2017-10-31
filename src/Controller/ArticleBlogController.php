@@ -18,71 +18,79 @@ class ArticleBlogController extends Controller
 {
     public function addArticle()
     {
+        $messages = [];
         $article = "";
-        $errors = [];
-        $success = [];
-        $uploadErrors = [];
-        $allErrors = [];
 
         if (!empty($_POST)) {
-
             $article = $_POST;
             $articleBlog = new ArticleBlog();
 
             if (empty($_POST['title'])) {
-                $errors[] = "Veuillez ajouter un titre";
+                $messages['danger'][] = "Veuillez ajouter un titre";
             }
 
             $articleBlog->setTitle($_POST['title']);
 
             if (empty($_POST['date'])) {
-                $errors[] = 'Veuillez ajouter la date';
+                $messages['danger'][] = 'Veuillez ajouter la date';
+            }
+
+            if (!preg_match("!^(0?\d|[12]\d|3[01])[-/](0?\d|1[012])[-/]((?:19|20)\d{2})$!", $_POST['date'])) {
+                $messages['danger'][] = 'Le format de date n\'est pas valide';
             }
 
             $articleBlog->setDate($_POST['date']);
 
             if (empty($_POST['articleBlogSummernote'])) {
-                $errors[] = 'Veuillez ajouter le texte de votre article';
+                $messages['danger'][] = 'Veuillez ajouter le texte de votre article';
             }
 
             $articleBlog->setContent($_POST['articleBlogSummernote']);
 
-//            for ($i = 0; $i < count($_FILES['articleBlogFile']['name']); $i++) {
-            if (empty($errors)) {
+            if (empty($_FILES['articleBlogFile']['name']['0'])) {
+                $messages['danger'][] = 'Veuillez ajouter une image minimum.';
+            }
+
+            if (empty($messages['danger'])) {
 
                 $uploadManager = new UploadManager($_FILES);
-                $uploadErrors = $uploadManager->filesUploads();
+                $uploadedFiles = $uploadManager->filesUploads();
 
-                if (empty($uploadErrors)) {
-                    $path = $uploadManager->getUrlPicture();
+                if (!empty($uploadedFiles['danger'])) {
+                    $messages = array_merge($messages, $uploadedFiles);
+                }
 
+                if (empty($messages['danger'])) {
                     $articleBlogManager = new ArticleBlogManager();
                     $articleBlogId = $articleBlogManager->add($articleBlog);
 
+                    if (!empty($uploadedFiles['filesUploaded'])) {
 
-                        $articleImage = new Image();
-                        $articleImage->setPath($path);
-                        $articleImage->setArticleBlogId($articleBlogId);
-                        $articleImage->setisPrincipal(false);
-                        $addArticleImage = new ImageManager();
-                        $addArticleImage->addImage($articleImage);
-                        $success [] = 'L\'article a bien été ajouté';
-//                    }
+                        foreach ($uploadedFiles['filesUploaded'] as $value) {
+                            $articleImage = new Image();
+                            $articleImage->setPath($value);
+                            $articleImage->setArticleBlogId($articleBlogId);
+                            $articleImage->setisPrincipal(false);
+                            $addArticleImage = new ImageManager();
+                            $addArticleImage->addImage($articleImage);
+                        }
+
+                        $messages['success'][] = 'L\'article a bien été ajouté';
+                    }
                 }
             }
         }
 
-        $allErrors = array_merge($errors, $uploadErrors);
+//        $allErrors = array_merge($errors, $uploadErrors);
 
         $myFiles = [];
         $it = new \FilesystemIterator(__DIR__ . '/../../public/uploads');
         foreach ($it as $fileInfo) {
-            $myFiles[] =  $fileInfo->getFilename();
+            $myFiles[] = $fileInfo->getFilename();
         }
 
         return $this->twig->render('Admin/Blog/adminBlogAddArticle.html.twig', [
-            'errors' => $allErrors,
-            'success' => $success,
+            'messages' => $messages,
             'article' => $article,
             'myFiles' => $myFiles,
             'route' => $_GET['route'],
@@ -98,5 +106,20 @@ class ArticleBlogController extends Controller
             'articlesBlog' => $listArticles
         ]);
     }
+
+//    public function deleteArticle()
+//    {
+//        if (!empty($_POST['id'])) {
+//            $articleBlogManager = new ArticleBlogManager();
+//            $articleBlog = $articleBlogManager->find($_POST['id']);
+//            $articleBlogManager->delete($articleBlog);
+//            $articleImage = new Image();
+//            $idToDelete = $articleImage->getArticleBlogId();
+//            $deleteArticleImage = new ImageManager();
+//            $deleteArticleImage->deleteImage($idToDelete);
+//
+//            header('Location: admin.php?route=adminBlogList');
+//        }
+//    }
 
 }

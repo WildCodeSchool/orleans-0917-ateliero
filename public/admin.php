@@ -35,6 +35,11 @@ if (!empty($_GET['route'])) {
         echo $controller->addArticle();
     }
 
+//    if ($route == 'deleteBlogAction') {
+//        $controller = new ArticleBlogController();
+//        echo $controller->deleteArticle();
+//    }
+
     if ($route == 'adminShop') {
         $controller = new CreationController();
         echo $controller->listAction();
