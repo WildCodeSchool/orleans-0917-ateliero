@@ -126,7 +126,7 @@ class CreationController extends Controller
                 $errors[] = 'Veuillez ajouter un prix';
             }
 
-            if (!is_int( $_POST['price']))
+            if (!is_numeric( $_POST['price']))
             {
                 $errors[] = "Il ne peut y avoir que des chiffres dans le prix";
             }

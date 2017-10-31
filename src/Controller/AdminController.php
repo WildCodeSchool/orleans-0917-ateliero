@@ -45,7 +45,6 @@ class AdminController extends Controller
             }
         }
 
-
         if (!empty($_POST['aboutUs'])) {
             $aboutUsPost = new AboutUs();
             $aboutUsPost->setTextPresentation($_POST['aboutUs']);
