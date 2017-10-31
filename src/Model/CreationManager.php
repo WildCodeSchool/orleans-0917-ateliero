@@ -35,10 +35,10 @@ class CreationManager extends EntityManager
         $req = "UPDATE creation_shop SET title=:title, price=:price, url_picture=:url_picture, url_etsy=:url_etsy 
                   WHERE id=:id";
         $statement = $this->pdo->prepare($req);
-        $statement->bindValue('firstname', $creation->getTitle(), \PDO::PARAM_STR);
-        $statement->bindValue('lastname', $creation->getPrice(), \PDO::PARAM_INT);
-        $statement->bindValue('birthdate', $creation->getUrlPicture(), \PDO::PARAM_STR);
-        $statement->bindValue('category', $creation->getUrlEtsy(), \PDO::PARAM_STR);
+        $statement->bindValue('title', $creation->getTitle(), \PDO::PARAM_STR);
+        $statement->bindValue('price', $creation->getPrice(), \PDO::PARAM_INT);
+        $statement->bindValue('url_picture', $creation->getUrlPicture(), \PDO::PARAM_STR);
+        $statement->bindValue('url_etsy', $creation->getUrlEtsy(), \PDO::PARAM_STR);
         $statement->bindValue('id', $creation->getId(), \PDO::PARAM_INT);
         $statement->execute();
     }
@@ -56,6 +56,7 @@ class CreationManager extends EntityManager
         $req = "SELECT * FROM creation_shop";
         $statement = $this->pdo->prepare($req);
         $statement->execute();
+        $statement->setFetchMode(\PDO::FETCH_CLASS, \AtelierO\Model\Creation::class);
         return $statement->fetchAll();
     }
 

@@ -47,7 +47,6 @@
 .nav > li > a:focus, .nav > li > a:hover {
     background-color: transparent;
 }
-
 /* End NavBar */
 
 /* Start Banner */
@@ -57,6 +56,7 @@
     background: url('../../images/banner/banner.jpg') no-repeat center;
     background-size: cover;
 }
+
 /* End Banner */
 
 /* Start Quote */
@@ -76,6 +76,7 @@
     color: #F8DCD1;
     font-size: calc(0.7vw + 15px);
 }
+
 /* End quote */
 
 /* Start News */
@@ -151,12 +152,24 @@
     font-family: "Open Sans", Helvetica, sans-serif;
     font-size: calc(0.5vw + 10px);
 }
+
 /* End AboutUs */
 
 /* Start Partner */
 /* End Partner */
 
 /* Start Shop */
+
+.thumbnail >img {
+    height: 300px;
+    object-fit: cover; /* Do not scale the image */
+    object-position: center; /* Center the image within the element */
+}
+ .thumbnailShop {
+     height: 400px;
+ }
+
+
 /* End Shop */
 
 /* Start Blog */
@@ -213,7 +226,7 @@
 }
 
 .footer_form {
-    padding: 50px 50px 50px 50px ;
+    padding: 50px 50px 50px 50px;
 }
 
 .pdpView .contactBtn {
@@ -255,9 +268,26 @@
     font-size: calc(0.5vw + 10px);
 }
 
+.modal_form .glyphicon-remove {
+    color: grey;
+    padding: 1%;
+}
+
+.modal_form .glyphicon-remove:hover {
+    color: black;
+}
+
+.footer_mentionL .glyphicon-remove {
+    color: grey;
+}
+
+.footer_mentionL .glyphicon-remove:hover {
+    color: black;
+}
+
 .footer_mentionL {
     font-family: 'Encode Sans Expanded', sans-serif;
-    padding: 50px 50px 50px 50px ;
+    padding: 50px 50px 50px 50px;
     font-size: calc(0.5vw + 10px);
 }
 
@@ -284,6 +314,15 @@
 .uploadInput {
     width: 100%;
 }
+
+.imgPartner {
+    height: 75px;width: 75px;
+}
+
+.thumbnailPartner {
+    height: 180px;
+}
+
 /* End Admin */
 
 /*-*-*-*-* END CSS *-*-*-*-*/
@@ -317,4 +356,5 @@
         margin-top: 3%;
     }
 }
+
 /*-*-*-*-* END MEDIA QUERIES *-*-*-*-*/
