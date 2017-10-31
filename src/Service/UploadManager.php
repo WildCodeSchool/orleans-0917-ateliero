@@ -118,6 +118,12 @@ class UploadManager
 
         if (!empty($_FILES['articleBlogFile']['name'][0])) {
 
+            // limite du nombre de fichiers à télécharger (5)
+            if(count($_FILES['articleBlogFile']['name']) > 5)
+            {
+                $messages['danger'][] = 'Le téléchargement est limité a 5 fichiers maximum';
+            }
+
             for ($i = 0; $i < count($_FILES['articleBlogFile']['name']); $i++) {
 
                 $fileName = 'blog_' . uniqid();

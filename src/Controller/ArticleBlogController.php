@@ -35,9 +35,9 @@ class ArticleBlogController extends Controller
                 $messages['danger'][] = 'Veuillez ajouter la date';
             }
 
-            if (!preg_match("!^(0?\d|[12]\d|3[01])[-/](0?\d|1[012])[-/]((?:19|20)\d{2})$!", $_POST['date'])) {
-                $messages['danger'][] = 'Le format de date n\'est pas valide';
-            }
+//            if (!preg_match("!^(0?\d|[12]\d|3[01])[-/](0?\d|1[012])[-/]((?:19|20)\d{2})$!", $_POST['date'])) {
+//                $messages['danger'][] = 'Le format de date n\'est pas valide';
+//            }
 
             $articleBlog->setDate($_POST['date']);
 
@@ -66,16 +66,20 @@ class ArticleBlogController extends Controller
 
                     if (!empty($uploadedFiles['filesUploaded'])) {
 
-                        foreach ($uploadedFiles['filesUploaded'] as $value) {
+                        foreach ($uploadedFiles['filesUploaded'] as $key => $value) {
                             $articleImage = new Image();
                             $articleImage->setPath($value);
                             $articleImage->setArticleBlogId($articleBlogId);
-                            $articleImage->setisPrincipal(false);
+                            if ('0' == $key) {
+                                $articleImage->setisPrincipal(true);
+                            } else {
+                                $articleImage->setisPrincipal(false);
+                            }
                             $addArticleImage = new ImageManager();
                             $addArticleImage->addImage($articleImage);
                         }
-
-                        $messages['success'][] = 'L\'article a bien été ajouté';
+                        $_SESSION['success'] = 'newBlogArticle';
+                        header('Location: admin.php?route=adminBlogList');
                     }
                 }
             }
@@ -83,29 +87,40 @@ class ArticleBlogController extends Controller
 
 //        $allErrors = array_merge($errors, $uploadErrors);
 
-        $myFiles = [];
-        $it = new \FilesystemIterator(__DIR__ . '/../../public/uploads');
-        foreach ($it as $fileInfo) {
-            $myFiles[] = $fileInfo->getFilename();
-        }
+//        $myFiles = [];
+//        $it = new \FilesystemIterator(__DIR__ . '/../../public/uploads');
+//        foreach ($it as $fileInfo) {
+//            $myFiles[] = $fileInfo->getFilename();
+//        }
 
         return $this->twig->render('Admin/Blog/adminBlogAddArticle.html.twig', [
             'messages' => $messages,
             'article' => $article,
-            'myFiles' => $myFiles,
+//            'myFiles' => $myFiles,
             'route' => $_GET['route'],
         ]);
     }
 
     public function listAction()
     {
+        $messages = [];
+        if (!empty($_SESSION['success'])) {
+            if ('newBlogArticle' == $_SESSION['success']) {
+                $messages['success'][] = "L'article a bien été ajouté";
+                session_destroy();
+            }
+        }
+
         $articleBlogManager = new ArticleBlogManager();
         $listArticles = $articleBlogManager->findAll();
 
         return $this->twig->render('Admin/Blog/adminBlogList.html.twig', [
-            'articlesBlog' => $listArticles
+            'articlesBlog' => $listArticles,
+            'messages' => $messages,
         ]);
     }
+
+    //$_SESSION['success'] = 'newBlogArticle';
 
 //    public function deleteArticle()
 //    {

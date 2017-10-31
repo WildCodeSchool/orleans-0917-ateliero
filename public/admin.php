@@ -25,7 +25,7 @@ if (!empty($_GET['route'])) {
         echo $controller->showAdminAccueilAction();
     }
 
-    if ($route == 'adminBlog') {
+    if ($route == 'adminBlogList') {
         $controller = new ArticleBlogController();
         echo $controller->listAction();
     }
