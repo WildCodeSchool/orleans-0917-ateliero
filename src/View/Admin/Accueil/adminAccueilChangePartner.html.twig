@@ -10,19 +10,17 @@
             {% for partner in partners %}
 
                 <div class="col-xs-6 col-sm-3 col-md-2 col-lg-2">
-                    <div class="thumbnail" style="height: 150px;">
+                    <div class="thumbnail thumbnailPartner">
                         <a href="{{ partner.url }}" target="_blank">
-                            <img src="uploads/{{ partner.url_picture }}" class="thumbnail img-responsive"
-                                 alt=""
-                                 style="height: 75px; width: 75px; position: relative;">
+                            <img src="uploads/{{ partner.url_picture }}" class="thumbnail img-responsive imgPartner"
+                                 alt="">
                         </a>
                         <div class="caption">
                             <p>{{ partner.name }}</p>
-                            <button type="submit" class="btn btn-xs btn-danger" data-toggle="modal"
+                            <button type="submit" class="btn btn-xs btn-danger btn-block" data-toggle="modal"
                                     data-target="#confirmDelPartner" data-id="{{ partner.id }}"
                                     data-partner="{{ partner.name }}"
-                                    data-picture="{{ partner.url_picture }}"
-                                    style="position: absolute; top: 5px; right: 20px;"><span
+                                    data-picture="{{ partner.url_picture }}"><span
                                         class="glyphicon glyphicon-remove"></span></button>
                         </div>
                     </div>
@@ -51,7 +49,7 @@
                             <label for="partnerFile">Choisir une image:</label>
                             <input type="file" name="partnerFile" id="partnerFile"
                                    class="form-control uploadInput"/>
-                            <small>Format: .jpg, .jpeg, .gif, .png | Taille maximum: 2Mo | Dimensions recommandées: 200px * 200px</small>
+                            <small>Format: jpg, jpeg, gif, png | Taille maximum: 2Mo | Dimensions recommandées: 200px * 200px</small>
                         </div>
 
                     </div>
@@ -79,9 +77,8 @@
                 <div class="col-xs-12">
                     <img src=""
                          id="image"
-                         class="thumbnail img-responsive center-block"
-                         alt=""
-                         style="height: 75px; width: 75px;">
+                         class="thumbnail img-responsive center-block imgPartner"
+                         alt="">
                 </div>
                 <form method="POST" action="admin.php?route=deletePartnerAction">
                     <div class="row">
