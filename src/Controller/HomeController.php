@@ -12,6 +12,8 @@ namespace AtelierO\Controller;
 use AtelierO\Model\AboutUsManager;
 use AtelierO\Model\Image;
 use AtelierO\Model\ImageManager;
+use GuzzleHttp\Client;
+use GuzzleHttp\EntityBody;
 
 class HomeController extends Controller
 {
@@ -43,9 +45,9 @@ class HomeController extends Controller
             if (empty($errors)) {
 
                 // Create the Transport
-                $transport = new \Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl');
-                $transport->setUsername('wildoproject@gmail.com')
-                    ->setPassword('AtelierO6');
+                $transport = new \Swift_SmtpTransport(SWIFTMAILSERVER, SWIFTMAILPORT, SWIFTMAILSECURITY);
+                $transport->setUsername(SWIFTMAILUSER)
+                    ->setPassword(SWIFTMAILPASSWORD);
 
                 // Create the Mailer using your created Transport
                 $mailer = new \Swift_Mailer($transport);
@@ -53,7 +55,7 @@ class HomeController extends Controller
                 // Create a message
                 $message = (new \Swift_Message('Message venant de www.ateliero.com'))
                     ->setFrom([$mailExpe => $name])
-                    ->setTo('wildoproject@gmail.com')
+                    ->setTo(SWIFTMAILRECIPIENT)
                     ->setBody($body);
 
                 // Send the message
@@ -61,7 +63,19 @@ class HomeController extends Controller
 
                 header('Location:index.php');
             }
+        }
 
+        $client = new Client();
+        $response = $client->get('https://www.instagram.com/atelier_o/media/');
+        $decode = $response->getBody();
+        $tabInsta = \GuzzleHttp\json_decode($decode, true);
+        foreach ($tabInsta['items'] as $imgInsta)
+        {
+            $imageInsta[] = $imgInsta['images']['standard_resolution']['url'];
+        }
+        foreach ($tabInsta['items'] as $imgInsta)
+        {
+            $urlImageInsta[] = $imgInsta['link'];
         }
 
         $imgManager = new ImageManager();
@@ -73,6 +87,8 @@ class HomeController extends Controller
             'errors' => $errors,
             'mail' => $mail,
             'imgBlog' => $imgBlog,
+            'imageInsta' => $imageInsta,
+            'urlImageInsta' => $urlImageInsta,
         ]);
     }
 }

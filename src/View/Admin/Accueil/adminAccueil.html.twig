@@ -5,11 +5,11 @@
 {% endblock %}
 {% block titlePage %}Atelier O - Administration - Accueil{% endblock %}
 {% block contentAdmin %}
-    {% if messages %}
+    {% if messages['success'] or messages['danger'] %}
         {% for type, message in messages %}
-            <div class="alert alert-{{ type }}">
+            <div class="alert alert-{{ type }} fade in">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <strong>{{ (type == 'danger') ? 'Erreur' : 'Super' }}{% if messages|length > 1 %}s{% endif %} !</strong>
+                <strong>{{ (type == 'danger') ? 'Erreur' : 'Super' }}{% if message|length > 1 %}s{% endif %} !</strong>
                 <ul>
                     {% for msg in message %}
                         <li>{{ msg|raw }}</li>
@@ -18,9 +18,10 @@
             </div>
         {% endfor %}
     {% endif %}
-
     {% include 'Admin/Accueil/adminAccueilChangeBanner.html.twig' %}
     {% include 'Admin/Accueil/adminAccueilChangeAboutUs.html.twig' %}
+    {% include 'Admin/Accueil/adminAccueilChangePartner.html.twig' %}
+
 
 {% endblock %}
 {% block scripts %}
@@ -39,5 +40,24 @@
                 ]
             });
         });
+
+        $('#confirmDelPartner').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var partnerName = button.data('partner')
+            var urlPicture = button.data('picture')
+            var modal = $(this)
+            if(button.data('id') === '') {
+                var partnerId = ''
+                modal.find('#delete').attr("disabled", "disabled")
+                modal.find('#image').attr("class", "")
+                modal.find('.modal-body > p').text("Erreur lors de la suppression")
+            } else {
+            var partnerId = button.data('id')
+                modal.find('#image').attr('src','uploads/' + urlPicture)
+                modal.find('.modal-body input').val(partnerId)
+            }
+            modal.find('#partnerName').text(partnerName)
+        })
     </script>
+
 {% endblock %}

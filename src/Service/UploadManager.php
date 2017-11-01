@@ -83,7 +83,7 @@ class UploadManager
             }
         }
 
-        if ($this->file['url_picture']['error']){
+        if ($this->file['url_picture']['error']) {
             $uploadErrors[] = $fileUploadErrors[$this->file['url_picture']['error']];
 
         }
@@ -163,15 +163,14 @@ class UploadManager
     /*
      * Upload de fichier avec remplacement
      */
-    public function fileUploadReplace($inputFileName, $nameFile, $uploadDir)
+    public function fileUploadUnique($inputFileName, $movedNameFile, $uploadDir, $extension)
     {
         $messages = [];
-        $uploadDir = $uploadDir;   // Ex: images/banner/
+        $uploadDir = $uploadDir;
         $fileName = $_FILES[$inputFileName]['name'];
         $fileTmpName = $_FILES[$inputFileName]['tmp_name'];
         $fileError = $_FILES[$inputFileName]['error'];
-        $movedNameFile = $nameFile;
-        $AccepteExtension = 'jpg';
+        $acceptedExtension = $extension;
         $fileUploadErrors = [
             0 => "Aucune erreur, le téléchargement est correct.",
             1 => "La taille du fichier téléchargé excède la valeur maximum",
@@ -188,7 +187,7 @@ class UploadManager
             $fileExtension = strtolower(strrchr($fileName, '.'));
 
             // Vérification de l'extension
-            if ($AccepteExtension !== substr($fileExtension, 1)) {
+            if (!in_array(substr($fileExtension, 1), $acceptedExtension)) {
                 $messages['danger'][] = "L'extension <b>$fileExtension</b> du fichier " . $fileName . " n'est pas autorisée !";
             }
 
@@ -201,8 +200,12 @@ class UploadManager
                 $uploadFile = $uploadDir . $movedNameFile . $fileExtension;
                 // On déplace le fichier du dossier tmp avec le nouveau nom.
                 if (move_uploaded_file($fileTmpName, $uploadFile)) {
+                    $messages[$inputFileName][] = $movedNameFile . $fileExtension;
+                    return $messages;
+
                 } else {
                     $messages['danger'][] = "Erreur lors du transfert de " . $fileName;
+                    return $messages;
                 }
             }
         }
