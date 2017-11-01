@@ -5,4 +5,4 @@ connect.php
 /public/images/aboutUs/*
 /public/images/blog/*
 /public/uploads/*
-
+!.gitkeep

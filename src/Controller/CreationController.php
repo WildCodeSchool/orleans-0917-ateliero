@@ -38,6 +38,11 @@ class CreationController extends Controller
                 $errors[] = 'Veuillez ajouter un prix';
             }
 
+            if (!is_numeric($_POST['price']))
+            {
+                $errors[] = "Il ne peut y avoir que des chiffres dans le prix";
+            }
+
             $creation->setPrice($_POST['price']);
 
             if (empty($_POST['url_etsy'])) {
@@ -72,23 +77,22 @@ class CreationController extends Controller
         ]);
     }
 
-
-    public function showCreationAction()
-    {
-        return $this->twig->render('Admin/Shop/adminShopAddCreation.html.twig', [
-            'route' => $_GET['route'],
-        ]);
-    }
-
     public function deleteAction()
     {
         if (!empty($_POST['id'])) {
             $creationManager = new CreationManager();
             $creation = $creationManager->find($_POST['id']);
+            $picture = $creation->getUrlPicture();
             $creationManager->delete($creation);
+
+            if (file_exists('uploads/' . $picture)) {
+
+                unlink('uploads/' . $picture);
+            }
             header('Location: admin.php?route=adminShop');
         }
     }
+
 
     public function listAction()
     {
@@ -96,19 +100,88 @@ class CreationController extends Controller
         $listCreations = $creationManager->findAll();
 
         return $this->twig->render('Admin/Shop/adminShopList.html.twig', [
-            'creations' => $listCreations
+            'creations' => $listCreations,
+            'route' => $_GET['route'],
+
         ]);
     }
 
-    private function updateAction(Creation $creation)
+    public function updateAction()
     {
-        // traitement des erreurs éventuelles
-        $creation->setTitle($_POST['title']);
-        $creation->setPrice($_POST['price']);
-        $creation->setUrlEtsy($_POST['url_etsy']);
-        $creation->setUrlPicture($_POST['url_picture']);
+        $errors = [];
+        $success = [];
+        $uploadErrors = [];
+        $creationManager = new CreationManager();
 
-        return $creation;
+        if (!empty($_POST)) {
+            $creation = $creationManager->find($_POST['id']);
+//set ton objet creation
+
+
+            if (empty($_POST['title'])) {
+                $errors[] = "Veuillez ajouter un titre";
+            }
+
+            if (empty($_POST['price'])) {
+                $errors[] = 'Veuillez ajouter un prix';
+            }
+
+            if (!is_int( $_POST['price']))
+            {
+                $errors[] = "Il ne peut y avoir que des chiffres dans le prix";
+            }
+
+            if (empty($_POST['url_etsy'])) {
+                $errors[] = 'Veuillez ajouter un lien Etsy';
+            }
+
+            $creation->setTitle($_POST['title']);
+            $creation->setPrice($_POST['price']);
+            $creation->setUrlEtsy($_POST['url_etsy']);
+
+
+            if (empty($errors)) {
+                if ($_FILES['url_picture']['name'] != '') {
+                    $uploadManager = new UploadManager($_FILES);
+                    $uploadErrors = $uploadManager->fileUpload();
+                    if (empty($uploadErrors)) {
+                        $creation->setUrlPicture($uploadManager->getUrlPicture());
+                    }
+                }
+                $creationManager = new CreationManager();
+                $creationManager->update($creation);
+                $success [] = 'L\'objet a bien été modifié';
+            }
+            $allErrors = array_merge($errors, $uploadErrors);
+            if (!empty($allErrors)) {
+                return $this->twig->render('Admin/Shop/adminShopAddCreation.html.twig', [
+                    'creation' => $creation,
+                    'errors' => $allErrors,
+                    'route' => $_GET['route'],
+                ]);
+            }
+            $listCreations = $creationManager->findAll();
+
+            return $this->twig->render('Admin/Shop/adminShopList.html.twig', [
+                'success' => $success,
+                'creations' => $listCreations]);
+        } else {
+            $creation = $creationManager->find($_GET['id']);
+            return $this->twig->render('Admin/Shop/adminShopAddCreation.html.twig', [
+                'creation' => $creation,
+                'route' => $_GET['route'],
+            ]);
+        }
     }
 
+    public function showAction()
+    {
+        $creationManager = new CreationManager();
+        $listCreations = $creationManager->findAll();
+
+        return $this->twig->render('/Shop/creationView.html.twig', [
+            'creations' => $listCreations,
+            'route' => $_GET['route'],
+        ]);
+    }
 }
