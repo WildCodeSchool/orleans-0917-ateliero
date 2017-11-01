@@ -44,7 +44,7 @@ class ArticleBlogController extends Controller
             $articleBlog->setContent($_POST['articleBlogSummernote']);
 
             if (empty($_FILES['articleBlogFile']['name']['0'])) {
-                $messages['danger'][] = 'Veuillez ajouter une image minimum.';
+                $messages['danger'][] = 'Veuillez ajouter au minimum une image.';
             }
 
             if (empty($messages['danger'])) {
@@ -66,7 +66,7 @@ class ArticleBlogController extends Controller
                             $articleImage = new Image();
                             $articleImage->setPath($value);
                             $articleImage->setArticleBlogId($articleBlogId);
-                            if ('0' == $key) {
+                            if (0 == $key) {
                                 $articleImage->setisPrincipal(true);
                             } else {
                                 $articleImage->setisPrincipal(false);
@@ -81,7 +81,6 @@ class ArticleBlogController extends Controller
                 }
             }
         }
-
 
         return $this->twig->render('Admin/Blog/adminBlogAddArticle.html.twig', [
             'messages' => $messages,
