@@ -13,6 +13,8 @@ use AtelierO\Model\AboutUsManager;
 use AtelierO\Model\Image;
 use AtelierO\Model\ImageManager;
 use AtelierO\Model\PartnerManager;
+use GuzzleHttp\Client;
+use GuzzleHttp\EntityBody;
 
 class HomeController extends Controller
 {
@@ -66,6 +68,19 @@ class HomeController extends Controller
 
         $partnerManager = new PartnerManager();
         $partners = $partnerManager->findAll();
+        $client = new Client();
+        $response = $client->get('https://www.instagram.com/atelier_o/media/');
+        $decode = $response->getBody();
+        $tabInsta = \GuzzleHttp\json_decode($decode, true);
+        foreach ($tabInsta['items'] as $imgInsta)
+        {
+            $imageInsta[] = $imgInsta['images']['standard_resolution']['url'];
+        }
+        foreach ($tabInsta['items'] as $imgInsta)
+        {
+            $urlImageInsta[] = $imgInsta['link'];
+        }
+
         $imgManager = new ImageManager();
         $imgBlog = $imgManager->extractPicture();
         $aboutManager = new AboutUsManager();
@@ -76,6 +91,8 @@ class HomeController extends Controller
             'mail' => $mail,
             'imgBlog' => $imgBlog,
             'partners' => $partners,
+            'imageInsta' => $imageInsta,
+            'urlImageInsta' => $urlImageInsta,
         ]);
     }
 }

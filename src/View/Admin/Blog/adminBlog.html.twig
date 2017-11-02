@@ -1,0 +1,48 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block css %}
+    {{ parent() }}
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+{% endblock %}
+
+{% block titlePage %}Atelier O - Administration - Blog{% endblock %}
+
+{% block contentAdmin %}
+    {% block errors %}
+        {% if messages %}
+            {% for type, message in messages %}
+                <div class="alert alert-{{ type }}">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <strong>{{ (type == 'danger') ? 'Erreur' : 'Super' }}{% if danger|length > 1 %}s{% endif %}
+                        !</strong>
+                    <ul>
+                        {% for msg in message %}
+                            <li>{{ msg|raw }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endblock %}
+    {% block blogAction %}{% endblock %}
+
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#articleBlogSummernote').summernote({
+                lang: 'fr-FR',
+                toolbar: [
+                    ['style', ['bold', 'italic']],
+                    ['font', ['strikethrough']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['height', ['height']]
+                ]
+            });
+        });
+    </script>
+{% endblock %}
