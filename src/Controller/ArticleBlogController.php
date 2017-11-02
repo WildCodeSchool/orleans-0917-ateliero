@@ -99,6 +99,13 @@ class ArticleBlogController extends Controller
             }
         }
 
+        if (!empty($_SESSION['success'])) {
+            if ('deleteBlogArticle' == $_SESSION['success']) {
+                $messages['success'][] = "L'article a bien été supprimé";
+                session_destroy();
+            }
+        }
+
         $articleBlogManager = new ArticleBlogManager();
         $listArticles = $articleBlogManager->findAll();
 
@@ -106,5 +113,18 @@ class ArticleBlogController extends Controller
             'articlesBlog' => $listArticles,
             'messages' => $messages,
         ]);
+    }
+
+    public function deleteAction()
+    {
+        $articleBlogManager = new ArticleBlogManager();
+        $articleBlog = $articleBlogManager->find($_POST['id']);
+        $imageToDelete = new ImageManager();
+        $imageToDelete->deleteImageFromArticle($articleBlog->getId());
+        $articleBlogToDelete = new ArticleBlogManager();
+        $articleBlogToDelete->delete($articleBlog);
+
+        $_SESSION['success'] = 'deleteBlogArticle';
+        header('Location: admin.php?route=adminBlogList');
     }
 }

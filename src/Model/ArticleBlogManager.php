@@ -41,4 +41,13 @@ class ArticleBlogManager extends EntityManager
         $statement->setFetchMode(\PDO::FETCH_CLASS, \AtelierO\Model\ArticleBlog::class);
         return $statement->fetch();
     }
+
+    public function delete($articleBlogId)
+    {
+        $req = "DELETE FROM article_blog WHERE id=:id";
+        $statement = $this->pdo->prepare($req);
+        $statement->bindValue('id', $articleBlogId->getId(), \PDO::PARAM_INT);
+        $statement->execute();
+    }
+
 }
