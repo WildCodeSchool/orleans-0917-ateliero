@@ -4,9 +4,7 @@
     {% include 'Home/citation.html.twig' %}
     {% include 'Home/mosaic.html.twig' %}
     {% include 'Home/presentation.html.twig' %}
-    {% if partners|length > 0 %}
-        {% include 'Home/partner.html.twig' %}
-    {% endif %}
+    {% include 'Home/partner.html.twig' %}
 {% endblock %}
 {% block js %}
     {{ parent() }}

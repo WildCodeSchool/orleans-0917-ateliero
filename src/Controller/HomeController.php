@@ -69,7 +69,7 @@ class HomeController extends Controller
         $partnerManager = new PartnerManager();
         $partners = $partnerManager->findAll();
         $client = new Client();
-        $response = $client->get('https://www.instagram.com/atelier_o/media/');
+        $response = $client->get('https://www.instagram.com/' . COMPTEINSTA . '/media/');
         $decode = $response->getBody();
         $tabInsta = \GuzzleHttp\json_decode($decode, true);
         foreach ($tabInsta['items'] as $imgInsta)
