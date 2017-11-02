@@ -4,4 +4,4 @@ connect.php
 /public/images/banner/*
 /public/images/aboutUs/*
 /public/uploads/*
-
+!.gitkeep

@@ -45,9 +45,9 @@ class HomeController extends Controller
             if (empty($errors)) {
 
                 // Create the Transport
-                $transport = new \Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl');
-                $transport->setUsername('wildoproject@gmail.com')
-                    ->setPassword('AtelierO6');
+                $transport = new \Swift_SmtpTransport(SWIFTMAILSERVER, SWIFTMAILPORT, SWIFTMAILSECURITY);
+                $transport->setUsername(SWIFTMAILUSER)
+                    ->setPassword(SWIFTMAILPASSWORD);
 
                 // Create the Mailer using your created Transport
                 $mailer = new \Swift_Mailer($transport);
@@ -55,7 +55,7 @@ class HomeController extends Controller
                 // Create a message
                 $message = (new \Swift_Message('Message venant de www.ateliero.com'))
                     ->setFrom([$mailExpe => $name])
-                    ->setTo('wildoproject@gmail.com')
+                    ->setTo(SWIFTMAILRECIPIENT)
                     ->setBody($body);
 
                 // Send the message
@@ -63,7 +63,6 @@ class HomeController extends Controller
 
                 header('Location:index.php');
             }
-
         }
 
         $client = new Client();
