@@ -222,10 +222,6 @@
     font-size: calc(0.3vw + 10px);
 }
 
-.footer_icon {
-    text-align: center;
-}
-
 /* mouse over link */
 .pdpView a:hover, .pdpView a:focus {
     color: darkgrey;
@@ -233,9 +229,9 @@
     outline: none;
 }
 
-.footer_form {
-    padding: 50px 50px 50px 50px;
-}
+/*.footer_form {*/
+    /*padding: 50px 50px 50px 50px;*/
+/*}*/
 
 .pdpView .contactBtn {
     text-align: center;
@@ -268,45 +264,38 @@
 
 .modal_form {
     font-family: 'Encode Sans Expanded', sans-serif;
-    font-size: calc(1vw + 10px);
-    text-align: center;
+    font-size: calc(1vw + 2px);
+}
+.modal_form li {
+    font-size: calc(0.5vw + 5px);
 }
 
-.modal_form .alert-danger {
+.modal_form h2 {
+    font-size: calc(1vw + 4px);
+}
+
+.modal_form h3 {
+    font-size: calc(1vw + 3px);
+}
+
+.modal_form textarea {
+    resize: vertical;
+}
+/*.modal_form .alert-danger {
     font-size: calc(0.5vw + 10px);
-}
-
-.modal_form .glyphicon-remove {
-    color: grey;
-    padding: 1%;
-}
-
-.modal_form .glyphicon-remove:hover {
-    color: black;
-}
-
-.footer_mentionL .glyphicon-remove {
-    color: grey;
-}
-
-.footer_mentionL .glyphicon-remove:hover {
-    color: black;
-}
+}*/
 
 .footer_mentionL {
     font-family: 'Encode Sans Expanded', sans-serif;
-    padding: 50px 50px 50px 50px;
-    font-size: calc(0.5vw + 10px);
+    font-size: calc(0.5vw + 2px);
 }
 
 .footer_mentionL h2 {
-    padding-bottom: 10px;
-    text-align: center;
-    font-size: calc(1vw + 10px);
+    font-size: calc(1vw + 4px);
 }
 
 .footer_mentionL h3 {
-    font-size: calc(1vw + 10px);
+    font-size: calc(1vw + 3px);
 }
 
 /* End Footer */
