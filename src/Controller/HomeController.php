@@ -12,6 +12,7 @@ namespace AtelierO\Controller;
 use AtelierO\Model\AboutUsManager;
 use AtelierO\Model\Image;
 use AtelierO\Model\ImageManager;
+use AtelierO\Model\PartnerManager;
 
 class HomeController extends Controller
 {
@@ -63,6 +64,8 @@ class HomeController extends Controller
             }
         }
 
+        $partnerManager = new PartnerManager();
+        $partners = $partnerManager->findAll();
         $imgManager = new ImageManager();
         $imgBlog = $imgManager->extractPicture();
         $aboutManager = new AboutUsManager();
@@ -72,6 +75,7 @@ class HomeController extends Controller
             'errors' => $errors,
             'mail' => $mail,
             'imgBlog' => $imgBlog,
+            'partners' => $partners,
         ]);
     }
 }

@@ -15,14 +15,14 @@
                             <img src="uploads/{{ partner.url_picture }}" class="thumbnail img-responsive imgPartner"
                                  alt="">
                         </a>
-                        <div class="caption">
+                        <div class="caption partnerAbsolute">
                             <p>{{ partner.name }}</p>
-                            <button type="submit" class="btn btn-xs btn-danger btn-block" data-toggle="modal"
-                                    data-target="#confirmDelPartner" data-id="{{ partner.id }}"
-                                    data-partner="{{ partner.name }}"
-                                    data-picture="{{ partner.url_picture }}"><span
-                                        class="glyphicon glyphicon-remove"></span></button>
                         </div>
+                        <button type="submit" class="btn btn-xs btn-danger btn-block delPartnerButton" data-toggle="modal"
+                                data-target="#confirmDelPartner" data-id="{{ partner.id }}"
+                                data-partner="{{ partner.name }}"
+                                data-picture="{{ partner.url_picture }}"><span
+                                    class="glyphicon glyphicon-remove"></span></button>
                     </div>
                 </div>
             {% endfor %}

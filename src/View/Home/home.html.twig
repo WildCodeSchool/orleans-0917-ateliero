@@ -1,9 +1,12 @@
-{% extends 'base.html.twig'%}
+{% extends 'base.html.twig' %}
 {% block content %}
-{% include 'Home/banner.html.twig' %}
-{% include 'Home/citation.html.twig' %}
-{% include 'Home/mosaic.html.twig' %}
-{% include 'Home/presentation.html.twig' %}
+    {% include 'Home/banner.html.twig' %}
+    {% include 'Home/citation.html.twig' %}
+    {% include 'Home/mosaic.html.twig' %}
+    {% include 'Home/presentation.html.twig' %}
+    {% if partners|length > 0 %}
+        {% include 'Home/partner.html.twig' %}
+    {% endif %}
 {% endblock %}
 {% block js %}
     {{ parent() }}
