@@ -169,6 +169,17 @@
      height: 400px;
  }
 
+ .btn-shop {
+     background-color: #F8DCD1;
+ }
+
+ .shopQuote {
+     margin-top: 2%;
+     font-family: 'Dancing Script', cursive;
+     font-size: calc(1.72vw + 15px);
+     color: #5b5b5b;
+     margin-bottom: 30px;
+ }
 
 /* End Shop */
 
