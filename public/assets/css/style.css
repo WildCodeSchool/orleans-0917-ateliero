@@ -154,10 +154,6 @@
     margin-top: 5%;
 }
 
-.aboutUs .img-thumbnail {
-    border: none;
-}
-
 .aboutUs .presentationText {
     font-family: "Open Sans", Helvetica, sans-serif;
     font-size: calc(0.5vw + 10px);
@@ -167,6 +163,7 @@
 
 /* Start Partner */
 .partnerImage {
+    display: inline-block;
     max-height: 100px;
     margin: 30px;
 }
