@@ -11,11 +11,11 @@
     <div class="col-md-10 col-md-offset-1">
         <div class="row">
             {% for creation in creations %}
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail thumbnailShop">
+                <div class="col-sm-6 col-md-3">
+                    <figure class="thumbnail thumbnailShop">
                         <img src="uploads/{{ creation.urlPicture }}" alt="création en céramique">
-                        <div class="caption ">
-                            <div class="row ">
+                        <figcaption class="caption">
+                            <div class="row">
                                 <div class="col-xs-7">
                                     <h4>{{ creation.title }}</h4>
                                 </div>
@@ -28,8 +28,8 @@
                                        role="button"></button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </figcaption>
+                    </figure>
                 </div>
             {% endfor %}
         </div>

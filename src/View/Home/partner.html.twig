@@ -1,0 +1,16 @@
+{% if partners|length > 0 %}
+<section class="row partnerSection">
+
+        <div class="col-xs-offset-1 col-xs-10">
+            <h2>Nos Partenaires</h2>
+            <hr class="linetitle"/>
+        </div>
+    <div class="col-xs-offset-1 col-xs-10">
+        <div class="center-block">
+        {% for partner in partners %}
+                <a href="{{ partner.url}}"><img src="uploads/{{ partner.url_picture}}" alt="{{ partner.name}}" class="partnerImage img-responsive"/></a></li>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
