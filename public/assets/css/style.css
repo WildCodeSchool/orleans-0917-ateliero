@@ -54,6 +54,7 @@
 .nav > li > a:focus, .nav > li > a:hover {
     background-color: transparent;
 }
+
 /* End NavBar */
 
 /* Start Banner */
@@ -111,6 +112,14 @@
     margin-bottom: 30px;
 }
 
+.imgup {
+    margin-top: -15.6%;
+}
+
+.imginsta {
+    max-width: 100%;
+    margin-top: 1%;
+}
 .imgdecaltop {
     margin-top: 30px;
 }
@@ -130,6 +139,14 @@
     height: 300px;
     max-width: 100%;
 }
+.titleteltablette {
+    margin: 5%;
+}
+
+.formteltablette {
+    margin: 1%;
+}
+
 /* End News */
 
 /* Start AboutUs */
@@ -149,19 +166,33 @@
 /* End AboutUs */
 
 /* Start Partner */
+.partnerImage {
+    max-height: 100px;
+    margin: 30px;
+}
+
 /* End Partner */
 
 /* Start Shop */
 
-.thumbnail >img {
+.thumbnail > img {
     height: 300px;
     object-fit: cover; /* Do not scale the image */
     object-position: center; /* Center the image within the element */
 }
- .thumbnailShop {
-     height: 400px;
- }
 
+.thumbnailShop {
+    height: 400px;
+}
+
+.form-inline-shop {
+    margin-top: 5px;
+display: inline-block;
+}
+
+.hrShop {
+    margin: 0;
+}
 
 /* End Shop */
 
@@ -309,11 +340,26 @@
 }
 
 .imgPartner {
-    height: 75px;width: 75px;
+    height: 75px;
+    width: 75px;
 }
 
 .thumbnailPartner {
+    position: relative;
     height: 180px;
+}
+
+.delPartnerButton {
+    position: absolute;
+    width: 90%;
+    bottom: 5px;
+    right: 5%;
+}
+
+.partnerAbsolute {
+    position: absolute;
+    bottom: 5px;
+    margin-bottom: 30px;
 }
 
 /* End Admin */
@@ -321,7 +367,8 @@
 /*-*-*-*-* END CSS *-*-*-*-*/
 
 /*-*-*-*-* START MEDIA QUERIES *-*-*-*-*/
-@media screen and (max-width: 767px) {  /* COL-XS */
+@media screen and (max-width: 767px) {
+    /* COL-XS */
     /* Start Navbar */
     .navbar-header {
         background-color: #F8DCD1;
@@ -343,11 +390,19 @@
     .logonav {
         padding: 5%;
     }
-    /* End Navbar */
 
+    /* End Navbar */
     .button_form_footer {
         margin-top: 3%;
     }
+
+    /* Start Partner */
+    .partnerImage {
+        max-height: 70px;
+        margin: 20px;
+    }
+    /* End Partner */
+
 }
 
 /*-*-*-*-* END MEDIA QUERIES *-*-*-*-*/
