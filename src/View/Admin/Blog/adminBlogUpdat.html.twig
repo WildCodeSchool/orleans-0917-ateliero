@@ -41,7 +41,7 @@
                         {% for image in imagesArticleBlog %}
                             {% if image.is_principal == 1 %}
                                 <div class="col-sm-offset-4 col-sm-4 thumbnail">
-                                    <img src="uploads/{{ image.path }}" class="img_blog_th" alt="#">
+                                    <img src="uploads/{{ image.path }}" class="imgblogthMain" alt="#">
                                     <div class="caption">
                                         <input type="radio" name="is_principal" value="{{ image.id }}" checked/>
                                         <div class="row">
@@ -64,7 +64,7 @@
                         {% if image.is_principal == 0 %}
                             <div class="col-xs-3">
                                 <div class="thumbnail">
-                                    <img src="uploads/{{ image.path }}" class="img_blog_th" alt="#">
+                                    <img src="uploads/{{ image.path }}" class="imgblogth" alt="#">
                                     <div class="caption">
                                         <input type="radio" name="is_principal" value="{{ image.id }}"/>
                                         <div class="row">

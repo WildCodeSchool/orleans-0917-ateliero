@@ -335,8 +335,12 @@
     padding: 2%;
 }
 
-.img_blog_th {
-    height: 60px;
+.imgblogthMain {
+    max-height: 350px;
+}
+
+.imgblogth {
+    max-height: 200px;
 }
 /* End Admin */
 
