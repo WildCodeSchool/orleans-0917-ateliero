@@ -13,7 +13,8 @@ if (!empty($_GET['route'])) {
     $route = $_GET['route'];
 
     if ($route == 'accueil') {
-        // TODO
+        $controller = new HomeController();
+        echo $controller->showAction();
     }
 
     if ($route == 'blog') {

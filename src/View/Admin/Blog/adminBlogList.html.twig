@@ -3,23 +3,32 @@
 {% block blogAction %}
 
     <div class="panel panel-info">
-        <div class="panel-heading">
-            <h3 class="panel-title">Liste des articles</h3>
+        <div class="panel-heading"><h1>Liste des articles</h1>
         </div>
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12">
-                    <a class="btn btn-success" href="admin.php?route=addArticleBlog" role="button">Ajouter un article</a>
+                    <button class="btn btn-success pull-right" href="admin.php?route=addArticleBlog" role="button">
+                        Ajouter un article
+                    </button>
+                    <br/>
                     <hr/>
-                    <ul>
+                    <div class="row">
+                        <div class="col-xs-8 col-sm-5 col-md-6">
+                            <h2>Nom de l'article</h2>
+                        </div>
+                        <div class="col-xs-4 col-sm-2 col-md-2">
+                        </div>
+                        <div class="col-xs-5 col-sm-1">
+                        </div>
+                    </div>
+
                         {% for articleBlog in articlesBlog %}
                             <div class="row">
-                                <div class="col-xs-12">
-                                    <div class="col-xs-8 col-sm-5 col-sm-offset-1 col-md-6">
-                                        <h4>{{ articleBlog.title | title }}</h4></div>
-                                    <div class="col-xs-4 col-sm-2 col-md-2">
-                                        <h4 class="pull-right">{{ articleBlog.date }}</h4></div>
-
+                                <div class="col-xs-8 col-sm-5 col-md-6">
+                                    <h4>{{ articleBlog.title | title }}</h4></div>
+                                <div class="col-xs-4 col-sm-2 col-md-2">
+                                    <h4 class="pull-right">{{ articleBlog.date }}</h4></div>
                                     <div class="col-xs-5 col-xs-offset-1 col-sm-1">
                                             <a href="admin.php?route=updateArticleBlog&id={{ articleBlog.id }}" class="btn btn-warning btn-sm">Modifier</a>
                                     </div>
@@ -29,12 +38,10 @@
                                             <input type="hidden" name="id" value="{{ articleBlog.id }}"/>
                                             <button class="btn btn-danger btn-sm" type="submit" name="">Supprimer</button>
                                         </form>
-                                    </div>
+                                    </div> 
                                     <br/>
-                                </div>
                             </div>
                         {% endfor %}
-                    </ul>
                 </div>
             </div>
         </div>
