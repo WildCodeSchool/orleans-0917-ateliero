@@ -119,7 +119,7 @@
 .imginsta {
     max-width: 100%;
     margin-top: 1%;
-
+}
 .imgdecaltop {
     margin-top: 30px;
 }
@@ -183,6 +183,15 @@
 
 .thumbnailShop {
     height: 400px;
+}
+
+.form-inline-shop {
+    margin-top: 5px;
+display: inline-block;
+}
+
+.hrShop {
+    margin: 0;
 }
 
 /* End Shop */
