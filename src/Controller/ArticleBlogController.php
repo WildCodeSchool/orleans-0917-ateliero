@@ -26,7 +26,7 @@ class ArticleBlogController extends Controller
             $articleBlog = new ArticleBlog();
 
             if (empty($_POST['title'])) {
-                $messages['danger'][] = "Veuillez ajouter un titre";
+                $messages['danger'][] = 'Veuillez ajouter un titre';
             }
 
             $articleBlog->setTitle($_POST['title']);
@@ -66,10 +66,10 @@ class ArticleBlogController extends Controller
                             $articleImage = new Image();
                             $articleImage->setPath($value);
                             $articleImage->setArticleBlogId($articleBlogId);
-                            if (0 == $key) {
-                                $articleImage->setisPrincipal(true);
+                            if ('0' == $key) {
+                                $articleImage->setIsPrincipal(true);
                             } else {
-                                $articleImage->setisPrincipal(false);
+                                $articleImage->setIsPrincipal(false);
                             }
                             $addArticleImage = new ImageManager();
                             $addArticleImage->addImage($articleImage);
@@ -119,12 +119,142 @@ class ArticleBlogController extends Controller
     {
         $articleBlogManager = new ArticleBlogManager();
         $articleBlog = $articleBlogManager->find($_POST['id']);
-        $imageToDelete = new ImageManager();
-        $imageToDelete->deleteImageFromArticle($articleBlog->getId());
+        $imageManager = new ImageManager();
+        $images = $imageManager->findAllImagesToOneArticle($articleBlog->getId());
+        $imageManager->deleteAllImageFromArticle($articleBlog->getId());
         $articleBlogToDelete = new ArticleBlogManager();
         $articleBlogToDelete->delete($articleBlog);
+
+        foreach ($images as $image) {
+            $fichier = __DIR__ . "/../../public/uploads/" . $image->getPath();
+            if (file_exists($fichier)) {
+                if ($fichier != "." AND $fichier != ".." AND !is_dir($fichier)) {
+                    unlink($fichier);
+                }
+            }
+        }
 
         $_SESSION['success'] = 'deleteBlogArticle';
         header('Location: admin.php?route=adminBlogList');
     }
+
+    public function deleteImageBlog($id)
+    {
+        $imageManager = new ImageManager();
+        $image = $imageManager->findOneImageArticle($id);
+        $imageManager->deleteOneImageFromArticle($id);
+        $fichier = __DIR__ . "/../../public/uploads/" . $image->getPath();
+        if (file_exists($fichier)) {
+            if ($fichier != "." AND $fichier != ".." AND !is_dir($fichier)) {
+                unlink($fichier);
+            }
+        }
+        $_SESSION['success'] = 'deleteImageArticle';
+        header('Location: admin.php?route=updateArticleBlog&id=' . $_GET['id']);
+    }
+
+    public function updateAction()
+    {
+        $messages = [];
+
+        $articleBlogManager = new ArticleBlogManager();
+        $articleBlog = $articleBlogManager->find($_GET['id']);
+
+        if (!empty($_SESSION['success'])) {
+            if ('updateBlogArticle' == $_SESSION['success']) {
+                $messages['success'][] = "L'article a bien été modifié";
+                session_destroy();
+            }
+        }
+
+        if (!empty($_SESSION['success'])) {
+            if ('deleteImageArticle' == $_SESSION['success']) {
+                $messages['success'][] = "L'image a bien été supprimée";
+                session_destroy();
+            }
+        }
+
+        if (!empty($_POST['deleteImage'])) {
+            $this->deleteImageBlog($_POST['deleteImage']);
+        }
+
+        if (!empty($_POST['updateBlogArticle'])) {
+
+            $articleBlog->setTitle($_POST['title']);
+            $articleBlog->setDate($_POST['date']);
+            $articleBlog->setContent($_POST['articleBlogSummernote']);
+
+            if (empty($_POST['title'])) {
+                $messages['danger'][] = 'Veuillez ajouter un titre';
+            }
+
+            if (empty($_POST['date'])) {
+                $messages['danger'][] = 'Veuillez ajouter une date';
+            }
+
+            if (empty($_POST['articleBlogSummernote'])) {
+                $messages['danger'][] = 'Veuillez ajouter le texte de votre article';
+            }
+
+            if (empty($messages['danger'])) {
+
+                $articleBlog->setTitle($_POST['title']);
+                $articleBlog->setDate($_POST['date']);
+                $articleBlog->setContent($_POST['articleBlogSummernote']);
+
+                $imageManager = new ImageManager();
+                $imagesArticle = $imageManager->findAllImagesToOneArticle($articleBlog->getId());
+
+                foreach ($imagesArticle as $image) {
+                    if ($_POST['is_principal'] == $image->getId()) {
+                        $image->setIsPrincipal(true);
+                    } else {
+                        $image->setIsPrincipal(false);
+                    }
+                    $imageManager->updateImagesArticleBlog($image);
+                }
+
+                try {
+                    $articleBlogManager->update($articleBlog);
+                }
+                catch (\PDOException $e) {
+                    $messages['danger'][] = "Veuillez écrire la date au format aaaa/mm/jj";
+                }
+
+                if (!empty($_FILES['articleBlogFile'])) {
+
+                    $uploadManager = new UploadManager($_FILES);
+                    $uploadedFiles = $uploadManager->filesUploads();
+
+                    if (!empty($uploadedFiles['danger'])) {
+                        $messages = array_merge($messages, $uploadedFiles);
+                    }
+
+                    if (empty($messages['danger'])) {
+                        foreach ($uploadedFiles['filesUploaded'] as $key => $value) {
+                            $articleImage = new Image();
+                            $articleImage->setPath($value);
+                            $articleImage->setArticleBlogId($_GET['id']);
+                            $articleImage->setIsPrincipal(false);
+                            $addArticleImage = new ImageManager();
+                            $addArticleImage->addImage($articleImage);
+                        }
+                    }
+                }
+
+                if (empty($messages['danger'])) {
+                    $_SESSION['success'] = 'updateBlogArticle';
+                    header('Location: admin.php?route=updateArticleBlog&id=' . $_GET['id']);
+                }
+            }
+        }
+
+        $imageManager = new ImageManager();
+        $imagesArticle = $imageManager->findAllImagesToOneArticle($articleBlog->getId());
+
+        return $this->twig->render('Admin/Blog/adminBlogUpdat.html.twig', ['articleBlog' => $articleBlog,
+            'imagesArticleBlog' => $imagesArticle,
+            'messages' => $messages,]);
+    }
+
 }

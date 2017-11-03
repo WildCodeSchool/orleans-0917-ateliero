@@ -50,4 +50,16 @@ class ArticleBlogManager extends EntityManager
         $statement->execute();
     }
 
+    public function update(ArticleBlog $articleBlog)
+    {
+        $req = "UPDATE article_blog SET title=:title, date=:date, content=:content 
+                  WHERE id=:id";
+        $statement = $this->pdo->prepare($req);
+        $statement->bindValue('title', $articleBlog->getTitle(), \PDO::PARAM_STR);
+        $statement->bindValue('date', $articleBlog->getDate(), \PDO::PARAM_STR);
+        $statement->bindValue('content', $articleBlog->getContent(), \PDO::PARAM_STR);
+        $statement->bindValue('id', $articleBlog->getId(), \PDO::PARAM_INT);
+        $statement->execute();
+
+    }
 }

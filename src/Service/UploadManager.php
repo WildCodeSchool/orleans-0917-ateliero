@@ -74,6 +74,7 @@ class UploadManager
             $allowedMimes = ['image/jpeg', 'image/png'];
             if (!in_array(mime_content_type($this->file['url_picture']['tmp_name']), $allowedMimes)) {
                 $uploadErrors[] = 'Seuls les fichiers jpg ou png sont autorisés';
+
             }
 
             if (empty($uploadErrors)) {
@@ -140,6 +141,8 @@ class UploadManager
 
                 if (!in_array(mime_content_type($_FILES['articleBlogFile']['tmp_name'][$i]), $allowedMimes)) {
                     $messages['danger'][] = 'Seuls les fichiers .jpg ou .png sont autorisés';
+                    var_dump($messages);die();
+
                 }
 
                 if ($_FILES['articleBlogFile']['error'][$i]) {
