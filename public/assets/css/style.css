@@ -7,6 +7,13 @@
     margin-left: 0%;
 }
 
+.linetitlemini {
+    max-width: 100px;
+    background: #FFBF91;
+    height: 2px;
+    margin-left: 0%;
+}
+
 /* Start NavBar */
 .navbar-default {
     background-color: transparent;
@@ -80,70 +87,48 @@
 /* End quote */
 
 /* Start News */
+/* News Form PC */
 .actu {
     margin-top: 5%;
 }
 
-.actuspacetop {
-    margin-top: 1%;
-}
-
-.imgblog {
-    object-fit: cover; /* Do not scale the image */
-    object-position: center; /* Center the image within the element */
+.imgblog, .imgpc {
+    object-fit: cover;
+    object-position: center;
     height: 500px;
-    max-width: 100%;
+    width: 100%;
 }
 
-.imgblog:hover {
+.imgblog:hover, .imgpc:hover {
     border-bottom: inset white;
 }
 
 .imgpc {
-    object-fit: cover; /* Do not scale the image */
-    object-position: center; /* Center the image within the element */
-    height: 245px;
-    max-width: 100%;
+    height: 250px;
 }
 
-.imgpc:hover {
-    border-bottom: inset white;
+.imgdecalbottom {
+    margin-bottom: 30px;
 }
 
-
-.imgpc:hover {
-
+.imgdecaltop {
+    margin-top: 30px;
 }
 
-.imgup {
-    margin-top: -15.6%;
-}
-
-.imginsta {
-    max-width: 100%;
-    margin-top: 1%;
-}
-
+/* News Form Tablette */
 .imgtab {
-    object-fit: cover; /* Do not scale the image */
-    object-position: center; /* Center the image within the element */
-    height: 400px;
+    object-fit: cover;
+    object-position: center;
+    height: 350px;
     max-width: 100%;
 }
 
+/* News Form Tel */
 .imgtel img {
-    object-fit: cover; /* Do not scale the image */
-    object-position: center; /* Center the image within the element */
+    object-fit: cover;
+    object-position: center;
     height: 300px;
     max-width: 100%;
-}
-
-.titleteltablette {
-    margin: 5%;
-}
-
-.formteltablette {
-    margin: 1%;
 }
 /* End News */
 
