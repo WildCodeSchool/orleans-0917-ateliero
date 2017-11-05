@@ -42,11 +42,11 @@ class ArticleBlogManager extends EntityManager
         return $statement->fetch();
     }
 
-    public function delete($articleBlogId)
+    public function delete(ArticleBlog $articleBlog)
     {
         $req = "DELETE FROM article_blog WHERE id=:id";
         $statement = $this->pdo->prepare($req);
-        $statement->bindValue('id', $articleBlogId->getId(), \PDO::PARAM_INT);
+        $statement->bindValue('id', $articleBlog->getId(), \PDO::PARAM_INT);
         $statement->execute();
     }
 

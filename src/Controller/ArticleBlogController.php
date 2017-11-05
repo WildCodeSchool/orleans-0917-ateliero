@@ -66,7 +66,7 @@ class ArticleBlogController extends Controller
                             $articleImage = new Image();
                             $articleImage->setPath($value);
                             $articleImage->setArticleBlogId($articleBlogId);
-                            if ('0' == $key) {
+                            if (0 == $key) {
                                 $articleImage->setIsPrincipal(true);
                             } else {
                                 $articleImage->setIsPrincipal(false);
@@ -121,9 +121,8 @@ class ArticleBlogController extends Controller
         $articleBlog = $articleBlogManager->find($_POST['id']);
         $imageManager = new ImageManager();
         $images = $imageManager->findAllImagesToOneArticle($articleBlog->getId());
-        $imageManager->deleteAllImageFromArticle($articleBlog->getId());
-        $articleBlogToDelete = new ArticleBlogManager();
-        $articleBlogToDelete->delete($articleBlog);
+        $imageManager->deleteAllImageFromArticle($articleBlog);
+        $articleBlogManager->delete($articleBlog);
 
         foreach ($images as $image) {
             $fichier = __DIR__ . "/../../public/uploads/" . $image->getPath();
@@ -142,7 +141,7 @@ class ArticleBlogController extends Controller
     {
         $imageManager = new ImageManager();
         $image = $imageManager->findOneImageArticle($id);
-        $imageManager->deleteOneImageFromArticle($id);
+        $imageManager->deleteOneImageFromArticle($image);
         $fichier = __DIR__ . "/../../public/uploads/" . $image->getPath();
         if (file_exists($fichier)) {
             if ($fichier != "." AND $fichier != ".." AND !is_dir($fichier)) {
@@ -214,12 +213,7 @@ class ArticleBlogController extends Controller
                     $imageManager->updateImagesArticleBlog($image);
                 }
 
-                try {
-                    $articleBlogManager->update($articleBlog);
-                }
-                catch (\PDOException $e) {
-                    $messages['danger'][] = "Veuillez écrire la date au format aaaa/mm/jj";
-                }
+                $articleBlogManager->update($articleBlog);
 
                 if (!empty($_FILES['articleBlogFile'])) {
 

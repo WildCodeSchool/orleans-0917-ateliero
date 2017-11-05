@@ -42,19 +42,21 @@ class ImageManager extends EntityManager
         $statement->execute();
     }
 
-    public function deleteAllImageFromArticle($id)
+    public function deleteAllImageFromArticle(ArticleBlog $articleBlog)
     {
         $req = "DELETE FROM image
-                  WHERE article_blog_id =$id";
+                  WHERE article_blog_id =:id";
         $statement = $this->pdo->prepare($req);
+        $statement->bindValue('id', $articleBlog->getId(), \PDO::PARAM_INT);
         $statement->execute();
     }
 
-    public function deleteOneImageFromArticle($id)
+    public function deleteOneImageFromArticle(Image $image)
     {
         $req = "DELETE FROM image
-                  WHERE id=$id";
+                  WHERE id=:id";
         $statement = $this->pdo->prepare($req);
+        $statement->bindValue('id', $image->getId(), \PDO::PARAM_INT);
         $statement->execute();
     }
 
