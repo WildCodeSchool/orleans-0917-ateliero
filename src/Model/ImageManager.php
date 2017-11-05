@@ -8,6 +8,9 @@
 
 namespace AtelierO\Model;
 
+use AtelierO\Model\Image;
+use AtelierO\Model\ArticleBlog;
+
 
 class ImageManager extends EntityManager
 {
@@ -24,5 +27,26 @@ class ImageManager extends EntityManager
         $statement->execute();
         $result = $statement->fetchAll(\PDO::FETCH_CLASS, \AtelierO\Model\Image::class);
         return $result;
+    }
+
+    public function addImage(Image $articleImage)
+    {
+        $req = "INSERT INTO image
+                    (path, article_blog_id, is_principal)
+                     VALUES (:path, :article_blog_id, :is_principal)";
+
+        $statement = $this->pdo->prepare($req);
+        $statement->bindValue('path', $articleImage->getPath(), \PDO::PARAM_STR);
+        $statement->bindValue('article_blog_id', $articleImage->getArticleBlogId(), \PDO::PARAM_INT);
+        $statement->bindValue('is_principal', $articleImage->getisPrincipal(), \PDO::PARAM_BOOL);
+        $statement->execute();
+    }
+
+    public function deleteImageFromArticle($id)
+    {
+        $req = "DELETE FROM image
+                  WHERE article_blog_id =$id";
+        $statement = $this->pdo->prepare($req);
+        $statement->execute();
     }
 }

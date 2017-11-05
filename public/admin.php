@@ -5,6 +5,7 @@ use AtelierO\Controller\AdminController;
 use AtelierO\Controller\CreationController;
 use AtelierO\Controller\Controller;
 use AtelierO\Controller\HomeController;
+use AtelierO\Controller\ArticleBlogController;
 session_start();
 
 require '../connect.php';
@@ -24,11 +25,25 @@ if (!empty($_GET['route'])) {
         echo $controller->showAdminAccueilAction();
     }
 
+    if ($route == 'adminBlogList') {
+        $controller = new ArticleBlogController();
+        echo $controller->listAction();
+    }
+
+    if ($route == 'addArticleBlog') {
+        $controller = new ArticleBlogController();
+        echo $controller->addArticle();
+    }
+
+    if ($route == 'deleteArticleBlog') {
+        $controller = new ArticleBlogController();
+        echo $controller->deleteAction();
+    }
+
     if ($route == 'adminShop') {
         $controller = new CreationController();
         echo $controller->listAction();
     }
-
 
     if ($route == 'addShopCreation') {
         $controller = new CreationController();
@@ -53,5 +68,3 @@ if (!empty($_GET['route'])) {
     $controller = new AdminController();
     echo $controller->showAdminAction();
 }
-
-?>
