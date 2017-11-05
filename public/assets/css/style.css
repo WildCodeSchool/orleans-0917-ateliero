@@ -175,6 +175,14 @@
     background-color: #F8DCD1;
 }
 
+.form-inline-shop {
+    margin-top: 5px;
+    display: inline-block;
+}
+.hrShop {
+    margin: 0;
+}
+
 .shopQuote {
     margin-top: 2%;
     font-family: 'Dancing Script', cursive;
