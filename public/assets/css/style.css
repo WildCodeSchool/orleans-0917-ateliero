@@ -47,6 +47,7 @@
 .nav > li > a:focus, .nav > li > a:hover {
     background-color: transparent;
 }
+
 /* End NavBar */
 
 /* Start Banner */
@@ -110,7 +111,6 @@
     border-bottom: inset white;
 }
 
-
 .imgpc:hover {
 
 }
@@ -137,6 +137,7 @@
     height: 300px;
     max-width: 100%;
 }
+
 /* End News */
 
 /* Start AboutUs */
@@ -160,26 +161,42 @@
 
 /* Start Shop */
 
-.thumbnail >img {
+.thumbnail > img {
     height: 300px;
     object-fit: cover; /* Do not scale the image */
     object-position: center; /* Center the image within the element */
 }
- .thumbnailShop {
-     height: 400px;
- }
 
- .btn-shop {
-     background-color: #F8DCD1;
- }
+.thumbnailShop {
+    height: 400px;
+}
 
- .shopQuote {
-     margin-top: 2%;
-     font-family: 'Dancing Script', cursive;
-     font-size: calc(1.72vw + 15px);
-     color: #5b5b5b;
-     margin-bottom: 30px;
- }
+.btn-shop {
+    background-color: #F8DCD1;
+}
+
+.shopQuote {
+    margin-top: 2%;
+    font-family: 'Dancing Script', cursive;
+    font-size: calc(1.72vw + 15px);
+    color: #5b5b5b;
+    margin-bottom: 30px;
+}
+
+.myList li {
+    display: none;
+    list-style-type:none;
+}
+
+.btnSeeMore {
+    color: black;
+    cursor: pointer;
+    background-color: #F8DCD1;
+}
+
+.btnSeeMore:hover {
+    color: black;
+}
 
 /* End Shop */
 
@@ -327,7 +344,8 @@
 }
 
 .imgPartner {
-    height: 75px;width: 75px;
+    height: 75px;
+    width: 75px;
 }
 
 .thumbnailPartner {
@@ -339,7 +357,8 @@
 /*-*-*-*-* END CSS *-*-*-*-*/
 
 /*-*-*-*-* START MEDIA QUERIES *-*-*-*-*/
-@media screen and (max-width: 767px) {  /* COL-XS */
+@media screen and (max-width: 767px) {
+    /* COL-XS */
     /* Start Navbar */
     .navbar-header {
         background-color: #F8DCD1;
@@ -361,8 +380,8 @@
     .logonav {
         padding: 5%;
     }
-    /* End Navbar */
 
+    /* End Navbar */
     .button_form_footer {
         margin-top: 3%;
     }
