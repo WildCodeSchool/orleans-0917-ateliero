@@ -328,6 +328,18 @@ display: inline-block;
     height: 180px;
 }
 
+.imagesArticle {
+    padding: 2%;
+}
+
+.imgblogthMain {
+    max-height: 350px;
+}
+
+.imgblogth {
+    max-height: 200px;
+}
+
 .delPartnerButton {
     position: absolute;
     width: 90%;
@@ -340,7 +352,6 @@ display: inline-block;
     bottom: 5px;
     margin-bottom: 30px;
 }
-
 /* End Admin */
 
 /*-*-*-*-* END CSS *-*-*-*-*/
