@@ -255,4 +255,19 @@ class ArticleBlogController extends Controller
 
     }
 
+    public function showAction()
+    {
+        $articleBlogManager = new ArticleBlogManager();
+        $articlesBlog = $articleBlogManager->findAll();
+
+        $imageManager = new ImageManager();
+        $images = $imageManager->findAll();
+
+        return $this->twig->render('/Blog/blog.html.twig', [
+            'articlesBlog' => $articlesBlog,
+            'route' => $_GET['route'],
+            'images' => $images,
+        ]);
+    }
+
 }
