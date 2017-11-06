@@ -204,7 +204,16 @@
 
 .btnSeeMore:hover {
     color: black;
+    cursor: pointer;
+    background-color: #F8DCD1;
 }
+
+.btnSeeMore:visited {
+    color: black;
+    cursor: pointer;
+    background-color: #F8DCD1;
+}
+
 
 /* End Shop */
 
