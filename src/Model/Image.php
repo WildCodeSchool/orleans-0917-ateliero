@@ -73,20 +73,19 @@ class Image
     /**
      * @return mixed
      */
-    public function getisPrincipal()
+    public function getIsPrincipal()
     {
         return $this->isPrincipal;
     }
 
     /**
-     * @param mixed $isPrincipal
-     * @return Image
+     * @param $isPrincipal
+     * @return $this
      */
-    public function setisPrincipal($isPrincipal)
+    public function setIsPrincipal($isPrincipal)
     {
         $this->isPrincipal = $isPrincipal;
         return $this;
     }
-
 
 }

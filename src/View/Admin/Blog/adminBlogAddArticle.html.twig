@@ -1,0 +1,35 @@
+{% extends 'Admin/Blog/adminBlog.html.twig' %}
+
+{% block blogAction %}
+
+    <div class="panel panel-info">
+        <div class="panel-heading"><b>Ajouter un article au blog</b></div>
+        <div class="panel-body">
+            <form method="post" action="admin.php?route=addArticleBlog" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="title">Titre de l'article</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="" value="{{ article['title'] ?? '' }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="text" class="form-control" id="date" name="date" placeholder="aaaa/mm/jj" value="{{ article['date'] ?? "now"|date("Y/m/d") }}">
+                </div>
+
+                <div class="form-group">
+                    <input type="hidden" name="id" value="{{ articleBlog.id }}"/>
+                    <label for="articleBlogSummernote">Contenu de l'article</label>
+                    <textarea id="articleBlogSummernote" class="form-control" name="articleBlogSummernote">{{ article['articleBlogSummernote'] ?? '' }}</textarea>
+                    <label for="articleBlogFile">Selectionner vos images :</label>
+                    <input type="file" name="articleBlogFile[]" id="articleBlogFile" multiple="multiple" class="uploadInput"/>
+                    <small>Format: .jpg ou .png | Taille maximum: 1Mo</small>
+                </div>
+
+                <button type="submit" class="btn btn-success">Valider l'article</button>
+            </form>
+
+            <a class="btn btn-info pull-right" href="admin.php?route=adminBlogList" role="button">Liste des articles</a>
+        </div>
+    </div>
+
+{% endblock %}

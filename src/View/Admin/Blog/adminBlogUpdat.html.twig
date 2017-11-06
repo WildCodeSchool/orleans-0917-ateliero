@@ -1,0 +1,91 @@
+{% extends 'Admin/Blog/adminBlog.html.twig' %}
+
+{% block blogAction %}
+
+    <div class="panel panel-info">
+        <div class="panel-heading"><b>Modifier un article du blog</b></div>
+        <div class="panel-body">
+            <form method="post" action="admin.php?route=updateArticleBlog&id={{ articleBlog.id }}"
+                  enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="title">Titre de l'article</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder=""
+                           value="{{ articleBlog.title ?? '' }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="text" class="form-control" id="date" name="date" placeholder="aaaa/mm/jj"
+                           value="{{ articleBlog.date ?? '' }}">
+                </div>
+
+                <div class="form-group">
+                    <input type="hidden" name="id" value="{{ articleBlog.id }}"/>
+                    <label for="articleBlogSummernote">Contenu de l'article</label>
+                    <textarea id="articleBlogSummernote" class="form-control"
+                              name="articleBlogSummernote">{{ articleBlog.content ?? '' }}</textarea>
+                </div>
+                {% if imagesArticleBlog|length >= 5 %}
+                    <p class="alert-danger text-center">Vous ne pouvez pas télécharger plus de 5 images</p>
+                {% else %}
+                    <label for="articleBlogFile">Sélectionner une image supplémentaire :</label>
+                    <input type="file" name="articleBlogFile[]" id="articleBlogFile" class="uploadInput"/>
+                    <small>Format: .jpg ou .png | Taille maximum: 1Mo</small>
+                {% endif %}
+
+                <div class="row imagesArticle">
+                    <b><u>IMAGE PRINCIPALE :</u></b>
+                </div>
+                <div class="row">
+                    {% for image in imagesArticleBlog %}
+                        {% if image.is_principal == 1 %}
+                            <div class="col-sm-offset-4 col-sm-4">
+                                <figure class="thumbnail">
+                                    <img src="uploads/{{ image.path }}" class="imgblogthMain" alt="#">
+                                    <figcaption class="caption">
+                                        <input type="radio" name="is_principal" value="{{ image.id }}" checked/>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <button type="submit" name="deleteImage" value="{{ image.id }}" class="btn btn-danger btn-sm pull-right">Supprimer</button>
+                                            </div>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <div class="row imagesArticle">
+                    <b><u>IMAGE{% if (image.is_principal == 0)|length > 1 %}S{% endif %} SECONDAIRES :</u></b>
+                </div>
+                <div class="row">
+                    {% for image in imagesArticleBlog %}
+                        {% if image.is_principal == 0 %}
+                            <div class="col-xs-3">
+                                <figure class="thumbnail">
+                                    <img src="uploads/{{ image.path }}" class="imgblogth" alt="#">
+                                    <figcaption class="caption">
+                                        <input type="radio" name="is_principal" value="{{ image.id }}"/>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <button type="submit" name="deleteImage" value="{{ image.id }}" class="btn btn-danger btn-sm pull-right">Supprimer</button>
+                                            </div>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <button type="submit" class="btn btn-success pull-right" name="updateBlogArticle" value="update">Valider
+                    l'article
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <a class="btn btn-info" href="admin.php?route=adminBlogList" role="button">Liste des articles</a>
+
+{% endblock %}
