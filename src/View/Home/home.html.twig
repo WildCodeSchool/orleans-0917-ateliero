@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block content %}
+
     {% include 'Home/banner.html.twig' %}
     {% include 'Home/citation.html.twig' %}
     {% include 'Home/mosaic.html.twig' %}
@@ -8,6 +9,11 @@
 {% endblock %}
 {% block js %}
     {{ parent() }}
+    {% if messages['success'] %}
+        <script>
+            $('#form_footer').modal('show');
+        </script>
+    {% endif %}
     {% if errors %}
         <script>
             $('#form_footer').modal('show');

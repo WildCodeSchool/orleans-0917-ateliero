@@ -30,6 +30,13 @@
     <div class="panel panel-info">
         <div class="panel-heading"><b>Ajouter un objet au shop</b></div>
         <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <a class="btn btn-info pull-right"  href="admin.php?route=adminShop">
+                      Liste des créations
+                    </a>
+                </div>
+            </div>
             <form method="post" action="admin.php?route={{ creation.id ? 'updateShopAction' : 'addShopCreation' }}"
                   enctype="multipart/form-data">
                 <div class="form-group">
@@ -49,6 +56,8 @@
                     <div class="input-group uploadInput">
                         <input type="file" id="url_picture" name="url_picture"
                                placeholder="">
+                        <small>Format: .jpg ou .png | Taille maximum: 1Mo</small>
+
                     </div>
                 </div>
                 {% if  creation.id %}
@@ -62,7 +71,7 @@
                            value="{{ creation.urlEtsy }}" placeholder="">
                 </div>
                 <input type="hidden" name="id" value="{{ creation.id }}">
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-default">Ajouter</button>
             </form>
         </div>
     </div>

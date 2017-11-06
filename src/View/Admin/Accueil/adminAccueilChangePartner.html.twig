@@ -12,7 +12,7 @@
                 <div class="col-xs-6 col-sm-3 col-md-2 col-lg-2">
                     <div class="thumbnail thumbnailPartner">
                         <a href="{{ partner.url }}" target="_blank">
-                            <img src="uploads/{{ partner.url_picture }}" class="thumbnail img-responsive imgPartner"
+                            <img src="uploads/{{ partner.url_picture }}" alt="{{ partner.name }}" title="{{ partner.name }}" class="thumbnail img-responsive imgPartner"
                                  alt="">
                         </a>
                         <div class="caption partnerAbsolute">
@@ -48,7 +48,7 @@
                         <div class="form-group">
                             <label for="partnerFile">Choisir une image:</label>
                             <input type="file" name="partnerFile" id="partnerFile"
-                                   class="form-control uploadInput"/>
+                                   class="uploadInput"/>
                             <small>Format: jpg, jpeg, gif, png | Taille maximum: 2Mo | Dimensions recommandées: 200px * 200px</small>
                         </div>
 
