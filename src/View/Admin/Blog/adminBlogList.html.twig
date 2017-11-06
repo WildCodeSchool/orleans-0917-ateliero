@@ -4,7 +4,7 @@
 
     <div class="panel panel-info">
         <div class="panel-heading">
-            <h1>Liste des articles</h1>
+            <b>Liste des articles</b>
         </div>
         <div class="panel-body">
             <div class="row">
@@ -32,13 +32,13 @@
                         </div>
                         <div class="col-xs-5 col-xs-offset-1 col-sm-1">
                             <a href="admin.php?route=updateArticleBlog&id={{ articleBlog.id }}"
-                               class="btn btn-warning btn-sm">Modifier</a>
+                               class="btn btn-warning btn-sm pull-right">Modifier</a>
                         </div>
 
                         <div class="col-xs-5 col-sm-1">
                             <form action="admin.php?route=deleteArticleBlog" method="post">
                                 <input type="hidden" name="id" value="{{ articleBlog.id }}"/>
-                                <button class="btn btn-danger btn-sm" type="submit" name="">Supprimer</button>
+                                <button class="btn btn-danger btn-sm pull-right" type="submit" name="">Supprimer</button>
                             </form>
                         </div>
                     </div>
