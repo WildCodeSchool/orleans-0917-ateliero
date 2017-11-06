@@ -1,0 +1,6 @@
+<FilesMatch "admin.php">
+    AuthName "Administration Atelier O"
+    AuthType Basic
+    AuthUserFile "/home/ubuntu/ateliero/public/.htpasswd"
+    Require valid-user
+</FilesMatch>

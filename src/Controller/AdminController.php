@@ -21,7 +21,7 @@ class AdminController extends Controller
     */
     public function showAdminAction()
     {
-        return $this->twig->render('Admin/home.html.twig');
+        header ("location: admin.php?route=adminAccueil");
     }
 
     /*
@@ -31,6 +31,10 @@ class AdminController extends Controller
     {
         $aboutUsPost = null;
         $messages = [];
+
+        if (empty($_GET['route'])) {
+            $_GET['route'] = "Accueil";
+        }
 
         if (isset($_FILES['banner']) AND $_FILES['banner']['name'] == '') {
             $messages['danger'][] = "Vous devez sélectionner une image.";
