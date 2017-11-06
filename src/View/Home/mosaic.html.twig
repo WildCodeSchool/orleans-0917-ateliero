@@ -1,84 +1,110 @@
 <!-- PC -->
-<div class="col-xs-offset-1 col-sm-10">
-    <h2 class="actu">Notre Actualité</h2>
-    <hr class="linetitle"/>
-</div>
 <div class="row">
-    <div class="row col-lg-offset-1 col-lg-10 hidden-md hidden-sm hidden-xs">
+    <div class="col-xs-offset-1 col-sm-10">
+        <h2 class="actu">Notre Actualité</h2>
+        <hr class="linetitle"/>
+    </div>
+</div>
 
-        <a href="#"><img class="col-lg-4 imgblog" src="{{ imgBlog[0].path }}" alt=""></a>
+<div class="row">
+    <div class="col-xs-offset-1 col-sm-10 hidden-xs hidden-sm hidden-md">
+        <div class="col-lg-4">
+            <div class="row">
+                <div class="col-lg-12">
+                    <a href="#"><img class="imgblog imgdecalbottom" src="{{ imgBlog[0].path }}" alt=""></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <a href="{{ urlImageInsta.0 }}"><img class="imgpc" src="{{ imageInsta.0 }}" alt=""></a>
+                </div>
+                <div class="col-lg-6">
+                    <a href="{{ urlImageInsta.1 }}"><img class="imgpc" src="{{ imageInsta.1 }}" alt=""></a>
+                </div>
+            </div>
+        </div>
 
         <div class="col-lg-4">
             <div class="row">
-                <a href="#"><img class="col-lg-6 imgpc" src="http://via.placeholder.com/350x150" alt=""></a>
-                <a href="#"><img class="col-lg-6 imgpc" src="http://via.placeholder.com/350x150" alt=""></a>
+                <div class="col-lg-6">
+                    <a href="{{ urlImageInsta.2 }}"><img class="imgpc" src="{{ imageInsta.2 }}" alt=""></a>
+                </div>
+                <div class="col-lg-6">
+                    <a href="{{ urlImageInsta.3 }}"><img class="imgpc" src="{{ imageInsta.3 }}" alt=""></a>
+                </div>
             </div>
-        </div>
-
-        <a href="#"><img class="col-lg-4 imgblog" src="{{ imgBlog[1].path }}" alt=""></a>
-
-    </div>
-    <div class="row col-lg-offset-1 col-lg-10 hidden-md hidden-sm hidden-xs">
-        <div class="col-lg-4 imginsta">
             <div class="row">
-                <a href="#"><img class="col-lg-6 imgpc" src="http://via.placeholder.com/350x150" alt=""></a>
-                <a href="#"><img class="col-lg-6 imgpc" src="http://via.placeholder.com/350x150" alt=""></a>
+                <div class="col-lg-12">
+                    <a href="#"><img class="imgblog imgdecaltop" src="{{ imgBlog[1].path }}" alt=""></a>
+                </div>
             </div>
         </div>
 
-        <a href="#"><img class="col-lg-4 imgblog imgup" src="{{ imgBlog[2].path }}" alt=""></a>
-
-        <div class="col-lg-4 imginsta">
+        <div class="col-lg-4">
             <div class="row">
-                <a href="#"><img class="col-lg-6 imgpc" src="http://via.placeholder.com/350x150" alt=""></a>
-                <a href="#"><img class="col-lg-6 imgpc" src="http://via.placeholder.com/350x150" alt=""></a>
+                <div class="col-lg-12">
+                    <a href="#"><img class="imgblog imgdecalbottom" src="{{ imgBlog[2].path }}" alt=""></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <a href="{{ urlImageInsta.4 }}"><img class="imgpc" src="{{ imageInsta.4 }}" alt=""></a>
+                </div>
+                <div class="col-lg-6">
+                    <a href="{{ urlImageInsta.5 }}"><img class="imgpc" src="{{ imageInsta.5 }}" alt=""></a>
+                </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Tablette -->
+<!-- Tablette -->
     <h3 class="hidden-lg hidden-xs">Nos derniers articles</h3>
+    <hr class="hidden-lg hidden-xs linetitlemini"/>
     <div class="row hidden-lg hidden-xs">
 
-        <a href="#"><img class="col-md-6 col-sm-6 imgtab" src="{{ imgBlog[0].path }}" alt=""></a>
-        <a href="#"><img class="col-md-6 col-sm-6 imgtab" src="{{ imgBlog[1].path }}" alt=""></a>
+        <a href="#"><img class="col-md-6 col-sm-6 imgtab imgdecaltop" src="{{ imgBlog[0].path }}" alt=""></a>
+        <a href="#"><img class="col-md-6 col-sm-6 imgtab imgdecaltop" src="{{ imgBlog[1].path }}" alt=""></a>
 
     </div>
-    <div class="row hidden-lg hidden-xs actuspacetop">
-
-        <a href="#"><img class="col-md-6 col-sm-6 imgtab" src="{{ imgBlog[2].path }}" alt=""></a>
-        <a href="#"><img class="col-md-6 col-sm-6 imgtab" src="{{ imgBlog[3].path }}" alt=""></a>
-
-    </div>
-    <h3 class="hidden-lg hidden-xs actu">Notre fil Instagram</h3>
     <div class="row hidden-lg hidden-xs">
 
-        <a href="#"><img class="col-md-6 col-sm-6 imgtab" src="http://via.placeholder.com/350x150" alt=""></a>
-        <a href="#"><img class="col-md-6 col-sm-6 imgtab" src="http://via.placeholder.com/350x150" alt=""></a>
+        <a href="#"><img class="col-md-6 col-sm-6 imgtab imgdecaltop" src="{{ imgBlog[2].path }}" alt=""></a>
+        <a href="#"><img class="col-md-6 col-sm-6 imgtab imgdecaltop" src="{{ imgBlog[3].path }}" alt=""></a>
 
     </div>
-    <div class="row hidden-lg hidden-xs actuspacetop">
+    <h3 class="titleteltablette hidden-lg hidden-xs actu">Notre fil Instagram</h3>
+    <hr class="hidden-lg hidden-xs linetitlemini"/>
+    <div class="row hidden-lg hidden-xs">
 
-        <a href="#"><img class="col-md-6 col-sm-6 imgtab" src="http://via.placeholder.com/350x150" alt=""></a>
-        <a href="#"><img class="col-md-6 col-sm-6 imgtab" src="http://via.placeholder.com/350x150" alt=""></a>
+        <a href="{{ urlImageInsta.0 }}"><img class="col-md-6 col-sm-6 imgtab imgdecaltop" src="{{ imageInsta.0 }}" alt=""></a>
+        <a href="{{ urlImageInsta.1 }}"><img class="col-md-6 col-sm-6 imgtab imgdecaltop" src="{{ imageInsta.1 }}" alt=""></a>
+
+    </div>
+    <div class="row hidden-lg hidden-xs">
+
+        <a href="{{ urlImageInsta.2 }}"><img class="col-md-6 col-sm-6 imgtab imgdecaltop" src="{{ imageInsta.2 }}" alt=""></a>
+        <a href="{{ urlImageInsta.3 }}"><img class="col-md-6 col-sm-6 imgtab imgdecaltop" src="{{ imageInsta.3 }}" alt=""></a>
 
     </div>
 
-    <!-- Mobile -->
+<!-- Mobile -->
     <h3 class="hidden-lg hidden-md hidden-sm">Nos derniers articles</h3>
+    <hr class="hidden-lg hidden-md hidden-sm linetitlemini"/>
     <div class="row hidden-lg hidden-md hidden-sm imgtel">
 
-        <a href="#"><img class="col-xs-12" src="{{ imgBlog[0].path }}" alt="">
-        <a href="#"><img class="col-xs-12 actuspacetop" src="{{ imgBlog[1].path }}" alt=""></a>
-        <a href="#"><img class="col-xs-12 actuspacetop" src="{{ imgBlog[2].path }}" alt=""></a>
+        <a href="#"><img class="col-xs-12 imgdecaltop" src="{{ imgBlog[0].path }}" alt=""></a>
+        <a href="#"><img class="col-xs-12 imgdecaltop" src="{{ imgBlog[1].path }}" alt=""></a>
+        <a href="#"><img class="col-xs-12 imgdecaltop" src="{{ imgBlog[2].path }}" alt=""></a>
 
     </div>
     <h3 class="hidden-lg hidden-md hidden-sm actu">Notre fil Instagram</h3>
+    <hr class="hidden-lg hidden-md hidden-sm linetitlemini"/>
     <div class="row hidden-lg hidden-md hidden-sm imgtel">
 
-        <a href="#"><img class="col-xs-12" src="../../images/banner/banner.jpg" alt="">
-        <a href="#"><img class="col-xs-12 actuspacetop" src="http://via.placeholder.com/350x150" alt=""></a>
-        <a href="#"><img class="col-xs-12 actuspacetop" src="http://via.placeholder.com/350x150" alt=""></a>
+        <a href="{{ urlImageInsta.0 }}"><img class="col-xs-12 imgdecaltop" src="{{ imageInsta.0 }}" alt=""></a>
+        <a href="{{ urlImageInsta.1 }}"><img class="col-xs-12 imgdecaltop" src="{{ imageInsta.1 }}" alt=""></a>
+        <a href="{{ urlImageInsta.2 }}"><img class="col-xs-12 imgdecaltop" src="{{ imageInsta.2 }}" alt=""></a>
 
     </div>
 </div>

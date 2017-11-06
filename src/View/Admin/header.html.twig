@@ -1,13 +1,13 @@
 <header>
     <hr/>
     <!-- START PANEL PRINCIPAL -->
-    <h2>ADMINISTRATION L'ATELIER'O</h2>
+    <h2>ADMINISTRATION L'ATELIER O</h2>
         <ul class="nav nav-tabs panel-primary nav-justified">
             <li role="presentation" {% if route == 'adminAccueil' %}class="active"{% endif %}>
                 <a href="admin.php?route=adminAccueil" aria-controls="accueil" role="tab">Accueil</a>
             </li>
             <li role="presentation" {% if route == 'adminBlog' %}class="active"{% endif %}>
-                <a href="admin.php?route=adminBlog" aria-controls="blog" role="tab">Blog</a>
+                <a href="admin.php?route=adminBlogList" aria-controls="blog" role="tab">Blog</a>
             </li>
             <li role="presentation" {% if route == 'adminShop' or route == 'updateShopAction'%}class="active"{% endif %}>
                 <a href="admin.php?route=adminShop" aria-controls="shop" role="tab">Shop</a>
