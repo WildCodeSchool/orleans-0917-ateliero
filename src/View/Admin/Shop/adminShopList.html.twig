@@ -44,10 +44,10 @@
 
                     <div class="col-md-3 col-sm-4  col-xs-12">
                         <div class="pull-right">
-                            <button href="admin.php?route=updateShopAction&id={{ creation.id }}"
-                                    class="btn btn-warning btn-sm " type="submit" name="">
-                                Modifier
-                            </button>
+                            <a href="admin.php?route=updateShopAction&id={{ creation.id }}"
+                               class="btn btn-warning btn-sm" type="submit" name="">Modifier
+                            </a>
+
                             <form action="admin.php?route=deleteShopAction" method="post" class="form-inline-shop">
                                 <input type="hidden" name="id" value="{{ creation.id }}"/>
                                 <button class="btn btn-danger btn-sm" type="submit" name="">

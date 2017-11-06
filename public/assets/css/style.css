@@ -110,6 +110,7 @@
 
 .imgdecalbottom {
     margin-bottom: 30px;
+
 }
 
 .imgup {
@@ -139,6 +140,7 @@
     height: 300px;
     max-width: 100%;
 }
+  
 .titleteltablette {
     margin: 5%;
 }
@@ -182,14 +184,49 @@
     height: 400px;
 }
 
-.form-inline-shop {
-    margin-top: 5px;
-display: inline-block;
+.btn-shop {
+    background-color: #F8DCD1;
 }
 
+.form-inline-shop {
+    margin-top: 5px;
+    display: inline-block;
+}
 .hrShop {
     margin: 0;
 }
+
+.shopQuote {
+    margin-top: 2%;
+    font-family: 'Dancing Script', cursive;
+    font-size: calc(1.72vw + 15px);
+    color: #5b5b5b;
+    margin-bottom: 30px;
+}
+
+.myList li {
+    display: none;
+    list-style-type:none;
+}
+
+.btnSeeMore {
+    color: black;
+    cursor: pointer;
+    background-color: #F8DCD1;
+}
+
+.btnSeeMore:hover {
+    color: black;
+    cursor: pointer;
+    background-color: #F8DCD1;
+}
+
+.btnSeeMore:visited {
+    color: black;
+    cursor: pointer;
+    background-color: #F8DCD1;
+}
+
 
 /* End Shop */
 
