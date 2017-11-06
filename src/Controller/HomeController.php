@@ -20,8 +20,17 @@ class HomeController extends Controller
 {
     public function showAction()
     {
+
         $errors = [];
         $mail = '';
+        $messages = [];
+
+        if (!empty($_SESSION['success'])) {
+            if ('mailContactOK' == $_SESSION['success']) {
+                $messages['success'][] = "Votre message a bien été envoyé, nous reviendrons vers vous dans les meilleurs délais.";
+                session_destroy();
+            }
+        }
 
         if (!empty($_POST) AND isset($_POST['mailForm'])) {
             $mail = $_POST;
@@ -61,7 +70,7 @@ class HomeController extends Controller
 
                 // Send the message
                 $mailer->send($message);
-
+                $_SESSION['success'] = "mailContactOK";
                 header('Location:index.php');
             }
         }
@@ -81,6 +90,7 @@ class HomeController extends Controller
             $urlImageInsta[] = $imgInsta['link'];
         }
 
+
         $imgManager = new ImageManager();
         $imgBlog = $imgManager->extractPicture();
         $aboutManager = new AboutUsManager();
@@ -93,6 +103,7 @@ class HomeController extends Controller
             'partners' => $partners,
             'imageInsta' => $imageInsta,
             'urlImageInsta' => $urlImageInsta,
+            'messages' => $messages,
         ]);
     }
 }

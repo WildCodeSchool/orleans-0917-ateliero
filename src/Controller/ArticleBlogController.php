@@ -112,6 +112,7 @@ class ArticleBlogController extends Controller
         return $this->twig->render('Admin/Blog/adminBlogList.html.twig', [
             'articlesBlog' => $listArticles,
             'messages' => $messages,
+            'route' => $_GET['route'],
         ]);
     }
 
@@ -248,7 +249,10 @@ class ArticleBlogController extends Controller
 
         return $this->twig->render('Admin/Blog/adminBlogUpdat.html.twig', ['articleBlog' => $articleBlog,
             'imagesArticleBlog' => $imagesArticle,
-            'messages' => $messages,]);
+            'messages' => $messages,
+            'route' => $_GET['route'],
+        ]);
+
     }
 
     public function showAction()

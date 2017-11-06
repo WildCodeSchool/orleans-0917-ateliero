@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 use AtelierO\Controller\AdminController;
 use AtelierO\Controller\Controller;
 use AtelierO\Controller\CreationController;

@@ -15,6 +15,20 @@
             </ul>
         </div>
     {% endif %}
+
+    {% if messages['success'] %}
+        <div class="alert alert-success fade in">
+            <button type="button" class="close" id="success-alert" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <ul>
+                <p>Super !</p>
+                {% for type, message in messages %}
+                {% for msg in message %}
+                    <li>{{ msg }}</li>
+                {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
     <form action="index.php" method="post">
         <div class="form-group">
             <label for="name"><h3>Votre nom:</h3></label>
