@@ -194,6 +194,70 @@ display: inline-block;
 /* End Shop */
 
 /* Start Blog */
+
+.blog {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.blogArticle {
+    margin-top: 5%;
+    height: 450px;
+    margin-right: 0;
+}
+
+.blog h2 {
+    font-family: "Encode Sans Expanded", Helvetica, sans-serif;
+}
+
+.blog h3 {
+    font-family: "Encode Sans Expanded",  Helvetica, sans-serif;
+}
+
+.blog p {
+    font-family: 'Open Sans',  Helvetica, sans-serif;
+    word-break: break-all;
+    margin-left: 2%;
+}
+
+.blog .vignettes {
+    position: relative;
+    bottom: 0;
+}
+
+.blog .mainImage {
+    height: 450px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.blog .imgVignettes {
+    height: 100px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.blog .imgModal {
+    width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+.myList li {
+    display: none;
+    list-style-type: none;
+}
+
+.btnSeeMore {
+    color: black;
+    cursor: pointer;
+    background-color: #F8DCD1;
+    margin-top: 5%;
+}
+
+
 /* End Blog */
 
 /* Start Footer */

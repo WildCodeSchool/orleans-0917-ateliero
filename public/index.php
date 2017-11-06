@@ -4,6 +4,7 @@ use AtelierO\Controller\AdminController;
 use AtelierO\Controller\Controller;
 use AtelierO\Controller\CreationController;
 use AtelierO\Controller\HomeController;
+use AtelierO\Controller\ArticleBlogController;
 
 require '../connect.php';
 require '../vendor/autoload.php';
@@ -18,7 +19,8 @@ if (!empty($_GET['route'])) {
     }
 
     if ($route == 'blog') {
-        // TODO
+        $controller = new ArticleBlogController();
+        echo $controller->showAction();
     }
 
     if ($route == 'shop') {

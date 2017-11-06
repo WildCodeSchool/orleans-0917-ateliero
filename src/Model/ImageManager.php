@@ -86,4 +86,12 @@ class ImageManager extends EntityManager
         $statement->bindValue('id', $image->getId(), \PDO::PARAM_INT);
         $statement->execute();
     }
+
+    public function findAll()
+    {
+        $req = "SELECT * FROM image";
+        $statement = $this->pdo->prepare($req);
+        $statement->execute();
+        return $statement->fetchAll(\PDO::FETCH_CLASS, \AtelierO\Model\Image::class);
+    }
 }
