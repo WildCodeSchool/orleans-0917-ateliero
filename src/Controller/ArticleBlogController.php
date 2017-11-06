@@ -251,4 +251,19 @@ class ArticleBlogController extends Controller
             'messages' => $messages,]);
     }
 
+    public function showAction()
+    {
+        $articleBlogManager = new ArticleBlogManager();
+        $articlesBlog = $articleBlogManager->findAll();
+
+        $imageManager = new ImageManager();
+        $images = $imageManager->findAll();
+
+        return $this->twig->render('/Blog/blog.html.twig', [
+            'articlesBlog' => $articlesBlog,
+            'route' => $_GET['route'],
+            'images' => $images,
+        ]);
+    }
+
 }
