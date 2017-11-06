@@ -6,3 +6,4 @@ connect.php
 /public/images/blog/*
 /public/uploads/*
 !.gitkeep
+/public/.htpasswd
