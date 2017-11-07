@@ -96,6 +96,7 @@ font-family: "Open Sans", Helvetica, sans-serif;
 /* End quote */
 
 /* Start News */
+
 /* News Form PC */
 .actu {
     margin-top: 5%;
@@ -175,7 +176,9 @@ font-family: "Open Sans", Helvetica, sans-serif;
 .partnerImage {
     display: inline-block;
     max-height: 100px;
-    margin: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 30px;
 }
 
 .partnerSection {
@@ -266,7 +269,7 @@ font-family: "Open Sans", Helvetica, sans-serif;
 }
 
 .blog p {
-    font-family: 'Open Sans',  Helvetica, sans-serif;
+    font-family: 'Open Sans',  Helvetica, sans-serif!important;
     word-break: break-all;
     margin-left: 2%;
 }
@@ -301,7 +304,6 @@ font-family: "Open Sans", Helvetica, sans-serif;
     color: black;
     cursor: pointer;
     background-color: #F8DCD1;
-    margin-top: 5%;
 }
 
 .btnSeeMore2:focus {
@@ -392,18 +394,15 @@ font-family: "Open Sans", Helvetica, sans-serif;
 
 .modal_form {
     font-family: 'Encode Sans Expanded', sans-serif;
-    font-size: calc(1vw + 2px);
-}
-.modal_form li {
-    font-size: calc(0.5vw + 5px);
+    font-size: calc(0.4vw + 10px);
 }
 
 .modal_form h2 {
-    font-size: calc(1vw + 4px);
+    font-size: calc(0.4vw + 14px);
 }
 
 .modal_form h3 {
-    font-size: calc(1vw + 3px);
+    font-size: calc(0.4vw + 12px);
 }
 
 .modal_form textarea {
@@ -412,15 +411,15 @@ font-family: "Open Sans", Helvetica, sans-serif;
 
 .footer_mentionL {
     font-family: 'Encode Sans Expanded', sans-serif;
-    font-size: calc(0.5vw + 2px);
+    font-size: calc(0.2vw + 10px);
 }
 
 .footer_mentionL h2 {
-    font-size: calc(1vw + 4px);
+    font-size: calc(0.2vw + 14px);
 }
 
 .footer_mentionL h3 {
-    font-size: calc(1vw + 3px);
+    font-size: calc(0.2vw + 12px);
 }
 
 /* End Footer */
