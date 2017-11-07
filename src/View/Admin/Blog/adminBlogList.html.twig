@@ -15,31 +15,31 @@
                         <div class="col-md-7 col-sm-6 col-xs-9">
                             <h2>Nom de l'article</h2>
                         </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3">
+                        <div class="col-md-2 col-sm-2 col-xs-3">
                             <h2>Date</h2>
                         </div>
                     </div>
 
                     {% for articleBlog in articlesBlog %}
-                        <hr/>
+                    <hr/>
 
-                        <div class="row">
-                        <div class="col-xs-8 col-sm-5 col-md-6">
+                    <div class="row">
+                        <div class="col-md-7 col-sm-6 col-xs-9">
                             <h4>{{ articleBlog.title | title }}</h4>
                         </div>
-                        <div class="col-xs-4 col-sm-2 col-md-2">
-                            <h4 class="pull-right">{{ articleBlog.date }}</h4>
+                        <div class="col-md-2 col-sm-2 col-xs-3">
+                            <h4>{{ articleBlog.date }}</h4>
                         </div>
-                        <div class="col-xs-5 col-xs-offset-1 col-sm-1">
-                            <a href="admin.php?route=updateArticleBlog&id={{ articleBlog.id }}"
-                               class="btn btn-warning btn-sm">Modifier</a>
-                        </div>
+                        <div class="col-md-3 col-sm-4">
+                            <div class="pull-right">
+                                <a href="admin.php?route=updateArticleBlog&id={{ articleBlog.id }}"
+                                   class="btn btn-warning btn-sm">Modifier</a>
 
-                        <div class="col-xs-5 col-sm-1">
-                            <form action="admin.php?route=deleteArticleBlog" method="post">
-                                <input type="hidden" name="id" value="{{ articleBlog.id }}"/>
-                                <button class="btn btn-danger btn-sm" type="submit" name="">Supprimer</button>
-                            </form>
+                                <form action="admin.php?route=deleteArticleBlog" method="post" class="form-inline-shop">
+                                    <input type="hidden" name="id" value="{{ articleBlog.id }}"/>
+                                    <button class="btn btn-danger btn-sm" type="submit" name="">Supprimer</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                     <hr class="hrShop">

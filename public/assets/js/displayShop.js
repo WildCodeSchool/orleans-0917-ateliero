@@ -8,7 +8,6 @@ $(document).ready(function () {
         if(shown< items) {$('#myList li:lt('+shown+')').show();}
         else {$('#myList li:lt('+items+')').show();
             $('#loadMore').hide();
-
         }
     });
 });

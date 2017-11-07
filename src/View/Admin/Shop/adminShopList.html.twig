@@ -40,14 +40,13 @@
                     <div class="col-md-8 col-sm-6 col-xs-9">
                         <h4>{{ creation.title | title }}</h4></div>
                     <div class="col-md-1 col-sm-2 col-xs-3">
-                        <h4>{{ creation.price }} €</h4></div>
+                        <h4>{{ creation.price|number_format(2, ',', '.') }} €</h4></div>
 
-                    <div class="col-md-3 col-sm-4  col-xs-12">
+                    <div class="col-md-3 col-sm-4">
                         <div class="pull-right">
                             <a href="admin.php?route=updateShopAction&id={{ creation.id }}"
                                class="btn btn-warning btn-sm" type="submit" name="">Modifier
                             </a>
-
                             <form action="admin.php?route=deleteShopAction" method="post" class="form-inline-shop">
                                 <input type="hidden" name="id" value="{{ creation.id }}"/>
                                 <button class="btn btn-danger btn-sm" type="submit" name="">
