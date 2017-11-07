@@ -5,59 +5,75 @@
         <div class="col-md-11 col-md-offset-1">
             <h2 class="blogQuote"><span class="fa fa-quote-left quoteIconLeft" aria-hidden="true"></span>
                 Découvrez notre univers
-                <span class="fa fa-quote-right quoteIconRight" aria-hidden="true"></span></h2>
+                <span class="fa fa-quote-right quoteIconRight" aria-hidden="true"></span>
+            </h2>
         </div>
-        <ul id="myListBlog">
-        {% for articleBlog in articlesBlog %}
-            <li class="myList">
-                <article class="row blogArticle">
-                {% for image in images %}
-
-                    {% if image.article_blog_id == articleBlog.id and image.is_principal == 1 %}
-                        <div class="col-md-offset-1 col-md-5">
-                            <img src="uploads/{{ image.path }}" alt="" class="img-responsive img-thumbnail mainImage"/>
-                        </div>
-                    {% endif %}
-                {% endfor %}
-
-                    <div class="col-md-5">
-                        <div class="row">
-                            <h3 class="col-md-12">{{ articleBlog.title | title }}</h3>
-                            <p class="col-md-12">{{ articleBlog.content | raw }}</p>
-                        </div>
-                        <div class="row vignettes">
+        <ul id="myListBlog" class="margeUl">
+            {% for articleBlog in articlesBlog %}
+                <li class="myList">
+                    <article class="row">
+                        <div class="blogArticle">
                             {% for image in images %}
-                                {% if image.article_blog_id == articleBlog.id and image.is_principal == 0 %}
-                                    <div class="col-md-3 col-xs-6">
-                                        <span class="modalVignettes" data-toggle="modal" data-target="#modalVignettes{{ image.id }}">
-                                            <a href="#modalVignettes">
-                                                <img src="uploads/{{ image.path }}" alt="" class="img-thumbnail imgVignettes"/>
-                                            </a>
-                                        </span>
-                                    </div>
-                                    <div class="modal fade" id="modalVignettes{{ image.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                        <div class="modal-dialog modal-lg" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <img src="uploads/{{ image.path }}" alt="" class="img-thumbnail img-responsive imgModal">
-                                                </div>
-                                            </div>
-                                        </div>
+                                {% if image.article_blog_id == articleBlog.id and image.is_principal == 1 %}
+                                    <div class="col-md-offset-1 col-md-5">
+                                        <img src="uploads/{{ image.path }}" alt=""
+                                             class="img-responsive img-thumbnail mainImage"/>
                                     </div>
                                 {% endif %}
                             {% endfor %}
+
+                            <div class="col-md-5">
+                                <div class="row">
+                                    <b class="col-lg-12 text-right">{{ articleBlog.date }}</b>
+                                </div>
+                                <div class="row">
+                                    <h3 class="titleArticleBlog">{{ articleBlog.title | title }}</h3>
+                                </div>
+                                <div class="row">
+                                    <p>{{ articleBlog.content | raw }}</p>
+                                </div>
+                                <div class="row vignettes">
+                                    {% for image in images %}
+                                        {% if image.article_blog_id == articleBlog.id and image.is_principal == 0 %}
+                                            <div class="col-sm-3 col-xs-6">
+                                        <span class="modalVignettes" data-toggle="modal"
+                                              data-target="#modalVignettes{{ image.id }}">
+                                            <a href="#modalVignettes">
+                                                <img src="uploads/{{ image.path }}" alt=""
+                                                     class="img-thumbnail imgVignettes"/>
+                                            </a>
+                                        </span>
+                                            </div>
+                                            <div class="modal fade" id="modalVignettes{{ image.id }}" tabindex="-1"
+                                                 role="dialog" aria-labelledby="myModalLabel">
+                                                <div class="modal-dialog modal-lg" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close"><span
+                                                                        aria-hidden="true">&times;</span></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <img src="uploads/{{ image.path }}" alt=""
+                                                                 class="img-thumbnail img-responsive imgModal">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </article>
-            </li>
-        {% endfor %}
+                    </article>
+                </li>
+            {% endfor %}
         </ul>
         <div class="row">
-            <div class="col-xs-2 col-xs-offset-5 ">
-                <button id="seeMore" class="btn btn-default btnSeeMore2"><span class="glyphicon glyphicon-plus"></span> En voir plus</button>
+            <div class="col-lg-12 text-center">
+                <button id="seeMore" class="btn btn-default btnSeeMore2"><span class="glyphicon glyphicon-plus"></span>
+                    En voir plus
+                </button>
             </div>
         </div>
     </section>

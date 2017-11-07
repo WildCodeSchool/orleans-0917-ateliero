@@ -170,6 +170,9 @@
     margin: 30px;
 }
 
+.partnerSection {
+    margin-top: 5%;
+}
 /* End Partner */
 
 /* Start Shop */
@@ -201,7 +204,7 @@
     font-family: 'Dancing Script', cursive;
     font-size: calc(1.72vw + 15px);
     color: #5b5b5b;
-    margin-bottom: 30px;
+    margin-bottom: 5%;
 }
 
 .myList {
@@ -238,9 +241,8 @@
 }
 
 .blogArticle {
-    margin-top: 5%;
+    margin-top: 4%;
     height: 450px;
-    margin-right: 0;
 }
 
 .blogQuote {
@@ -248,7 +250,7 @@
     font-family: 'Dancing Script', cursive;
     font-size: calc(1.72vw + 15px);
     color: #5b5b5b;
-    margin-bottom: 30px;
+    margin-bottom: 5%;
 }
 
 .blog h3 {
@@ -296,6 +298,14 @@
 
 .btnSeeMore2:focus {
     background-color: #F8DCD1;
+}
+
+.margeUl {
+    padding-left: 0;
+}
+
+.titleArticleBlog {
+    margin-left: 15px;
 }
 
 /* End Blog */
