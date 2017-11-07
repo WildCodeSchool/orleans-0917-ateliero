@@ -89,6 +89,7 @@ class CreationController extends Controller
 
                 unlink('uploads/' . $picture);
             }
+            $_SESSION['success'] = "deleteShop";
             header('Location: admin.php?route=adminShop');
         }
     }
@@ -96,12 +97,21 @@ class CreationController extends Controller
 
     public function listAction()
     {
+        $success = [];
+        if (!empty($_SESSION['success'])) {
+            if ('deleteShop' == $_SESSION['success']) {
+                $success[] = "Votre objet a bien été supprimé.";
+                session_destroy();
+            }
+        }
+
         $creationManager = new CreationManager();
         $listCreations = $creationManager->findAll();
 
         return $this->twig->render('Admin/Shop/adminShopList.html.twig', [
             'creations' => $listCreations,
             'route' => $_GET['route'],
+            'success' => $success,
 
         ]);
     }
