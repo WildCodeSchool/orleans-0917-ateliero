@@ -17,7 +17,8 @@ class Controller
     {
         $loader = new \Twig_Loader_Filesystem(__DIR__ . '/../View');
         $this->twig = new \Twig_Environment($loader, array(
-            'cache' => false,
+            'cache' => true,
+            'cache' => '../src/cache/',
         ));
     }
 }
