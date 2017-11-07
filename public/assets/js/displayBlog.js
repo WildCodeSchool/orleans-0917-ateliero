@@ -3,7 +3,6 @@ $(document).ready(function () {
     $('#myListBlog li:lt(3)').show();
     var items = $('#myListBlog li').length;
     var shown = 3;
-    if (items <= 3) {$('#seeMore').hide();};
     $('#seeMore').click(function () {
         shown = $('#myListBlog li:visible').length +3;
         if(shown< items) {$('#myListBlog li:lt('+shown+')').show();}
