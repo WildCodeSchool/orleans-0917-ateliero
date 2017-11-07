@@ -1,38 +1,54 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-11 col-md-offset-1">
-        <h2>Phrase accroche : </h2><br/>
-    </div>
-</div>
-
-<div class="row ">
-    <div class="col-md-10 col-md-offset-1">
-        <div class="row">
-            {% for creation in creations %}
-                <div class="col-sm-6 col-md-3">
-                    <figure class="thumbnail thumbnailShop">
-                        <img src="uploads/{{ creation.urlPicture }}" alt="création en céramique">
-                        <figcaption class="caption">
-                            <div class="row">
-                                <div class="col-xs-7">
-                                    <h4>{{ creation.title }}</h4>
-                                </div>
-                                <div class="col-xs-3">
-                                    <h4 class="pull-right">{{ creation.price }}€</h4>
-                                </div>
-                                <div class="col-xs-2">
-                                    <button href="#"
-                                       class="btn btn-info glyphicon glyphicon-shopping-cart pull-right"
-                                       role="button"></button>
-                                </div>
-                            </div>
-                        </figcaption>
-                    </figure>
-                </div>
-            {% endfor %}
+    <div class="row">
+        <div class="col-md-11 col-md-offset-1">
+            <h2 class="shopQuote"><span class="fa fa-quote-left quoteIconLeft" aria-hidden="true"></span>
+                Adopter une création de l'Atelier O
+                <span class="fa fa-quote-right quoteIconRight" aria-hidden="true"></span></h2>
         </div>
     </div>
-</div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="row">
+                <ul id="myList" class="myList">
+                    {% for creation in creations %}
+                        <div class="col-sm-6 col-md-4">
+                            <li>
+                                <figure class="thumbnail thumbnailShop">
+                                    <img src="uploads/{{ creation.urlPicture }}" alt="création en céramique">
+                                    <figcaption class="caption">
+                                        <div class="row ">
+                                            <div class="col-xs-7">
+                                                <h4>{{ creation.title }}</h4>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <h4 class="pull-right">{{ creation.price }}€</h4>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <a href="{{ creation.urlEtsy }}"
+                                                   class="btn btn-default btn-shop glyphicon glyphicon-shopping-cart pull-right"
+                                                   role="button"></a>
+                                            </div>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </li>
+                        </div>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-2 col-xs-offset-5 ">
+                    <button id="loadMore" class="btn btn-default btnSeeMore"><span class="glyphicon glyphicon-plus"></span> En voir
+                        plus
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
+

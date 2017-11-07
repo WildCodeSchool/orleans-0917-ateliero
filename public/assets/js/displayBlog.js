@@ -3,11 +3,11 @@ $(document).ready(function () {
     $('#myListBlog li:lt(3)').show();
     var items = $('#myListBlog li').length;
     var shown = 3;
-    $('#loadMore').click(function () {
+    $('#seeMore').click(function () {
         shown = $('#myListBlog li:visible').length +3;
         if(shown< items) {$('#myListBlog li:lt('+shown+')').show();}
         else {$('#myListBlog li:lt('+items+')').show();
-            $('#loadMore').hide();
+            $('#seeMore').hide();
         }
     });
 });

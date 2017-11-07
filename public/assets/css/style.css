@@ -110,6 +110,7 @@
 
 .imgdecalbottom {
     margin-bottom: 30px;
+
 }
 
 .imgup {
@@ -139,6 +140,7 @@
     height: 300px;
     max-width: 100%;
 }
+  
 .titleteltablette {
     margin: 5%;
 }
@@ -182,14 +184,49 @@
     height: 400px;
 }
 
-.form-inline-shop {
-    margin-top: 5px;
-display: inline-block;
+.btn-shop {
+    background-color: #F8DCD1;
 }
 
+.form-inline-shop {
+    margin-top: 5px;
+    display: inline-block;
+}
 .hrShop {
     margin: 0;
 }
+
+.shopQuote {
+    margin-top: 2%;
+    font-family: 'Dancing Script', cursive;
+    font-size: calc(1.72vw + 15px);
+    color: #5b5b5b;
+    margin-bottom: 30px;
+}
+
+.myList {
+    display: none;
+    list-style-type:none;
+}
+
+.btnSeeMore {
+    color: black;
+    cursor: pointer;
+    background-color: #F8DCD1;
+}
+
+.btnSeeMore:hover {
+    color: black;
+    cursor: pointer;
+    background-color: #F8DCD1;
+}
+
+.btnSeeMore:visited {
+    color: black;
+    cursor: pointer;
+    background-color: #F8DCD1;
+}
+
 
 /* End Shop */
 
@@ -206,8 +243,12 @@ display: inline-block;
     margin-right: 0;
 }
 
-.blog h2 {
-    font-family: "Encode Sans Expanded", Helvetica, sans-serif;
+.blogQuote {
+    margin-top: 2%;
+    font-family: 'Dancing Script', cursive;
+    font-size: calc(1.72vw + 15px);
+    color: #5b5b5b;
+    margin-bottom: 30px;
 }
 
 .blog h3 {
@@ -223,6 +264,7 @@ display: inline-block;
 .blog .vignettes {
     position: relative;
     bottom: 0;
+    margin-top: 3%;
 }
 
 .blog .mainImage {
@@ -245,36 +287,32 @@ display: inline-block;
     margin: auto;
 }
 
-.myList li {
-    display: none;
-    list-style-type: none;
-}
-
-.btnSeeMore {
+.btnSeeMore2 {
     color: black;
     cursor: pointer;
     background-color: #F8DCD1;
     margin-top: 5%;
 }
 
+.btnSeeMore2:focus {
+    background-color: #F8DCD1;
+}
+
 /* End Blog */
 
 /* Start Footer */
-.pdpView {
+.footer_container {
     font-family: 'Encode Sans Expanded', Helvetica, sans-serif;
     background-color: #F8DCD1;
     margin-top: 5%;
     padding-top: 2%;
     padding-bottom: 2%;
-}
-
-.pdpView a {
-    color: black;
-}
-
-.footer_container {
     position: relative;
     top: 35%;
+}
+
+.footer_container a {
+    color: black;
 }
 
 .footer_nav {
@@ -283,7 +321,7 @@ display: inline-block;
     text-align: center;
 }
 
-.pdpView .fa-footer {
+.footer_container .fa-footer {
     margin-top: 15%;
     font-size: calc(2vw + 15px);
 }
@@ -299,18 +337,18 @@ display: inline-block;
 }
 
 /* mouse over link */
-.pdpView a:hover, .pdpView a:focus {
+.footer_container a:hover, .footer_container a:focus {
     color: darkgrey;
     text-decoration: none;
     outline: none;
 }
 
-.pdpView .contactBtn {
+.footer_container .contactBtn {
     text-align: center;
     z-index: 1;
 }
 
-.pdpView .partRight, .partLeft {
+.footer_container .partRight, .partLeft {
     z-index: 2;
 }
 
@@ -328,7 +366,7 @@ display: inline-block;
     color: #F8DCD1;
 }
 
-.pdpView .btn-default.focus, .btn-default:focus {
+.footer_container .btn-default:focus {
     color: black;
     background-color: transparent;
     border-color: transparent;

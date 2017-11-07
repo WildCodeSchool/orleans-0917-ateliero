@@ -27,7 +27,7 @@ class ArticleBlogManager extends EntityManager
 
     public function findAll()
     {
-        $req = "SELECT * FROM article_blog";
+        $req = "SELECT * FROM article_blog ORDER BY date DESC";
         $statement = $this->pdo->prepare($req);
         $statement->execute();
         return $statement->fetchAll();
