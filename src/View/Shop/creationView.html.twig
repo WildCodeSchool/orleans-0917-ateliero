@@ -24,7 +24,7 @@
                                                 <h4>{{ creation.title }}</h4>
                                             </div>
                                             <div class="col-xs-3">
-                                                <h4 class="pull-right">{{ creation.price }}€</h4>
+                                                <h4 class="pull-right">{{ creation.price|number_format(2, ',', '.') }}€</h4>
                                             </div>
                                             <div class="col-xs-2">
                                                 <a href="{{ creation.urlEtsy }}"

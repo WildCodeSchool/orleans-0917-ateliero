@@ -40,7 +40,7 @@
                     <div class="col-md-8 col-sm-6 col-xs-9">
                         <h4>{{ creation.title | title }}</h4></div>
                     <div class="col-md-1 col-sm-2 col-xs-3">
-                        <h4>{{ creation.price }} €</h4></div>
+                        <h4>{{ creation.price|number_format(2, ',', '.') }} €</h4></div>
 
                     <div class="col-md-3 col-sm-4">
                         <div class="pull-right">
