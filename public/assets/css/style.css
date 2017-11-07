@@ -1,5 +1,13 @@
 /*-*-*-*-* START CSS *-*-*-*-*/
 
+h1, h2, h3, h4, h5 {
+    font-family: "Encode Sans Expanded",  Helvetica, sans-serif;
+}
+
+p, span, b, i{
+font-family: "Open Sans", Helvetica, sans-serif;
+}
+
 .linetitle {
     max-width: 100px;
     background: #FFBF91;
@@ -142,7 +150,7 @@
 }
   
 .titleteltablette {
-    margin: 5%;
+    margin-top: 5%;
 }
 
 .formteltablette {
@@ -241,7 +249,7 @@
 }
 
 .blogArticle {
-    margin-top: 4%;
+    margin-bottom: 4%;
     height: 450px;
 }
 
