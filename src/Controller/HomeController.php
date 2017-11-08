@@ -77,10 +77,12 @@ class HomeController extends Controller
 
         $partnerManager = new PartnerManager();
         $partners = $partnerManager->findAll();
+
         $client = new Client();
+        try {
         $response = $client->get('https://www.instagram.com/' . COMPTEINSTA . '/media/');
         $decode = $response->getBody();
-        $tabInsta = \GuzzleHttp\json_decode($decode, true);
+        $tabInsta = json_decode($decode, true);
         foreach ($tabInsta['items'] as $imgInsta)
         {
             $imageInsta[] = $imgInsta['images']['standard_resolution']['url'];
@@ -89,7 +91,26 @@ class HomeController extends Controller
         {
             $urlImageInsta[] = $imgInsta['link'];
         }
+        }
+        catch (\Exception $e) {
+            $imageInsta = [
+                "images/instagram/001.jpg",
+                "images/instagram/002.jpg",
+                "images/instagram/003.jpg",
+                "images/instagram/004.jpg",
+                "images/instagram/005.jpg",
+                "images/instagram/006.jpg",
+            ];
 
+            $urlImageInsta = [
+                "https://www.instagram.com/p/Ba6ja1GgVia/?taken-by=atelier_o",
+                "https://www.instagram.com/p/BalZoyWAGfD/?taken-by=atelier_o",
+                "https://www.instagram.com/p/BZ8NcrKATLv/?taken-by=atelier_o",
+                "https://www.instagram.com/p/BZ0XIqdgoU9/?taken-by=atelier_o",
+                "https://www.instagram.com/p/BZlCyd6gooD/?taken-by=atelier_o",
+                "https://www.instagram.com/p/BZgDWshAoDl/?taken-by=atelier_o",
+            ];
+        }
 
         $imgManager = new ImageManager();
         $imgBlog = $imgManager->extractPicture();
