@@ -295,8 +295,7 @@ font-family: "Open Sans", Helvetica, sans-serif;
 }
 
 .blog .imgModal {
-    width: 100%;
-    height: auto;
+    max-height: 80vh;
     margin: auto;
 }
 
