@@ -27,7 +27,7 @@ class HomeController extends Controller
 
         if (!empty($_SESSION['success'])) {
             if ('mailContactOK' == $_SESSION['success']) {
-                $messages['success'][] = "Votre message a bien été envoyé, nous reviendrons vers vous dans les meilleurs délais.";
+                $messages['success'][] = "Votre message a bien été envoyé, je reviendrai vers vous dans les meilleurs délais.";
                 session_destroy();
             }
         }
@@ -63,10 +63,15 @@ class HomeController extends Controller
                 $mailer = new \Swift_Mailer($transport);
 
                 // Create a message
-                $message = (new \Swift_Message('Message venant de www.ateliero.com'))
+                $message = (new \Swift_Message('Message venant de www.chloeceramique.com'))
                     ->setFrom([$mailExpe => $name])
                     ->setTo(SWIFTMAILRECIPIENT)
                     ->setBody($body);
+                $headers = $message->getHeaders();
+                $headers->addIdHeader('Message-ID', "b3eb7202-d2f1-11e4-b9d6-1681e6b88ec1@chloeceramique.com");
+                $headers->addTextHeader('MIME-Version', '1.0');
+                $headers->addTextHeader('X-Mailer', phpversion());
+                $headers->addParameterizedHeader('Content-type', 'text/html', ['charset' => 'utf-8']);
 
                 // Send the message
                 $mailer->send($message);
@@ -79,6 +84,8 @@ class HomeController extends Controller
         $partners = $partnerManager->findAll();
 
         $client = new Client();
+
+        // Début du test de connexion à INSTAGRAM
         try {
         $response = $client->get('https://www.instagram.com/' . COMPTEINSTA . '/media/');
         $decode = $response->getBody();
