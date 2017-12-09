@@ -83,40 +83,19 @@ class HomeController extends Controller
         $partnerManager = new PartnerManager();
         $partners = $partnerManager->findAll();
 
-        $client = new Client();
+        // instagram
 
-        // Début du test de connexion à INSTAGRAM
-        try {
-        $response = $client->get('https://www.instagram.com/' . COMPTEINSTA . '/media/');
-        $decode = $response->getBody();
-        $tabInsta = json_decode($decode, true);
-        foreach ($tabInsta['items'] as $imgInsta)
-        {
-            $imageInsta[] = $imgInsta['images']['standard_resolution']['url'];
-        }
-        foreach ($tabInsta['items'] as $imgInsta)
-        {
-            $urlImageInsta[] = $imgInsta['link'];
-        }
-        }
-        catch (\Exception $e) {
-            $imageInsta = [
-                "images/instagram/001.jpg",
-                "images/instagram/002.jpg",
-                "images/instagram/003.jpg",
-                "images/instagram/004.jpg",
-                "images/instagram/005.jpg",
-                "images/instagram/006.jpg",
-            ];
-
-            $urlImageInsta = [
-                "https://www.instagram.com/p/Ba6ja1GgVia/?taken-by=atelier_o",
-                "https://www.instagram.com/p/BalZoyWAGfD/?taken-by=atelier_o",
-                "https://www.instagram.com/p/BZ8NcrKATLv/?taken-by=atelier_o",
-                "https://www.instagram.com/p/BZ0XIqdgoU9/?taken-by=atelier_o",
-                "https://www.instagram.com/p/BZlCyd6gooD/?taken-by=atelier_o",
-                "https://www.instagram.com/p/BZgDWshAoDl/?taken-by=atelier_o",
-            ];
+        $access_token="6660464628.1677ed0.230295a1e199429a87d0b5f3209b8eb3";
+        $photo_count=6;
+        $json_link="https://api.instagram.com/v1/users/self/media/recent/?";
+        $json_link.="access_token={$access_token}&count={$photo_count}";
+        $json = file_get_contents($json_link);
+        $obj = json_decode($json, true, 512, JSON_BIGINT_AS_STRING);
+        $urlImageInsta = [];
+        $imageInsta= [];
+        foreach ($obj['data'] as $data){
+            $urlImageInsta[] = $data['link'];
+            $imageInsta[] = $data['images']['standard_resolution']['url'];
         }
 
         $imgManager = new ImageManager();
